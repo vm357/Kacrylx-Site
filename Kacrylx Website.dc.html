@@ -117,7 +117,7 @@
           <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:28px;">
             <sc-for list="{{ artists }}" as="a" hint-placeholder-count="2">
               <div data-kx-reveal="{{ a.revealDelay }}" style="display:flex; flex-direction:column; background:#fff; border:1px solid #F1DDE4; border-radius:18px; overflow:hidden; transition:transform 0.85s cubic-bezier(0.16,0.84,0.24,1), box-shadow 0.85s cubic-bezier(0.16,0.84,0.24,1), border-color 0.5s ease; will-change:transform;" style-hover="transform:translateY(-6px); box-shadow:0 18px 40px rgba(122,66,88,0.14); border-color:#E9C8D6;">
-                <div style="background-color:#E6DCE0; height:clamp(231px, 35.0vw, 420px); overflow:hidden;">
+                <div style="background-color:#E6DCE0; height:clamp(380px, 52vw, 600px); overflow:hidden;">
                   <image-slot id="{{ a.homeSlotId }}" src="{{ a.homePhoto }}" shape="rect" placeholder="Artist photo"></image-slot>
                 </div>
                 <div style="padding:clamp(20px,4vw,30px); display:flex; flex-direction:column; gap:12px;">
@@ -250,7 +250,7 @@
             <image-slot id="kx-gallery-3" src="images/kx-gallery-3.webp" shape="rect" placeholder="Photo 3"></image-slot>
           </div>
           <div data-kx-reveal="0.33" style="border-radius:14px; overflow:hidden; background:#E6DCE0; height:clamp(420px, calc(560px - 20vw), 470px); transition:transform 0.85s cubic-bezier(0.16,0.84,0.24,1), box-shadow 0.85s cubic-bezier(0.16,0.84,0.24,1); will-change:transform;" style-hover="transform:translateY(-6px) scale(1.008); box-shadow:0 20px 44px rgba(122,66,88,0.15);">
-            <image-slot id="kx-gallery-14" shape="rect" placeholder="Photo 14"></image-slot>
+            <image-slot id="kx-gallery-14" src="images/kx-gallery-14.webp" shape="rect" placeholder="Photo 14"></image-slot>
           </div>
           <div data-kx-reveal="0.1" style="grid-column:1 / -1; display:flex; justify-content:flex-end; padding-top:14px;">
             <a href="#" onClick="{{ bookKymani }}" style="display:flex; align-items:center; gap:8px; font-size:15px; color:#E0397B; transition:color 0.28s ease, gap 0.28s cubic-bezier(0.22,0.61,0.36,1);" style-hover="color:#C4557A; gap:15px;">
@@ -269,7 +269,7 @@
             <image-slot id="kx-gallery-6" src="images/kx-gallery-6.webp" shape="rect" placeholder="Photo 6"></image-slot>
           </div>
           <div data-kx-reveal="0.33" style="border-radius:14px; overflow:hidden; background:#E6DCE0; height:clamp(420px, calc(560px - 20vw), 470px); transition:transform 0.85s cubic-bezier(0.16,0.84,0.24,1), box-shadow 0.85s cubic-bezier(0.16,0.84,0.24,1); will-change:transform;" style-hover="transform:translateY(-6px) scale(1.008); box-shadow:0 20px 44px rgba(122,66,88,0.15);">
-            <image-slot id="kx-gallery-15" shape="rect" placeholder="Photo 15"></image-slot>
+            <image-slot id="kx-gallery-15" src="images/kx-gallery-15.webp" shape="rect" placeholder="Photo 15"></image-slot>
           </div>
           <div data-kx-reveal="0.1" style="grid-column:1 / -1; display:flex; justify-content:flex-end; padding-top:14px;">
             <a href="#" onClick="{{ bookJharis }}" style="display:flex; align-items:center; gap:8px; font-size:15px; color:#E0397B; transition:color 0.28s ease, gap 0.28s cubic-bezier(0.22,0.61,0.36,1);" style-hover="color:#C4557A; gap:15px;">
@@ -288,7 +288,7 @@
             <image-slot id="kx-gallery-9" src="images/kx-gallery-9.webp" shape="rect" placeholder="Photo 9"></image-slot>
           </div>
           <div data-kx-reveal="0.33" style="border-radius:14px; overflow:hidden; background:#E6DCE0; height:clamp(420px, calc(560px - 20vw), 470px); transition:transform 0.85s cubic-bezier(0.16,0.84,0.24,1), box-shadow 0.85s cubic-bezier(0.16,0.84,0.24,1); will-change:transform;" style-hover="transform:translateY(-6px) scale(1.008); box-shadow:0 20px 44px rgba(122,66,88,0.15);">
-            <image-slot id="kx-gallery-16" shape="rect" placeholder="Photo 16"></image-slot>
+            <image-slot id="kx-gallery-16" src="images/kx-gallery-16.webp" shape="rect" placeholder="Photo 16"></image-slot>
           </div>
           <div data-kx-reveal="0.1" style="grid-column:1 / -1; display:flex; justify-content:flex-end; padding-top:14px;">
             <a href="#" onClick="{{ bookKymani }}" style="display:flex; align-items:center; gap:8px; font-size:15px; color:#E0397B; transition:color 0.28s ease, gap 0.28s cubic-bezier(0.22,0.61,0.36,1);" style-hover="color:#C4557A; gap:15px;">
@@ -307,7 +307,7 @@
             <image-slot id="kx-gallery-12" src="images/kx-gallery-12.webp" shape="rect" placeholder="Photo 12"></image-slot>
           </div>
           <div data-kx-reveal="0.33" style="border-radius:14px; overflow:hidden; background:#E6DCE0; height:clamp(420px, calc(560px - 20vw), 470px); transition:transform 0.85s cubic-bezier(0.16,0.84,0.24,1), box-shadow 0.85s cubic-bezier(0.16,0.84,0.24,1); will-change:transform;" style-hover="transform:translateY(-6px) scale(1.008); box-shadow:0 20px 44px rgba(122,66,88,0.15);">
-            <image-slot id="kx-gallery-13" shape="rect" placeholder="Photo 13"></image-slot>
+            <image-slot id="kx-gallery-13" src="images/kx-gallery-13.webp" shape="rect" placeholder="Photo 13"></image-slot>
           </div>
           <div data-kx-reveal="0.1" style="grid-column:1 / -1; display:flex; justify-content:flex-end; padding-top:14px;">
             <a href="#" onClick="{{ bookJharis }}" style="display:flex; align-items:center; gap:8px; font-size:15px; color:#E0397B; transition:color 0.28s ease, gap 0.28s cubic-bezier(0.22,0.61,0.36,1);" style-hover="color:#C4557A; gap:15px;">
@@ -331,7 +331,7 @@
             <image-slot id="kx-about-work" src="images/about-work.png" shape="rect" placeholder="Work photo"></image-slot>
           </div>
           <div data-kx-reveal="0.26" style="border-radius:16px; height:clamp(165px, 25.0vw, 300px); grid-column:1 / -1; overflow:hidden; background:#E6DCE0;transition:transform 0.85s cubic-bezier(0.16,0.84,0.24,1), box-shadow 0.85s cubic-bezier(0.16,0.84,0.24,1); will-change:transform;" style-hover="transform:translateY(-6px) scale(1.008); box-shadow:0 20px 44px rgba(122,66,88,0.15);">
-            <image-slot id="kx-about-sign" src="images/studio-sign-baked.webp" shape="rect" placeholder="Studio sign"></image-slot>
+            <image-slot id="kx-about-sign" src="images/kx-about-sign.webp" shape="rect" placeholder="Studio sign"></image-slot>
           </div>
         </div>
         <div data-kx-reveal="0.12" style="display:flex; flex-direction:column; gap:20px;">
