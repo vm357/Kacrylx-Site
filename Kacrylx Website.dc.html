@@ -9,6 +9,7 @@
 <x-dc>
 <helmet>
 <style>
+@keyframes kxMenuIn { from { opacity:0; transform:translateY(-8px); } to { opacity:1; transform:none; } }
 @keyframes kxFadeIn { from { opacity:0; } to { opacity:1; } }
 @keyframes kxShimmer { from { background-position:200% 0; } to { background-position:-60% 0; } }
 @keyframes kxWiggle { 0% { transform:rotate(0) scale(1); } 25% { transform:rotate(-3.5deg) scale(1.05); } 55% { transform:rotate(2.5deg) scale(1.06); } 80% { transform:rotate(-1.2deg) scale(1.03); } 100% { transform:rotate(0) scale(1.04); } }
@@ -35,13 +36,31 @@
   <div style="position:sticky; top:0; z-index:20; background:rgba(255,248,250,0.94); backdrop-filter:blur(10px); border-bottom:1px solid #F1DDE4;">
     <div style="max-width:1280px; margin:0 auto; padding:{{ navRowPad }}; display:flex; align-items:center; justify-content:space-between; gap:10px clamp(16px,2.4vw,32px); flex-wrap:wrap; transition:padding 0.3s ease;">
       <a href="#" onClick="{{ goHome }}" style="font-family:'Playfair Display',serif; font-size:{{ navLogoSize }}; font-weight:700; color:#2A0A16; letter-spacing:0.04em; display:inline-block; transform-origin:50% 85%; transition:color 0.3s ease, font-size 0.3s ease;" style-hover="animation:kxWiggle 0.55s cubic-bezier(0.34,1.4,0.64,1) forwards; color:#E0397B;">Kacrylx</a>
+<sc-if value="{{ navDesktop }}" hint-placeholder-val="{{ true }}">
       <div style="display:flex; align-items:center; flex-wrap:wrap; gap:6px clamp(12px,2vw,24px); font-size:{{ navPillFont }};">
         <sc-for list="{{ navItems }}" as="item" hint-placeholder-count="6">
           <a href="#" onClick="{{ item.onClick }}" style="white-space:nowrap; padding:8px 2px; border-bottom:2px solid {{ item.navUnderline }}; color:{{ item.navFg }}; transition:color 0.3s ease, border-color 0.3s ease;" style-hover="color:#2A0A16; border-color:#EBC6D3;">{{ item.label }}</a>
         </sc-for>
       </div>
+</sc-if>
+<div style="display:flex; align-items:center; gap:10px;">
       <a href="#" onClick="{{ goBook }}" style="padding:10px 24px; border-radius:999px; background:#E0397B; color:#fff; font-size:13px; font-weight:500; transition:background 0.35s ease, transform 0.55s cubic-bezier(0.16,0.84,0.24,1), box-shadow 0.55s cubic-bezier(0.16,0.84,0.24,1);" style-hover="background:#C4557A; color:#fff; transform:translateY(-2px) scale(1.03); box-shadow:0 12px 26px rgba(224,57,123,0.32);">Book Now</a>
+<sc-if value="{{ navMobile }}" hint-placeholder-val="{{ false }}">
+<button onClick="{{ toggleMenu }}" aria-label="{{ menuAria }}" style="width:44px; height:44px; flex:0 0 44px; border-radius:999px; border:1px solid #EBC6D3; background:{{ menuBtnBg }}; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:5px; cursor:pointer; padding:0; transition:background 0.3s ease;">
+<span style="display:block; width:18px; height:2px; border-radius:2px; background:#2A0A16; transition:transform 0.35s cubic-bezier(0.16,0.84,0.24,1); transform:{{ bar1 }};"></span>
+<span style="display:block; width:18px; height:2px; border-radius:2px; background:#2A0A16; transition:opacity 0.25s ease; opacity:{{ bar2 }};"></span>
+<span style="display:block; width:18px; height:2px; border-radius:2px; background:#2A0A16; transition:transform 0.35s cubic-bezier(0.16,0.84,0.24,1); transform:{{ bar3 }};"></span>
+</button>
+</sc-if>
+</div>
     </div>
+    <sc-if value="{{ menuShown }}" hint-placeholder-val="{{ false }}">
+    <div style="border-top:1px solid #F1DDE4; background:#FFF8FA; padding:8px clamp(18px,5vw,40px) 18px; animation:kxMenuIn 0.32s cubic-bezier(0.16,0.84,0.24,1) both;">
+    <sc-for list="{{ menuItems }}" as="m" hint-placeholder-count="6">
+    <a href="#" onClick="{{ m.onClick }}" style="display:flex; align-items:center; justify-content:space-between; padding:15px 4px; border-bottom:1px solid #F7E8EE; font-family:'Playfair Display',serif; font-size:22px; color:{{ m.fg }};"><span>{{ m.label }}</span><span style="font-family:'Poppins',sans-serif; font-size:14px; color:#E0397B;">{{ m.mark }}</span></a>
+    </sc-for>
+    </div>
+    </sc-if>
     <sc-if value="{{ navExpanded }}" hint-placeholder-val="{{ true }}">
       <div style="max-width:1280px; margin:0 auto; padding:0 clamp(18px,5vw,40px) 12px; font-size:11px; letter-spacing:0.24em; text-transform:uppercase; color:#B08596;">{{ pageLabel }}</div>
     </sc-if>
@@ -213,7 +232,7 @@
               <div style="display:flex; flex-direction:column; gap:3px;"><span style="font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:#B08596;">Email</span><a href="mailto:nailsbykymani@yahoo.com">nailsbykymani@yahoo.com</a></div>
               <div style="display:flex; flex-direction:column; gap:3px;"><span style="font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:#B08596;">Instagram</span><a href="https://instagram.com/kacrylx" target="_blank">@kacrylx</a></div>
               <div style="display:flex; flex-direction:column; gap:3px;"><span style="font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:#B08596;">Facebook</span><a href="https://facebook.com/kacrylx" target="_blank">Kacrylx</a></div>
-              <div style="display:flex; flex-direction:column; gap:3px;"><span style="font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:#B08596;">Location</span><span>Edison, NJ 08337 — address shared on booking.</span></div>
+              <div style="display:flex; flex-direction:column; gap:3px;"><span style="font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:#B08596;">Location</span><span>Edison, NJ 08837 — address shared on booking.</span></div>
             </div>
           </div>
           <div data-kx-reveal="0.14" style="background:#fff; border:1px solid #F1DDE4; border-radius:18px; padding:clamp(22px,4vw,34px); display:flex; flex-direction:column; gap:14px;">
@@ -4176,9 +4195,9 @@ this service includes a cuticle clean up with one color gel polish of your choic
           <div style="display:flex; align-items:center; justify-content:space-between; gap:16px;">
             <button onClick="{{ monthPrev }}" disabled="{{ monthPrevOff }}" aria-label="Previous month" style="width:38px; height:38px; border-radius:999px; border:1px solid #EBC6D3; background:#fff; color:#2A0A16; cursor:{{ monthPrevCursor }}; opacity:{{ monthPrevOpacity }}; font-size:15px; line-height:1;" style-hover="background:#FFEFF5;">←</button>
             <span style="font-family:'Playfair Display',serif; font-size:22px;">{{ monthLabel }}</span>
-            <button onClick="{{ monthNext }}" aria-label="Next month" style="width:38px; height:38px; border-radius:999px; border:1px solid #EBC6D3; background:#fff; color:#2A0A16; cursor:pointer; font-size:15px; line-height:1;" style-hover="background:#FFEFF5;">→</button>
+            <button onClick="{{ monthNext }}" disabled="{{ monthNextOff }}" aria-label="Next month" style="width:38px; height:38px; border-radius:999px; border:1px solid #EBC6D3; background:#fff; color:#2A0A16; cursor:{{ monthNextCursor }}; opacity:{{ monthNextOpacity }}; font-size:15px; line-height:1;" style-hover="background:#FFEFF5;">→</button>
           </div>
-          <div style="display:grid; grid-template-columns:repeat(7,1fr); gap:6px; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:#B08596; text-align:center;">
+          <div style="display:grid; grid-template-columns:repeat(7,minmax(0,1fr)); gap:6px; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:#B08596; text-align:center;">
             <span>Sun</span>
             <span>Mon</span>
             <span>Tue</span>
@@ -4187,16 +4206,22 @@ this service includes a cuticle clean up with one color gel polish of your choic
             <span>Fri</span>
             <span>Sat</span>
           </div>
-          <div style="display:grid; grid-template-columns:repeat(7,1fr); gap:6px;">
+          <sc-if value="{{ monthNotOpen }}" hint-placeholder-val="{{ false }}">
+            <div style="background:#FFEFF5; border:1px solid #F1C9DA; border-radius:12px; padding:14px 16px; display:flex; flex-direction:column; gap:4px;">
+              <span style="font-family:'Playfair Display',serif; font-size:18px; color:#2A0A16;">{{ monthNotOpenTitle }}</span>
+              <span style="font-size:13px; line-height:1.6; color:#5C4450;">New dates are released a month or two at a time. Follow @kacrylx to hear when they open.</span>
+            </div>
+          </sc-if>
+          <div style="display:grid; grid-template-columns:repeat(7,minmax(0,1fr)); gap:6px;">
             <sc-for list="{{ dayCells }}" as="d" hint-placeholder-count="35">
-              <button onClick="{{ d.onClick }}" disabled="{{ d.disabled }}" style="font-family:'Playfair Display',serif; font-size:17px; aspect-ratio:1; border-radius:10px; display:flex; align-items:center; justify-content:center; background:{{ d.bg }}; border:1px solid {{ d.border }}; color:{{ d.fg }}; cursor:{{ d.cursor }}; opacity:{{ d.opacity }};">{{ d.date }}</button>
+              <button onClick="{{ d.onClick }}" disabled="{{ d.disabled }}" style="padding:0; min-width:0; font-family:'Playfair Display',serif; font-size:17px; aspect-ratio:1; border-radius:10px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1px; background:{{ d.bg }}; border:1px {{ d.borderStyle }} {{ d.border }}; color:{{ d.fg }}; cursor:{{ d.cursor }}; opacity:{{ d.opacity }};"><span>{{ d.date }}</span><span style="font-family:'Poppins',sans-serif; font-size:9px; letter-spacing:0.08em; text-transform:uppercase; line-height:1;">{{ d.sub }}</span></button>
             </sc-for>
           </div>
           <sc-if value="{{ isJharis }}" hint-placeholder-val="{{ false }}">
-            <p style="margin:0; font-size:12px; color:#B08596;">Closed Sundays. Past dates are unavailable.</p>
+            <p style="margin:0; font-size:12px; line-height:1.6; color:#B08596;">Closed Sundays. Booking is open through {{ openThroughLabel }}. "Full" days are fully booked.</p>
           </sc-if>
           <sc-if value="{{ isKymani }}" hint-placeholder-val="{{ true }}">
-            <p style="margin:0; font-size:12px; color:#B08596;">Closed Sundays and Mondays. Past dates are unavailable.</p>
+            <p style="margin:0; font-size:12px; line-height:1.6; color:#B08596;">Closed Sundays and Mondays. Booking is open through {{ openThroughLabel }}. "Full" days are fully booked.</p>
           </sc-if>
         </div>
           <div style="flex:1 1 280px; min-width:0; display:flex; flex-direction:column; gap:12px;">
@@ -4261,37 +4286,18 @@ this service includes a cuticle clean up with one color gel polish of your choic
       </div>
 
       <div style="display:flex; flex-wrap:wrap; gap:28px; align-items:flex-start;">
-        <div style="flex:1 1 420px; min-width:0; box-sizing:border-box; background:#fff; border:1px solid #F1DDE4; border-radius:18px; padding:clamp(22px,4vw,34px); display:flex; flex-direction:column; gap:22px;">
-          <div style="display:flex; align-items:center; justify-content:space-between; gap:16px;">
-            <span style="font-family:'Playfair Display',serif; font-size:26px;">Card details</span>
-            <span style="font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#B08596;">Secure checkout</span>
-          </div>
-          <div style="display:flex; flex-direction:column; gap:14px;">
-            <div style="display:flex; flex-direction:column; gap:6px;">
-              <span style="font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#B08596;">Card number</span>
-              <input placeholder="1234 1234 1234 1234" inputMode="numeric" maxLength="19" autoComplete="cc-number" value="{{ c_card.value }}" onChange="{{ c_card.onChange }}" style="width:100%; box-sizing:border-box; padding:15px 18px; border-radius:10px; border:1px solid {{ c_card.border }}; background:#fff; font-family:'Poppins',sans-serif; font-size:15px; color:#2A0A16;">
-            </div>
-            <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); gap:12px; min-width:0;">
-              <div style="display:flex; flex-direction:column; gap:6px; min-width:0;">
-                <span style="font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#B08596;">Expiry</span>
-                <input placeholder="MM / YY" inputMode="numeric" maxLength="7" value="{{ c_exp.value }}" onChange="{{ c_exp.onChange }}" style="width:100%; box-sizing:border-box; padding:15px 18px; border-radius:10px; border:1px solid {{ c_exp.border }}; background:#fff; font-family:'Poppins',sans-serif; font-size:15px; color:#2A0A16;">
-              </div>
-              <div style="display:flex; flex-direction:column; gap:6px; min-width:0;">
-                <span style="font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#B08596;">CVC</span>
-                <input placeholder="123" inputMode="numeric" maxLength="4" autoComplete="cc-csc" value="{{ c_cvc.value }}" onChange="{{ c_cvc.onChange }}" style="width:100%; box-sizing:border-box; padding:15px 18px; border-radius:10px; border:1px solid {{ c_cvc.border }}; background:#fff; font-family:'Poppins',sans-serif; font-size:15px; color:#2A0A16;">
-              </div>
-              <div style="display:flex; flex-direction:column; gap:6px; min-width:0;">
-                <span style="font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#B08596;">ZIP</span>
-                <input placeholder="08837" inputMode="numeric" maxLength="5" autoComplete="postal-code" value="{{ c_zip.value }}" onChange="{{ c_zip.onChange }}" style="width:100%; box-sizing:border-box; padding:15px 18px; border-radius:10px; border:1px solid {{ c_zip.border }}; background:#fff; font-family:'Poppins',sans-serif; font-size:15px; color:#2A0A16;">
-              </div>
-            </div>
-            <div style="display:flex; flex-direction:column; gap:6px;">
-              <span style="font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#B08596;">Name on card</span>
-              <input placeholder="Full name" autoComplete="cc-name" value="{{ c_cardName.value }}" onChange="{{ c_cardName.onChange }}" style="width:100%; box-sizing:border-box; padding:15px 18px; border-radius:10px; border:1px solid {{ c_cardName.border }}; background:#fff; font-family:'Poppins',sans-serif; font-size:15px; color:#2A0A16;">
-            </div>
-          </div>
-          <p style="margin:0; font-size:12px; line-height:1.7; color:#7A4258;">Payments are processed by Stripe. Card details are never stored by the studio.</p>
-        </div>
+<div style="flex:1 1 420px; min-width:0; box-sizing:border-box; background:#fff; border:1px solid #F1DDE4; border-radius:18px; padding:clamp(22px,4vw,34px); display:flex; flex-direction:column; gap:22px;">
+<div style="display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;">
+<span style="font-family:'Playfair Display',serif; font-size:26px;">How payment works</span>
+<span style="font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#B08596;">Secured by Stripe</span>
+</div>
+<div style="display:flex; flex-direction:column; gap:16px;">
+<div style="display:flex; gap:14px; align-items:flex-start;"><span style="flex:0 0 28px; height:28px; border-radius:999px; background:#FFEFF5; color:#B0184E; display:flex; align-items:center; justify-content:center; font-size:13px;">1</span><span style="font-size:15px; line-height:1.7; color:#3D0A1D;">You'll be taken to Stripe's secure checkout page to pay the $40 deposit.</span></div>
+<div style="display:flex; gap:14px; align-items:flex-start;"><span style="flex:0 0 28px; height:28px; border-radius:999px; background:#FFEFF5; color:#B0184E; display:flex; align-items:center; justify-content:center; font-size:13px;">2</span><span style="font-size:15px; line-height:1.7; color:#3D0A1D;">Pay by card, Apple Pay or Google Pay.</span></div>
+<div style="display:flex; gap:14px; align-items:flex-start;"><span style="flex:0 0 28px; height:28px; border-radius:999px; background:#FFEFF5; color:#B0184E; display:flex; align-items:center; justify-content:center; font-size:13px;">3</span><span style="font-size:15px; line-height:1.7; color:#3D0A1D;">Once it goes through, you'll come right back here and get your confirmation by text and email.</span></div>
+</div>
+<p style="margin:0; font-size:12px; line-height:1.7; color:#7A4258;">Card details are entered on Stripe and never touch the studio's website.</p>
+</div>
 
         <div style="flex:1 1 300px; min-width:0; box-sizing:border-box; background:#F7D9E3; border-radius:18px; padding:clamp(20px,4vw,30px); display:flex; flex-direction:column; gap:14px;">
           <div style="font-family:'Playfair Display',serif; font-size:24px;">Your appointment</div>
@@ -4305,8 +4311,14 @@ this service includes a cuticle clean up with one color gel polish of your choic
             <div style="display:flex; justify-content:space-between; gap:16px; font-size:13px;"><span style="color:#7A4258;">Estimated balance at appointment</span><span>{{ bookRemainder }}</span></div>
           </div>
           <button disabled="{{ payBlocked }}" onClick="{{ payDeposit }}" style="margin-top:8px; padding:16px 20px; border-radius:999px; background:{{ payBtnBg }}; color:{{ payBtnFg }}; border:none; font-family:'Poppins',sans-serif; font-size:15px; cursor:{{ payBtnCursor }};">Pay $40 Deposit</button>
-          <sc-if value="{{ payBlocked }}" hint-placeholder-val="{{ true }}">
-            <p style="margin:0; font-size:12px; line-height:1.6; color:#A8425F; text-align:center;">Complete every card field to pay your deposit.</p>
+          <sc-if value="{{ payRedirecting }}" hint-placeholder-val="{{ false }}">
+            <p style="margin:0; font-size:12px; line-height:1.6; color:#7A4258; text-align:center;">Taking you to Stripe…</p>
+          </sc-if>
+          <sc-if value="{{ payCanceled }}" hint-placeholder-val="{{ false }}">
+            <p style="margin:0; font-size:12px; line-height:1.6; color:#A8425F; text-align:center;">Payment wasn't completed. Your booking details are saved — try again when you're ready.</p>
+          </sc-if>
+          <sc-if value="{{ payError }}" hint-placeholder-val="{{ false }}">
+            <p style="margin:0; font-size:12px; line-height:1.6; color:#A8425F; text-align:center;">We couldn't open checkout. Please try again, or text 640-220-9270.</p>
           </sc-if>
           <a href="#" onClick="{{ goBook }}" style="text-align:center; font-size:13px; color:#7A4258;">Back to booking details</a>
           <p style="margin:0; font-size:12px; line-height:1.7; color:#7A4258;">Deposits are non-refundable but transfer once to a rescheduled appointment with 48 hours notice.</p>
@@ -4489,6 +4501,18 @@ const SIZE_REQUIRED = ['Full set|Basic French', 'Refill|Basic French', 'Full set
 
 const SERVICES = ['Basic Gel Manicure','Gel Manicure','Overlays','Short Nails','Basic French','Artsy French','Plain Jane','Ombre','Regular Art Sets','Detailed Art Sets','Line Work','Artist Choice Freestyle','Character Set','Bling Sets','Regular Pedicure','Spa Pedicure','Artwork Pedicure','Enhancement Pedicure','Polish Change',"Men's Manicure","Men's Pedicure",'Nail Fix'];
 
+// Each artist's availability. Demo values for now — once the artist dashboard is built,
+// the backend returns these (see "Booking Messages & Stripe Setup.md", section 4).
+const kxIso = (d) => d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+const kxDemoDate = (months, day) => { const t = new Date(); return kxIso(new Date(t.getFullYear(), t.getMonth() + months, day)); };
+const AVAILABILITY = {
+  Kymani: { closedWeekdays: [0, 1], openThrough: kxDemoDate(2, 0), daysOff: [kxDemoDate(1, 14)], fullyBooked: [kxDemoDate(1, 7), kxDemoDate(1, 8)] },
+  Jharis: { closedWeekdays: [0], openThrough: kxDemoDate(2, 0), daysOff: [kxDemoDate(1, 21)], fullyBooked: [kxDemoDate(1, 10)] }
+};
+
+const STRIPE_CONFIG = { checkoutEndpoint: '', successPage: 'Confirmation.dc.html', cancelPage: 'Deposit.dc.html' };
+const BOOKING_KEY = 'kx-booking-pending';
+
 const HOURS = [['Monday','10–7'],['Tuesday','10–7'],['Wednesday','10–7'],['Thursday','10–7'],['Friday','10–7'],['Saturday','9–5'],['Sunday','Closed']];
 
 const ARTISTS = [
@@ -4498,7 +4522,7 @@ const ARTISTS = [
     known:'Detail work, cleanliness, versatility'
   },
   {
-    name:'Jharis', role:'Nail artist · 10+ years', photo:'images/jharis.webp',
+    name:'Jharis', role:'Nail artist · 10+ years', photo:'images/jharis-v2.png',
     bio:'Jharis brings over a decade behind the desk. That experience shows in structure and shape — sets that sit right, wear well and grow out cleanly. She is a steady hand for anything technical, from precise line work to repairs and rebuilds.',
     known:'Shape and structure, line work, repairs'
   }
@@ -4521,7 +4545,7 @@ const FAQS = [
   { q:'Are inspo photos welcome?', a:'Yes — bring as many as you like. Screenshots help us confirm shape, length and art before we start.' },
   { q:'How long does a set last?', a:'Most clients come back every two to three weeks for a fill, depending on nail growth and how hard you are on your hands.' },
   { q:'Fill or new set?', a:'If your set is intact and lifting is minimal, a fill is usually the move. If it is past three weeks or several nails are gone, book a new set.' },
-  { q:'Where exactly are you?', a:'Edison, NJ 08337. The full address is sent when your booking is confirmed.' },
+  { q:'Where exactly are you?', a:'Edison, NJ 08837. The full address is sent when your booking is confirmed.' },
   { q:'Do you take walk-ins?', a:'No — everything is booked online. Use the booking page to request a time.' }
 ];
 
@@ -4547,7 +4571,7 @@ const GALLERY_HEIGHTS = [340,260,300,280,340,260,300,340,260,280,320,260];
 const LABELS = { home:'Home', gallery:'Gallery', about:'About', testimonials:'Reviews', book:'Book an appointment', faq:'Policies', deposit:'Deposit', confirmed:'Booking confirmed' };
 
 class Component extends DCLogic {
-  state = { page: this.props.page || 'home', navCondensed:false, artist:'Kymani', service:null, setType:null, day:null, monthOffset:0, time:null, rating:5, photos:[], size:null, card:{}, cardTouched:false, kGen:null, kSvc:null, kAddons:{}, f:{ first: this.props.previewFirstName || '', last:'', phone:'', email:'', agree:false }, totalTime:'—', totalPrice:'—', totalMins:0, addons:{}, raddons:{} };
+  state = { page: this.props.page || 'home', navCondensed:false, isMobile: typeof window !== 'undefined' && window.innerWidth < 760, menuOpen:false, artist:'Kymani', service:null, setType:null, day:null, monthOffset:0, time:null, rating:5, photos:[], size:null, card:{}, cardTouched:false, kGen:null, kSvc:null, kAddons:{}, f:{ first: this.props.previewFirstName || '', last:'', phone:'', email:'', agree:false }, totalTime:'—', totalPrice:'—', totalMins:0, addons:{}, raddons:{} };
 
   addPhotos = (e) => {
     const files = Array.from((e.target && e.target.files) || []);
@@ -4766,6 +4790,11 @@ class Component extends DCLogic {
   };
 
   componentDidMount() {
+    this.restoreBooking();
+    addEventListener('resize', this.onWidth, { passive: true });
+    this._onKey = (e) => { if (e.key === 'Escape' && this.state.menuOpen) this.setState({ menuOpen: false }); };
+    addEventListener('keydown', this._onKey);
+    this.onWidth();
     addEventListener('scroll', this.onNavScroll, { passive: true });
     this._kxOnScroll = () => this.kxSweep();
     addEventListener('scroll', this._kxOnScroll, { passive: true });
@@ -4819,6 +4848,8 @@ class Component extends DCLogic {
   }
 
   componentWillUnmount() {
+    removeEventListener('resize', this.onWidth);
+    if (this._onKey) removeEventListener('keydown', this._onKey);
     if (this._kxOnScroll) { removeEventListener('scroll', this._kxOnScroll); removeEventListener('resize', this._kxOnScroll); }
     clearTimeout(this._kxTimer);
     (this._polRafs || []).forEach(cancelAnimationFrame);
@@ -4859,23 +4890,29 @@ class Component extends DCLogic {
     const daysInMonth = new Date(first.getFullYear(), first.getMonth() + 1, 0).getDate();
     const cells = [];
     for (let i = 0; i < first.getDay(); i++) {
-      cells.push({ date: '', disabled: true, bg: 'transparent', border: 'transparent', fg: 'transparent', cursor: 'default', opacity: 0, onClick: null });
+      cells.push({ date: '', sub: '', disabled: true, bg: 'transparent', border: 'transparent', borderStyle: 'solid', fg: 'transparent', cursor: 'default', opacity: 0, onClick: null });
     }
     for (let d = 1; d <= daysInMonth; d++) {
       const date = new Date(first.getFullYear(), first.getMonth(), d);
       const dow = date.getDay();
-      const closed = dow === 0 || (dow === 1 && s.artist !== 'Jharis');
+      const av = AVAILABILITY[s.artist] || AVAILABILITY.Kymani;
+      const iso = kxIso(date);
       const past = date < today;
-      const iso = date.toISOString().slice(0, 10);
+      const notOpen = !!av.openThrough && iso > av.openThrough;
+      const off = av.closedWeekdays.includes(dow) || av.daysOff.includes(iso);
+      const full = !past && !off && !notOpen && av.fullyBooked.includes(iso);
+      const closed = off || full || notOpen;
       const on = s.day === iso;
       cells.push({
         date: String(d),
+        sub: full ? 'Full' : '',
         disabled: closed || past,
-        bg: on ? '#2A0A16' : '#fff',
-        border: on ? '#2A0A16' : '#EBC6D3',
-        fg: on ? '#FFF1F6' : (closed || past) ? '#B9A3AC' : '#2A0A16',
+        bg: on ? '#2A0A16' : full ? '#FBF3F6' : '#fff',
+        border: on ? '#2A0A16' : notOpen ? '#E6D3DB' : '#EBC6D3',
+        borderStyle: notOpen && !past ? 'dashed' : 'solid',
+        fg: on ? '#FFF1F6' : full ? '#9B6B80' : (closed || past) ? '#B9A3AC' : '#2A0A16',
         cursor: closed || past ? 'not-allowed' : 'pointer',
-        opacity: closed || past ? 0.45 : 1,
+        opacity: full ? 0.85 : (closed || past) ? 0.45 : 1,
         onClick: closed || past ? null : () => this.setState(st => {
           const wasSat = st.day ? new Date(st.day + 'T00:00:00').getDay() === 6 : null;
           const isSat = dow === 6;
@@ -4886,10 +4923,83 @@ class Component extends DCLogic {
     return cells;
   };
 
+  monthBeyondWindow = (s, offset) => {
+    const av = AVAILABILITY[s.artist] || AVAILABILITY.Kymani;
+    if (!av.openThrough) return false;
+    return kxIso(this.monthStart(offset)) > av.openThrough;
+  };
+
+  openThroughLabel = (s) => {
+    const av = AVAILABILITY[s.artist] || AVAILABILITY.Kymani;
+    if (!av.openThrough) return 'further notice';
+    return new Date(av.openThrough + 'T00:00:00').toLocaleString('en-US', { month: 'long', day: 'numeric' });
+  };
+
   kymaniServiceName = (s) => {
     if (!s.kSvc) return null;
     const g = KYMANI_MENU.find(x => x.id === s.kSvc[0]);
     return g ? g.subs[parseInt(s.kSvc.slice(1), 10)] : null;
+  };
+
+  // ---- Stripe Checkout handoff ----
+  // Set checkoutEndpoint to the backend URL that creates a Stripe Checkout Session
+  // and returns { url }. Left empty, the site runs in demo mode and skips payment.
+  bookingSnapshot = (ref) => {
+    const keep = {};
+    Object.keys(this.state).forEach(k => { if (k !== 'photos' && k !== 'paying' && k !== 'page' && typeof this.state[k] !== 'function') keep[k] = this.state[k]; });
+    keep.ref = ref;
+    return keep;
+  };
+
+  startCheckout = async () => {
+    if (this.state.paying) return;
+    const ref = this.state.ref || ('KX-' + Math.floor(100000 + Math.random() * 900000));
+    const snap = this.bookingSnapshot(ref);
+    try { sessionStorage.setItem(BOOKING_KEY, JSON.stringify(snap)); } catch (e) {}
+    if (!STRIPE_CONFIG.checkoutEndpoint) {
+      this.setState({ page: 'confirmed', ref, payCanceled: false, payError: false });
+      window.scrollTo(0, 0);
+      return;
+    }
+    this.setState({ paying: true, payCanceled: false, payError: false, ref });
+    try {
+      const base = location.href.replace(/[^/]*([?#].*)?$/, '');
+      const res = await fetch(STRIPE_CONFIG.checkoutEndpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ref,
+          amount: 4000,
+          currency: 'usd',
+          customer: { first: snap.f.first, last: snap.f.last, email: snap.f.email, phone: snap.f.phone },
+          appointment: {
+            artist: this.state.artist,
+            service: this.state.artist === 'Kymani' ? this.kymaniServiceName(this.state) : this.state.service,
+            setType: this.state.artist === 'Kymani' ? null : this.state.setType,
+            day: this.state.day, time: this.state.time,
+            estimatedMinutes: this.state.totalMins, estimatedTotal: this.state.totalPrice
+          },
+          successUrl: base + STRIPE_CONFIG.successPage + '?session_id={CHECKOUT_SESSION_ID}',
+          cancelUrl: base + STRIPE_CONFIG.cancelPage + '?canceled=1'
+        })
+      });
+      const data = await res.json();
+      if (!res.ok || !data.url) throw new Error('no url');
+      location.href = data.url;
+    } catch (e) {
+      this.setState({ paying: false, payError: true });
+    }
+  };
+
+  restoreBooking = () => {
+    let params, snap = null;
+    try { params = new URLSearchParams(location.search); } catch (e) { return; }
+    const paid = params.has('session_id'), canceled = params.get('canceled') === '1';
+    if (!paid && !canceled) return;
+    try { snap = JSON.parse(sessionStorage.getItem(BOOKING_KEY) || 'null'); } catch (e) {}
+    if (!snap) return;
+    if (paid) { try { sessionStorage.removeItem(BOOKING_KEY); } catch (e) {} }
+    this.setState(Object.assign({}, snap, paid ? { page: 'confirmed' } : { page: 'deposit', payCanceled: true }));
   };
 
   cardComplete = (c) => ['card','exp','cvc','zip','cardName'].every(k => this.cardFieldOk(k, c[k]));
@@ -5062,8 +5172,9 @@ class Component extends DCLogic {
 
   go = (page) => (e) => {
     if (e && e.preventDefault) e.preventDefault();
+    if (this.state.menuOpen) this.setState({ menuOpen: false });
     if (this.state.page === page) { if (typeof window !== 'undefined') window.scrollTo(0, 0); return; }
-    this.setState({ page });
+    this.setState({ page, menuOpen: false });
     if (typeof window !== 'undefined') {
       window.scrollTo(0, 0);
       requestAnimationFrame(() => {
@@ -5075,6 +5186,16 @@ class Component extends DCLogic {
         el.style.animation = 'kxFadeIn 0.32s ease-out both';
       });
     }
+  };
+
+  menuItemsFor = (items) => items.map(it => ({
+    label: it.label, fg: it.navFg === '#2A0A16' ? '#2A0A16' : '#5C4450', mark: it.navFg === '#2A0A16' ? '●' : '→',
+    onClick: (e) => { this.setState({ menuOpen: false }); it.onClick(e); }
+  }));
+
+  onWidth = () => {
+    const m = (window.innerWidth || 1024) < 760;
+    if (m !== this.state.isMobile) this.setState({ isMobile: m, menuOpen: false });
   };
 
   navChip(active) {
@@ -5094,7 +5215,15 @@ class Component extends DCLogic {
 
     return {
       pageLabel: LABELS[s.page] || 'Home',
-      navExpanded: !s.navCondensed,
+      navExpanded: !s.navCondensed && !(s.isMobile && s.menuOpen),
+      navDesktop: !s.isMobile, navMobile: !!s.isMobile,
+      menuShown: !!(s.isMobile && s.menuOpen),
+      menuAria: s.menuOpen ? 'Close menu' : 'Open menu',
+      menuBtnBg: s.menuOpen ? '#FFEFF5' : '#fff',
+      bar1: s.menuOpen ? 'translateY(7px) rotate(45deg)' : 'none',
+      bar2: s.menuOpen ? 0 : 1,
+      bar3: s.menuOpen ? 'translateY(-7px) rotate(-45deg)' : 'none',
+      toggleMenu: () => this.setState(st => ({ menuOpen: !st.menuOpen })),
       navRowPad: s.navCondensed ? '9px clamp(18px,5vw,40px) 6px' : '16px clamp(18px,5vw,40px) 10px',
       navLogoSize: s.navCondensed ? '20px' : '24px',
       navPillFont: s.navCondensed ? '13px' : '14px',
@@ -5109,8 +5238,8 @@ class Component extends DCLogic {
       isTestimonials: s.page === 'testimonials', isBook: s.page === 'book', isFaq: s.page === 'faq',
       isDeposit: s.page === 'deposit',
       showFooterCta: !['book', 'deposit', 'confirmed'].includes(s.page), isConfirmed: s.page === 'confirmed',
-      goDeposit: () => { if (this.state.artist === 'Kymani' ? this.state.kSvc : this.state.service) this.setState({ page: 'deposit' }); window.scrollTo(0, 0); },
-      payDeposit: () => { if (!this.cardComplete(s.card)) { this.setState({ cardTouched: true }); return; } this.setState({ page: 'confirmed', ref: 'KX-' + Math.floor(100000 + Math.random() * 900000) }); window.scrollTo(0, 0); },
+      goDeposit: () => { this.setState({ menuOpen: false }); if (this.state.artist === 'Kymani' ? this.state.kSvc : this.state.service) this.setState({ page: 'deposit' }); window.scrollTo(0, 0); },
+      payDeposit: () => this.startCheckout(),
       bookConfirmation: s.ref || 'KX-000000',
       thankYouLine: s.f.first ? 'Thank you, ' + s.f.first + '.' : 'Thank you',
       bookRemainder: this.remainder(s),
@@ -5122,10 +5251,13 @@ class Component extends DCLogic {
         };
         return acc;
       }, {}),
-      payBlocked: !this.cardComplete(s.card),
-      payBtnBg: this.cardComplete(s.card) ? '#E0397B' : '#F0C4D6',
-      payBtnFg: this.cardComplete(s.card) ? '#fff' : '#A8748A',
-      payBtnCursor: this.cardComplete(s.card) ? 'pointer' : 'not-allowed',
+      payBlocked: !!s.paying,
+      payRedirecting: !!s.paying,
+      payCanceled: !!s.payCanceled && !s.paying,
+      payError: !!s.payError && !s.paying,
+      payBtnBg: s.paying ? '#F0C4D6' : '#E0397B',
+      payBtnFg: s.paying ? '#A8748A' : '#fff',
+      payBtnCursor: s.paying ? 'wait' : 'pointer',
 
       goHome: this.go('home'), goGallery: this.go('gallery'), goAbout: this.go('about'),
       goTestimonials: this.go('testimonials'), goBook: this.go('book'), goFaq: this.go('faq'),
@@ -5141,13 +5273,21 @@ class Component extends DCLogic {
         { label:'Policies', page:'faq', onClick:this.go('faq') },
         { label:'Contact', page:'contact', onClick:this.goContactSection }
       ].map(it => Object.assign({}, it, this.navChip(s.page === it.page))),
+      menuItems: this.menuItemsFor([
+        { label:'Home', page:'home', onClick:this.go('home') },
+        { label:'Gallery', page:'gallery', onClick:this.go('gallery') },
+        { label:'About', page:'about', onClick:this.go('about') },
+        { label:'Reviews', page:'testimonials', onClick:this.go('testimonials') },
+        { label:'Policies', page:'faq', onClick:this.go('faq') },
+        { label:'Contact', page:'contact', onClick:this.goContactSection }
+      ].map(it => Object.assign({}, it, this.navChip(s.page === it.page)))),
 
       services: SERVICES.map((name, i) => ({ name, price: 'Price TBC', revealDelay: Math.min(i, 5) * 0.08 })),
       hours: HOURS.map(([day, time]) => ({ day, time })),
       artists: ARTISTS.map((a, i) => Object.assign({}, a, {
         revealDelay: 0.1 + i * 0.12,
         homeSlotId: 'kx-artist-home-' + a.name.toLowerCase(),
-        homePhoto: 'images/' + a.name.toLowerCase() + '-home.webp',
+        homePhoto: a.name === 'Jharis' ? 'images/jharis-v2.png' : 'images/' + a.name.toLowerCase() + '-home.webp',
         aboutSlotId: 'kx-artist-about-' + a.name.toLowerCase(),
         onBook: (e) => { if (e && e.preventDefault) e.preventDefault(); this.setState({ page:'book', artist:a.name }); window.scrollTo({ top:0 }); },
         hasIg: true,
@@ -5283,7 +5423,7 @@ class Component extends DCLogic {
       }),
       artistChoices: [
         Object.assign({ name:'Kymani', note:'Owner · 6+ years', onClick:() => this.setState(st => ({ artist:'Kymani', day: st.day && new Date(st.day + 'T00:00:00').getDay() === 1 ? null : st.day, time: st.day && new Date(st.day + 'T00:00:00').getDay() === 1 ? null : st.time })) }, this.chip(s.artist === 'Kymani')),
-        Object.assign({ name:'Jharis', note:'Master Nail Tech · 10+ years', onClick:() => this.setState({ artist:'Jharis' }) }, this.chip(s.artist === 'Jharis'))
+        Object.assign({ name:'Jharis', note:'Master Nail Tech · 10+ years', onClick:() => this.setState(st => ({ artist:'Jharis', monthOffset: 0, day: st.day && (AVAILABILITY.Jharis.daysOff.includes(st.day) || AVAILABILITY.Jharis.fullyBooked.includes(st.day) || st.day > AVAILABILITY.Jharis.openThrough) ? null : st.day })) }, this.chip(s.artist === 'Jharis'))
       ],
       ...SERVICES.reduce((acc, name, i) => {
         acc['svc' + i] = Object.assign({ onClick: () => this.setState(st => ({ service: st.service === name ? null : name, size: null })) }, this.chip(name === s.service));
@@ -5295,7 +5435,13 @@ class Component extends DCLogic {
       monthPrevOff: s.monthOffset === 0,
       monthPrevCursor: s.monthOffset === 0 ? 'not-allowed' : 'pointer',
       monthPrevOpacity: s.monthOffset === 0 ? 0.4 : 1,
-      monthNext: () => this.setState(st => ({ monthOffset: st.monthOffset + 1 })),
+      monthNext: () => { if (!this.monthBeyondWindow(this.state, this.state.monthOffset)) this.setState(st => ({ monthOffset: st.monthOffset + 1 })); },
+      monthNextOff: this.monthBeyondWindow(s, s.monthOffset),
+      monthNextCursor: this.monthBeyondWindow(s, s.monthOffset) ? 'not-allowed' : 'pointer',
+      monthNextOpacity: this.monthBeyondWindow(s, s.monthOffset) ? 0.4 : 1,
+      monthNotOpen: this.monthBeyondWindow(s, s.monthOffset),
+      monthNotOpenTitle: 'Booking for ' + this.monthStart(s.monthOffset).toLocaleString('en-US', { month: 'long' }) + ' opens soon',
+      openThroughLabel: this.openThroughLabel(s),
       timeChoices: this.buildTimes(s),
       nextFreeNote: this.nextFreeNote(s),
       hasNextFree: !!this.nextFreeNote(s),
