@@ -347,7 +347,7 @@
             <image-slot id="kx-about-studio" src="images/kx-about-studio.webp" shape="rect" placeholder="Studio photo"></image-slot>
           </div>
           <div data-kx-reveal="0.16" style="border-radius:16px; height:clamp(340px, calc(470px - 22vw), 400px); margin-top:clamp(0px, calc(9vw - 42px), 40px); overflow:hidden; background:#DED2D7;transition:transform 0.85s cubic-bezier(0.16,0.84,0.24,1), box-shadow 0.85s cubic-bezier(0.16,0.84,0.24,1); will-change:transform;" style-hover="transform:translateY(-6px) scale(1.008); box-shadow:0 20px 44px rgba(122,66,88,0.15);">
-            <image-slot id="kx-about-work" src="images/about-work.png" shape="rect" placeholder="Work photo"></image-slot>
+            <image-slot id="kx-about-work" src="images/about-work.webp" shape="rect" placeholder="Work photo"></image-slot>
           </div>
           <div data-kx-reveal="0.26" style="border-radius:16px; height:clamp(165px, 25.0vw, 300px); grid-column:1 / -1; overflow:hidden; background:#E6DCE0;transition:transform 0.85s cubic-bezier(0.16,0.84,0.24,1), box-shadow 0.85s cubic-bezier(0.16,0.84,0.24,1); will-change:transform;" style-hover="transform:translateY(-6px) scale(1.008); box-shadow:0 20px 44px rgba(122,66,88,0.15);">
             <image-slot id="kx-about-sign" src="images/kx-about-sign.webp" shape="rect" placeholder="Studio sign"></image-slot>
@@ -4528,7 +4528,7 @@ const ARTISTS = [
     known:'Detail work, cleanliness, versatility'
   },
   {
-    name:'Jharis', role:'Nail artist · 10+ years', photo:'images/jharis-v2.png',
+    name:'Jharis', role:'Nail artist · 10+ years', photo:'images/jharis-v2.webp',
     bio:'Jharis brings over a decade behind the desk. That experience shows in structure and shape — sets that sit right, wear well and grow out cleanly. She is a steady hand for anything technical, from precise line work to repairs and rebuilds.',
     known:'Shape and structure, line work, repairs'
   }
@@ -5400,7 +5400,7 @@ class Component extends DCLogic {
       artists: ARTISTS.map((a, i) => Object.assign({}, a, {
         revealDelay: 0.1 + i * 0.12,
         homeSlotId: 'kx-artist-home-' + a.name.toLowerCase(),
-        homePhoto: a.name === 'Jharis' ? 'images/jharis-v2.png' : 'images/' + a.name.toLowerCase() + '-home.webp',
+        homePhoto: a.name === 'Jharis' ? 'images/jharis-v2.webp' : 'images/' + a.name.toLowerCase() + '-home.webp',
         aboutSlotId: 'kx-artist-about-' + a.name.toLowerCase(),
         onBook: (e) => { if (e && e.preventDefault) e.preventDefault(); this.setState({ page:'book', artist:a.name }); window.scrollTo({ top:0 }); },
         hasIg: true,
