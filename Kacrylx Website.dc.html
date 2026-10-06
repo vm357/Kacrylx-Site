@@ -4250,7 +4250,7 @@ this service includes a cuticle clean up with one color gel polish of your choic
           <sc-if value="{{ emailBad }}" hint-placeholder-val="{{ false }}">
             <p style="margin:-4px 0 0; font-size:12px; line-height:1.6; color:#B0184E;">That email looks incomplete. Include the full address, like name@gmail.com.</p>
           </sc-if>
-          <textarea placeholder="Inspo links, add-ons, anything we should know." rows="3" style="padding:15px 18px; border-radius:10px; border:1px solid #EBC6D3; background:#fff; font-family:'Poppins',sans-serif; font-size:15px; resize:vertical; color:#2A0A16;"></textarea>
+          <textarea value="{{ f_notes }}" onChange="{{ onNotes }}" maxlength="1000" placeholder="Inspo links, add-ons, anything we should know." rows="3" style="padding:15px 18px; border-radius:10px; border:1px solid #EBC6D3; background:#fff; font-family:'Poppins',sans-serif; font-size:15px; resize:vertical; color:#2A0A16;"></textarea>
           <label style="display:flex; align-items:flex-start; gap:10px; font-size:14px; color:#5C4450; line-height:1.6;">
             <input type="checkbox" checked="{{ f_agree }}" onChange="{{ onF_agree }}" style="margin-top:3px;">
             <span>I understand and agree to the deposit, payment, late and cancellation policies listed on the <a href="#" onClick="{{ goFaq }}">Policies page</a>.</span>
@@ -4266,7 +4266,10 @@ this service includes a cuticle clean up with one color gel polish of your choic
             <div style="display:flex; justify-content:space-between; gap:16px; padding-top:10px; border-top:1px solid #E7B9CB;"><span style="color:#7A4258;">Estimated time</span><span>{{ bookTotalTime }}</span></div>
             <div style="display:flex; justify-content:space-between; gap:16px; font-size:18px;"><span style="color:#7A4258;">Estimated total</span><span>{{ bookTotalPrice }}</span></div>
           </div>
-          <button disabled="{{ bookBlocked }}" onClick="{{ goDeposit }}" style="margin-top:8px; padding:16px 20px; border-radius:999px; background:{{ bookBtnBg }}; color:{{ bookBtnFg }}; border:none; font-family:'Poppins',sans-serif; font-size:15px; cursor:{{ bookBtnCursor }};">Request Booking</button>
+          <button disabled="{{ bookBlocked }}" onClick="{{ goDeposit }}" style="margin-top:8px; padding:16px 20px; border-radius:999px; background:{{ bookBtnBg }}; color:{{ bookBtnFg }}; border:none; font-family:'Poppins',sans-serif; font-size:15px; cursor:{{ bookBtnCursor }};">{{ bookBtnLabel }}</button>
+          <sc-if value="{{ hasBookError }}" hint-placeholder-val="{{ false }}">
+            <p role="alert" style="margin:0; font-size:13px; line-height:1.6; color:#A8425F; text-align:center;">{{ bookError }}</p>
+          </sc-if>
           <sc-if value="{{ bookBlocked }}" hint-placeholder-val="{{ false }}">
             <p style="margin:0; font-size:12px; line-height:1.6; color:#B0184E;">{{ bookBlockedNote }}</p>
           </sc-if>
@@ -4574,7 +4577,7 @@ const GALLERY_HEIGHTS = [340,260,300,280,340,260,300,340,260,280,320,260];
 const LABELS = { home:'Home', gallery:'Gallery', about:'About', testimonials:'Reviews', book:'Book an appointment', faq:'Policies', deposit:'Deposit', confirmed:'Booking confirmed' };
 
 class Component extends DCLogic {
-  state = { page: this.props.page || 'home', navCondensed:false, isMobile: typeof window !== 'undefined' && window.innerWidth < 760, menuOpen:false, artist:'Kymani', service:null, setType:null, day:null, monthOffset:0, time:null, rating:5, photos:[], size:null, card:{}, cardTouched:false, kGen:null, kSvc:null, kAddons:{}, f:{ first: this.props.previewFirstName || '', last:'', phone:'', email:'', agree:false }, totalTime:'—', totalPrice:'—', totalMins:0, avail:{}, addons:{}, raddons:{} };
+  state = { page: this.props.page || 'home', navCondensed:false, isMobile: typeof window !== 'undefined' && window.innerWidth < 760, menuOpen:false, artist:'Kymani', service:null, setType:null, day:null, monthOffset:0, time:null, rating:5, photos:[], size:null, card:{}, cardTouched:false, kGen:null, kSvc:null, kAddons:{}, f:{ first: this.props.previewFirstName || '', last:'', phone:'', email:'', notes:'', agree:false }, totalTime:'—', totalPrice:'—', totalMins:0, avail:{}, addons:{}, raddons:{} };
 
   addPhotos = (e) => {
     const files = Array.from((e.target && e.target.files) || []);
@@ -4997,9 +5000,65 @@ class Component extends DCLogic {
     return keep;
   };
 
+  selectedAddOnNames = () => {
+    const root = this.bookRef.current;
+    if (!root) return [];
+    return [...root.querySelectorAll('button[data-kx="addon"]')]
+      .filter(b => b.style.backgroundColor === 'rgb(42, 10, 22)')
+      .map(b => ((b.querySelector('span') || b).textContent || '').trim())
+      .filter(Boolean)
+      .slice(0, 20);
+  };
+
+  requestBooking = async () => {
+    const s = this.state;
+    if (s.bookSubmitting) return;
+    if (!(s.artist === 'Kymani' ? s.kSvc : s.service)) return;
+    this.setState({ menuOpen: false, bookError: '' });
+    if (!API_BASE) { this.setState({ page: 'deposit' }); window.scrollTo(0, 0); return; }
+
+    const price = String(s.totalPrice || '').match(/\$\s*(\d+(?:\.\d{2})?)/);
+    const service = (s.artist === 'Kymani' ? this.kymaniServiceName(s) : (s.setType ? s.service + ' · ' + s.setType : s.service)) || '';
+    const body = {
+      artist: s.artist,
+      date: s.day,
+      time: s.time,
+      durationMin: s.totalMins || 60,
+      service,
+      addOns: this.selectedAddOnNames(),
+      totalCents: price ? Math.round(parseFloat(price[1]) * 100) : null,
+      notes: (s.f.notes || '').trim(),
+      client: { first: s.f.first.trim(), last: s.f.last.trim(), phone: s.f.phone, email: s.f.email.trim() }
+    };
+
+    this.setState({ bookSubmitting: true });
+    try {
+      const r = await fetch(API_BASE + '/bookings', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+      const data = await r.json().catch(() => ({}));
+      // whatever happened, that month's times may have changed
+      const key = this.availKey(this.state);
+      if (this._availReq) delete this._availReq[key];
+      this.setState(st => { const avail = Object.assign({}, st.avail); delete avail[key]; return { avail }; });
+
+      if (r.ok) {
+        this.setState({ bookSubmitting: false, ref: data.id, page: 'deposit', payCanceled: false, payError: false });
+        window.scrollTo(0, 0);
+        return;
+      }
+      const msg = r.status === 409 ? 'That time was just booked by someone else. Please pick another time.'
+        : r.status === 403 ? "We're unable to book this appointment online. Please text 640-220-9270."
+        : r.status === 400 && data.error ? data.error
+        : "We couldn't save your booking. Please try again, or text 640-220-9270.";
+      this.setState({ bookSubmitting: false, bookError: msg, time: r.status === 409 ? null : this.state.time });
+    } catch (err) {
+      console.warn('Booking request failed:', err);
+      this.setState({ bookSubmitting: false, bookError: "We couldn't reach the booking system. Check your connection and try again." });
+    }
+  };
+
   startCheckout = async () => {
     if (this.state.paying) return;
-    const ref = this.state.ref || ('KX-' + Math.floor(100000 + Math.random() * 900000));
+    const ref = this.state.ref || ('KX-' + Math.floor(100000 + Math.random() * 900000)); // server id when the API is on
     const snap = this.bookingSnapshot(ref);
     try { sessionStorage.setItem(BOOKING_KEY, JSON.stringify(snap)); } catch (e) {}
     if (!STRIPE_CONFIG.checkoutEndpoint) {
@@ -5288,7 +5347,11 @@ class Component extends DCLogic {
       isTestimonials: s.page === 'testimonials', isBook: s.page === 'book', isFaq: s.page === 'faq',
       isDeposit: s.page === 'deposit',
       showFooterCta: !['book', 'deposit', 'confirmed'].includes(s.page), isConfirmed: s.page === 'confirmed',
-      goDeposit: () => { this.setState({ menuOpen: false }); if (this.state.artist === 'Kymani' ? this.state.kSvc : this.state.service) this.setState({ page: 'deposit' }); window.scrollTo(0, 0); },
+      goDeposit: () => this.requestBooking(),
+      bookSubmitting: !!s.bookSubmitting,
+      bookError: s.bookError || '',
+      hasBookError: !!s.bookError,
+      bookBtnLabel: s.bookSubmitting ? 'Holding your time…' : 'Request Booking',
       payDeposit: () => this.startCheckout(),
       bookConfirmation: s.ref || 'KX-000000',
       thankYouLine: s.f.first ? 'Thank you, ' + s.f.first + '.' : 'Thank you',
@@ -5414,7 +5477,7 @@ class Component extends DCLogic {
       sz2: Object.assign({ onClick: () => this.setState({ size: 2 }) }, this.chip(s.size === 2)),
       sz3: Object.assign({ onClick: () => this.setState({ size: 3 }) }, this.chip(s.size === 3)),
       sz4: Object.assign({ onClick: () => this.setState({ size: 4 }) }, this.chip(s.size === 4)),
-      bookBlocked: !(s.artist === 'Kymani' ? s.kSvc : s.service) || !s.day || !s.time || !this.detailsComplete(s.f) || (s.artist === 'Jharis' && SIZE_REQUIRED.includes(s.setType + '|' + s.service) && s.size === null),
+      bookBlocked: !!s.bookSubmitting || !(s.artist === 'Kymani' ? s.kSvc : s.service) || !s.day || !s.time || !this.detailsComplete(s.f) || (s.artist === 'Jharis' && SIZE_REQUIRED.includes(s.setType + '|' + s.service) && s.size === null),
       bookBtnBg: !(s.artist === 'Kymani' ? s.kSvc : s.service) || !s.day || !s.time || !this.detailsComplete(s.f) || (s.artist === 'Jharis' && SIZE_REQUIRED.includes(s.setType + '|' + s.service) && s.size === null) ? '#D9C3CD' : '#2A0A16',
       bookBtnFg: !(s.artist === 'Kymani' ? s.kSvc : s.service) || !s.day || !s.time || !this.detailsComplete(s.f) || (s.artist === 'Jharis' && SIZE_REQUIRED.includes(s.setType + '|' + s.service) && s.size === null) ? '#7A4258' : '#FFF1F6',
       bookBtnCursor: !(s.artist === 'Kymani' ? s.kSvc : s.service) || !s.day || !s.time || !this.detailsComplete(s.f) || (s.artist === 'Jharis' && SIZE_REQUIRED.includes(s.setType + '|' + s.service) && s.size === null) ? 'not-allowed' : 'pointer',
@@ -5499,6 +5562,8 @@ class Component extends DCLogic {
 
       bookArtist: s.artist,
       bookRef: this.bookRef,
+      f_notes: s.f.notes || '',
+      onNotes: this.onField('notes'),
       f_first: s.f.first, f_last: s.f.last, f_phone: this.fmtPhone(s.f.phone), f_email: s.f.email, emailBad: !!s.emailTouched && !!s.f.email.trim() && !this.emailOk(s.f.email), f_agree: s.f.agree,
       onF_first: this.onField('first'), onF_last: this.onField('last'), onF_phone: this.onPhone,
       onF_email: this.onField('email'), onEmailBlur: () => this.setState({ emailTouched: true }), onF_agree: this.onField('agree'),
