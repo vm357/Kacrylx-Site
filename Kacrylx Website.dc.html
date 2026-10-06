@@ -459,7 +459,7 @@
           <p style="margin:-8px 0 0; font-size:12px; line-height:1.6; color:#B0184E;">Add your name to submit a review.</p>
 </sc-if>
 <sc-if value="{{ revArtistMissing }}" hint-placeholder-val="{{ false }}">
-<p style="margin:-8px 0 0; font-size:12px; line-height:1.6; color:#B0184E;">Choose Kacrylx or Crowncrylix to submit a review.</p>
+<p style="margin:-8px 0 0; font-size:12px; line-height:1.6; color:#B0184E;">Choose Kymani or Jharis to submit a review.</p>
         </sc-if>
         <button disabled="{{ revBlocked }}" onClick="{{ submitReview }}" style="align-self:flex-start; padding:15px 40px; border-radius:999px; background:#2A0A16; color:#FFF1F6; border:none; font-family:'Poppins',sans-serif; font-size:14px; cursor:{{ revCursor }}; opacity:{{ revOpacity }}; transition:background 0.35s ease, transform 0.55s cubic-bezier(0.16,0.84,0.24,1), box-shadow 0.55s cubic-bezier(0.16,0.84,0.24,1);" style-hover="background:#4A1E30; transform:translateY(-3px); box-shadow:0 16px 32px rgba(42,10,22,0.28);">Submit Review</button>
 </sc-if>
@@ -4218,10 +4218,10 @@ this service includes a cuticle clean up with one color gel polish of your choic
             </sc-for>
           </div>
           <sc-if value="{{ isJharis }}" hint-placeholder-val="{{ false }}">
-            <p style="margin:0; font-size:12px; line-height:1.6; color:#B08596;">Closed Sundays. Booking is open through {{ openThroughLabel }}. "Full" days are fully booked.</p>
+            <p style="margin:0; font-size:12px; line-height:1.6; color:#B08596;">Closed Sundays. {{ openThroughNote }}"Full" days are fully booked.</p>
           </sc-if>
           <sc-if value="{{ isKymani }}" hint-placeholder-val="{{ true }}">
-            <p style="margin:0; font-size:12px; line-height:1.6; color:#B08596;">Closed Sundays and Mondays. Booking is open through {{ openThroughLabel }}. "Full" days are fully booked.</p>
+            <p style="margin:0; font-size:12px; line-height:1.6; color:#B08596;">Closed Sundays and Mondays. {{ openThroughNote }}"Full" days are fully booked.</p>
           </sc-if>
         </div>
           <div style="flex:1 1 280px; min-width:0; display:flex; flex-direction:column; gap:12px;">
@@ -4510,6 +4510,9 @@ const AVAILABILITY = {
   Jharis: { closedWeekdays: [0], openThrough: kxDemoDate(2, 0), daysOff: [kxDemoDate(1, 21)], fullyBooked: [kxDemoDate(1, 10)] }
 };
 
+// Live availability from the Cloudflare Worker. Set to '' to use the demo values above instead.
+const API_BASE = 'https://kacrylx-api.vimerlismendez.workers.dev';
+
 const STRIPE_CONFIG = { checkoutEndpoint: '', successPage: 'Confirmation.dc.html', cancelPage: 'Deposit.dc.html' };
 const BOOKING_KEY = 'kx-booking-pending';
 
@@ -4571,7 +4574,7 @@ const GALLERY_HEIGHTS = [340,260,300,280,340,260,300,340,260,280,320,260];
 const LABELS = { home:'Home', gallery:'Gallery', about:'About', testimonials:'Reviews', book:'Book an appointment', faq:'Policies', deposit:'Deposit', confirmed:'Booking confirmed' };
 
 class Component extends DCLogic {
-  state = { page: this.props.page || 'home', navCondensed:false, isMobile: typeof window !== 'undefined' && window.innerWidth < 760, menuOpen:false, artist:'Kymani', service:null, setType:null, day:null, monthOffset:0, time:null, rating:5, photos:[], size:null, card:{}, cardTouched:false, kGen:null, kSvc:null, kAddons:{}, f:{ first: this.props.previewFirstName || '', last:'', phone:'', email:'', agree:false }, totalTime:'—', totalPrice:'—', totalMins:0, addons:{}, raddons:{} };
+  state = { page: this.props.page || 'home', navCondensed:false, isMobile: typeof window !== 'undefined' && window.innerWidth < 760, menuOpen:false, artist:'Kymani', service:null, setType:null, day:null, monthOffset:0, time:null, rating:5, photos:[], size:null, card:{}, cardTouched:false, kGen:null, kSvc:null, kAddons:{}, f:{ first: this.props.previewFirstName || '', last:'', phone:'', email:'', agree:false }, totalTime:'—', totalPrice:'—', totalMins:0, avail:{}, addons:{}, raddons:{} };
 
   addPhotos = (e) => {
     const files = Array.from((e.target && e.target.files) || []);
@@ -4734,6 +4737,8 @@ class Component extends DCLogic {
   };
 
   componentDidUpdate() {
+    this.fetchAvail();
+    this.checkPickedSlot();
     this.kxReveal();
     this.measureAfterUpdate();
     if (this.state.page === 'faq' && this._lastPage !== 'faq') this.queuePolicies();
@@ -4791,6 +4796,7 @@ class Component extends DCLogic {
 
   componentDidMount() {
     this.restoreBooking();
+    this.fetchAvail();
     addEventListener('resize', this.onWidth, { passive: true });
     this._onKey = (e) => { if (e.key === 'Escape' && this.state.menuOpen) this.setState({ menuOpen: false }); };
     addEventListener('keydown', this._onKey);
@@ -4895,7 +4901,7 @@ class Component extends DCLogic {
     for (let d = 1; d <= daysInMonth; d++) {
       const date = new Date(first.getFullYear(), first.getMonth(), d);
       const dow = date.getDay();
-      const av = AVAILABILITY[s.artist] || AVAILABILITY.Kymani;
+      const av = this.availOf(s);
       const iso = kxIso(date);
       const past = date < today;
       const notOpen = !!av.openThrough && iso > av.openThrough;
@@ -4923,14 +4929,54 @@ class Component extends DCLogic {
     return cells;
   };
 
+  // ---- live availability ----
+  availDuration = (s) => (s.totalMins ? Math.max(30, Math.ceil(s.totalMins / 30) * 30) : 60);
+  availKey = (s) => s.artist + '|' + kxIso(this.monthStart(s.monthOffset)).slice(0, 7) + '|' + this.availDuration(s);
+  liveAvail = (s) => {
+    const hit = (s.avail || {})[this.availKey(s)];
+    return hit && !hit.error ? hit : null;
+  };
+  availOf = (s) => {
+    if (!API_BASE) return AVAILABILITY[s.artist] || AVAILABILITY.Kymani;
+    const live = this.liveAvail(s);
+    if (live) return { closedWeekdays: live.closedWeekdays || [], openThrough: live.openThrough || null, daysOff: live.daysOff || [], fullyBooked: live.fullyBooked || [] };
+    // still loading (or offline): only the regular closed days, nothing made up
+    return { closedWeekdays: (AVAILABILITY[s.artist] || AVAILABILITY.Kymani).closedWeekdays, openThrough: null, daysOff: [], fullyBooked: [] };
+  };
+  fetchAvail = () => {
+    if (!API_BASE || this.state.page !== 'book') return;
+    const s = this.state;
+    const key = this.availKey(s);
+    this._availReq = this._availReq || {};
+    if (this._availReq[key]) return;
+    this._availReq[key] = true;
+    const month = key.split('|')[1];
+    const url = API_BASE + '/availability?artist=' + encodeURIComponent(s.artist) + '&month=' + month + '&duration=' + this.availDuration(s);
+    fetch(url)
+      .then(r => (r.ok ? r.json() : Promise.reject(new Error('HTTP ' + r.status))))
+      .then(data => this.setState(st => ({ avail: Object.assign({}, st.avail, { [key]: data }) })))
+      .catch(err => {
+        console.warn('Availability unavailable, showing regular hours only:', err);
+        this.setState(st => ({ avail: Object.assign({}, st.avail, { [key]: { error: true } }) }));
+      });
+  };
+  checkPickedSlot = () => {
+    const s = this.state;
+    const live = this.liveAvail(s);
+    if (!live || !s.day) return;
+    const open = (live.slots || {})[s.day];
+    if (!open) { if (this.availOf(s).fullyBooked.includes(s.day) || (live.daysOff || []).includes(s.day)) this.setState({ day: null, time: null }); return; }
+    if (s.time && !open.includes(s.time)) this.setState({ time: null });
+  };
+
   monthBeyondWindow = (s, offset) => {
-    const av = AVAILABILITY[s.artist] || AVAILABILITY.Kymani;
+    const av = this.availOf(s);
     if (!av.openThrough) return false;
     return kxIso(this.monthStart(offset)) > av.openThrough;
   };
 
   openThroughLabel = (s) => {
-    const av = AVAILABILITY[s.artist] || AVAILABILITY.Kymani;
+    const av = this.availOf(s);
     if (!av.openThrough) return 'further notice';
     return new Date(av.openThrough + 'T00:00:00').toLocaleString('en-US', { month: 'long', day: 'numeric' });
   };
@@ -5072,7 +5118,11 @@ class Component extends DCLogic {
     return this.toMinutes(s.time) + Math.ceil(s.totalMins / 30) * 30;
   };
 
-  slotsFor = (s) => (s.day && new Date(s.day + 'T00:00:00').getDay() === 6 ? SATURDAY_TIMES : WEEKDAY_TIMES);
+  slotsFor = (s) => {
+    const live = API_BASE ? this.liveAvail(s) : null;
+    if (live) return (s.day && (live.slots || {})[s.day]) || [];
+    return s.day && new Date(s.day + 'T00:00:00').getDay() === 6 ? SATURDAY_TIMES : WEEKDAY_TIMES;
+  };
 
   buildTimes = (s) => {
     const until = this.blockedUntil(s);
@@ -5306,7 +5356,7 @@ class Component extends DCLogic {
       onRevNameBlur: () => this.setState({ revNameTouched: true }),
       revNameMissing: !!s.revNameTouched && !(s.revName || '').trim(),
       revNameBorder: s.revNameTouched && !(s.revName || '').trim() ? '#E08AA6' : '#EBC6D3',
-      revArtistOpts: ['Kacrylx', 'Crowncrylix'].map(label => {
+      revArtistOpts: ['Kymani', 'Jharis'].map(label => {
         const on = s.revArtist === label;
         return { label, onClick: () => this.setState({ revArtist: label }),
           bg: on ? '#E0397B' : '#fff', fg: on ? '#fff' : '#3D0A1D', border: on ? '#E0397B' : '#EBC6D3' };
@@ -5442,6 +5492,7 @@ class Component extends DCLogic {
       monthNotOpen: this.monthBeyondWindow(s, s.monthOffset),
       monthNotOpenTitle: 'Booking for ' + this.monthStart(s.monthOffset).toLocaleString('en-US', { month: 'long' }) + ' opens soon',
       openThroughLabel: this.openThroughLabel(s),
+      openThroughNote: this.availOf(s).openThrough ? 'Booking is open through ' + this.openThroughLabel(s) + '. ' : '',
       timeChoices: this.buildTimes(s),
       nextFreeNote: this.nextFreeNote(s),
       hasNextFree: !!this.nextFreeNote(s),
