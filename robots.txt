@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /Deposit.dc.html
+Disallow: /Confirmation.dc.html
+Sitemap: https://vm357.github.io/Kacrylx-Site/sitemap.xml
