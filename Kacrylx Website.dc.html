@@ -4236,6 +4236,56 @@ this service includes a cuticle clean up with one color gel polish of your choic
         <sc-if value="{{ hasNextFree }}" hint-placeholder-val="{{ false }}">
           <p style="margin:0; font-size:13px; color:#7A4258;">{{ nextFreeNote }}</p>
         </sc-if>
+        <div style="background:#FFF8FA; border:1px solid #F1DDE4; border-radius:14px; padding:16px 18px; display:flex; flex-direction:column; gap:12px; max-width:880px; box-sizing:border-box;">
+          <sc-if value="{{ wlIdle }}" hint-placeholder-val="{{ true }}">
+            <div style="display:flex; align-items:center; justify-content:space-between; gap:10px 18px; flex-wrap:wrap;">
+              <span style="flex:1 1 280px; font-size:14px; line-height:1.6; color:#4A3340;">Can't find a time that works? Join {{ wlArtist }}'s waitlist and she'll text you if something opens up.</span>
+              <button onClick="{{ wlOpen }}" style="padding:11px 22px; border-radius:999px; border:1px solid #E0397B; background:#fff; color:#B0184E; font-family:'Poppins',sans-serif; font-size:14px; cursor:pointer;" style-hover="background:#FFEFF5;">Join the waitlist</button>
+            </div>
+          </sc-if>
+          <sc-if value="{{ wlForm }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex; flex-direction:column; gap:4px;">
+              <span style="font-family:'Playfair Display',serif; font-size:22px; color:#2A0A16;">Join {{ wlArtist }}'s waitlist</span>
+              <span style="font-size:13px; line-height:1.6; color:#5C4450;">{{ wlFor }}</span>
+            </div>
+            <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:10px;">
+              <input type="text" placeholder="First name *" value="{{ wlFirst }}" onChange="{{ onWlFirst }}" style="padding:13px 16px; border-radius:10px; border:1px solid #EBC6D3; background:#fff; font-family:'Poppins',sans-serif; font-size:15px; color:#2A0A16; min-width:0;">
+              <input type="text" placeholder="Last name *" value="{{ wlLast }}" onChange="{{ onWlLast }}" style="padding:13px 16px; border-radius:10px; border:1px solid #EBC6D3; background:#fff; font-family:'Poppins',sans-serif; font-size:15px; color:#2A0A16; min-width:0;">
+              <input type="tel" inputMode="numeric" maxLength="14" placeholder="Mobile number *" value="{{ wlPhone }}" onChange="{{ onWlPhone }}" style="padding:13px 16px; border-radius:10px; border:1px solid #EBC6D3; background:#fff; font-family:'Poppins',sans-serif; font-size:15px; color:#2A0A16; min-width:0;">
+            </div>
+            <div style="display:flex; flex-direction:column; gap:8px;">
+              <span style="font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:#B08596;">Days that work</span>
+              <div style="display:flex; flex-wrap:wrap; gap:8px;">
+                <sc-for list="{{ wlDayChips }}" as="c" hint-placeholder-count="6">
+                  <button onClick="{{ c.onClick }}" style="padding:9px 16px; border-radius:999px; border:1px solid {{ c.border }}; background:{{ c.bg }}; color:{{ c.fg }}; font-family:'Poppins',sans-serif; font-size:13px; cursor:pointer;">{{ c.label }}</button>
+                </sc-for>
+              </div>
+            </div>
+            <div style="display:flex; flex-direction:column; gap:8px;">
+              <span style="font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:#B08596;">Times that work</span>
+              <div style="display:flex; flex-wrap:wrap; gap:8px;">
+                <sc-for list="{{ wlTimeChips }}" as="c" hint-placeholder-count="3">
+                  <button onClick="{{ c.onClick }}" style="padding:9px 16px; border-radius:999px; border:1px solid {{ c.border }}; background:{{ c.bg }}; color:{{ c.fg }}; font-family:'Poppins',sans-serif; font-size:13px; cursor:pointer;">{{ c.label }}</button>
+                </sc-for>
+              </div>
+              <span style="font-size:12px; color:#9B7E8A;">Leave these empty if any day or time works.</span>
+            </div>
+            <textarea value="{{ wlNote }}" onChange="{{ onWlNote }}" maxlength="500" rows="2" placeholder="Anything else? (optional)" style="padding:13px 16px; border-radius:10px; border:1px solid #EBC6D3; background:#fff; font-family:'Poppins',sans-serif; font-size:15px; resize:vertical; color:#2A0A16;"></textarea>
+            <sc-if value="{{ wlHasErr }}" hint-placeholder-val="{{ false }}">
+              <p style="margin:0; font-size:13px; line-height:1.6; color:#B0184E;">{{ wlErr }}</p>
+            </sc-if>
+            <div style="display:flex; gap:10px; flex-wrap:wrap;">
+              <button onClick="{{ wlSubmit }}" disabled="{{ wlSending }}" style="padding:13px 26px; border-radius:999px; border:none; background:#E0397B; color:#fff; font-family:'Poppins',sans-serif; font-size:14px; cursor:pointer;" style-hover="background:#C4557A;">{{ wlSubmitLabel }}</button>
+              <button onClick="{{ wlClose }}" style="padding:13px 20px; border-radius:999px; border:1px solid #EBC6D3; background:#fff; color:#5C4450; font-family:'Poppins',sans-serif; font-size:14px; cursor:pointer;">Cancel</button>
+            </div>
+          </sc-if>
+          <sc-if value="{{ wlDone }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex; flex-direction:column; gap:4px;">
+              <span style="font-family:'Playfair Display',serif; font-size:20px; color:#2A0A16;">You're on the list.</span>
+              <span style="font-size:14px; line-height:1.6; color:#4A3340;">If a time opens up with {{ wlArtist }} that fits, she'll text you a link to book it. The spot is held for you for 1 hour.</span>
+            </div>
+          </sc-if>
+        </div>
       </div>
 
       <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:28px; align-items:start;">
@@ -4250,6 +4300,16 @@ this service includes a cuticle clean up with one color gel polish of your choic
           <sc-if value="{{ emailBad }}" hint-placeholder-val="{{ false }}">
             <p style="margin:-4px 0 0; font-size:12px; line-height:1.6; color:#B0184E;">That email looks incomplete. Include the full address, like name@gmail.com.</p>
           </sc-if>
+          <select value="{{ f_heard }}" onChange="{{ onF_heard }}" aria-label="How did you hear about us?" style="padding:15px 18px; border-radius:10px; border:1px solid #EBC6D3; background:#fff; font-family:'Poppins',sans-serif; font-size:15px; color:{{ f_heardColor }};">
+            <option value="">How did you hear about us? (optional)</option>
+            <option value="Instagram">Instagram</option>
+            <option value="TikTok">TikTok</option>
+            <option value="Google">Google</option>
+            <option value="Friend or family">Friend or family</option>
+            <option value="Walked by the studio">Walked by the studio</option>
+            <option value="Been here before">I've been here before</option>
+            <option value="Other">Other</option>
+          </select>
           <textarea value="{{ f_notes }}" onChange="{{ onNotes }}" maxlength="1000" placeholder="Inspo links, add-ons, anything we should know." rows="3" style="padding:15px 18px; border-radius:10px; border:1px solid #EBC6D3; background:#fff; font-family:'Poppins',sans-serif; font-size:15px; resize:vertical; color:#2A0A16;"></textarea>
           <label style="display:flex; align-items:flex-start; gap:10px; font-size:14px; color:#5C4450; line-height:1.6;">
             <input type="checkbox" checked="{{ f_agree }}" onChange="{{ onF_agree }}" style="margin-top:3px;">
@@ -4472,7 +4532,7 @@ this service includes a cuticle clean up with one color gel polish of your choic
     <div style="max-width:1280px; margin:0 auto; padding:0 clamp(18px,5vw,40px) 44px;">
       <div style="border-top:1px solid #4A1E30; padding-top:22px; display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; font-size:12px; color:#A87289;">
         <span>© 2026 Kacrylx. All rights reserved.</span>
-        <span>Crafted by <a href="https://kermitwebcraft.com" target="_blank" style="color:#FF8FBE; display:inline-block; background:linear-gradient(100deg, #FF8FBE 0%, #FF8FBE 38%, #FFC7DD 50%, #FF8FBE 62%, #FF8FBE 100%); background-size:220% 100%; background-position:100% 0; background-repeat:no-repeat; -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;" style-hover="animation:kxShimmer 1.1s ease-in-out;">Kermit Webcraft</a></span>
+        <span>Crafted by <a href="https://kermitwebcraft.com" target="_blank" style="color:#FF8FBE; text-decoration:none; display:inline-block; padding-bottom:2px; background:linear-gradient(#FFC7DD, #FFC7DD) left bottom / 0% 1px no-repeat; transition:background-size 0.45s cubic-bezier(0.22,1,0.36,1), color 0.3s ease, transform 0.3s ease;" style-hover="background-size:100% 1px; color:#FFC7DD; transform:translateY(-1px);">Kermit Webcraft</a></span>
       </div>
     </div>
   </div>
@@ -4740,6 +4800,7 @@ class Component extends DCLogic {
   };
 
   componentDidUpdate() {
+    this.trackStep();
     this.fetchAvail();
     this.checkPickedSlot();
     this.kxReveal();
@@ -4799,6 +4860,7 @@ class Component extends DCLogic {
 
   componentDidMount() {
     this.restoreBooking();
+    setTimeout(() => this.trackStep(), 0);
     this.fetchAvail();
     addEventListener('resize', this.onWidth, { passive: true });
     this._onKey = (e) => { if (e.key === 'Escape' && this.state.menuOpen) this.setState({ menuOpen: false }); };
@@ -5028,6 +5090,7 @@ class Component extends DCLogic {
       addOns: this.selectedAddOnNames(),
       totalCents: price ? Math.round(parseFloat(price[1]) * 100) : null,
       notes: (s.f.notes || '').trim(),
+      heard: s.f.heard || '',
       client: { first: s.f.first.trim(), last: s.f.last.trim(), phone: s.f.phone, email: s.f.email.trim() }
     };
 
@@ -5148,6 +5211,43 @@ class Component extends DCLogic {
     if (!m) return 'Quoted at appointment';
     const rest = parseInt(m[1], 10) - 40;
     return (rest > 0 ? '$' + rest : '$0') + (/\+/.test(String(t)) ? '+' : '');
+  };
+
+  joinWaitlist = async () => {
+    const s = this.state, w = s.wl || {};
+    const first = (w.first || '').trim(), last = (w.last || '').trim(), phone = String(w.phone || '');
+    const fail = (msg) => this.setState(st => ({ wl: Object.assign({}, st.wl, { err: msg, sending: false }) }));
+    if (!first || !last) return fail('Add your first and last name.');
+    if (phone.length !== 10) return fail('Enter your full 10-digit mobile number.');
+    const service = s.artist === 'Kymani' ? (s.kSvc || '') : (s.service ? s.service + (s.setType && !FULL_SET_ONLY.includes(s.service) ? ' · ' + s.setType : '') : '');
+    const body = { artist: s.artist, first, last, phone, service, days: (w.days || []).slice().sort(), times: w.times || [], note: (w.note || '').trim() };
+    if (API_BASE) {
+      this.setState(st => ({ wl: Object.assign({}, st.wl, { sending: true, err: '' }) }));
+      try {
+        const r = await fetch(API_BASE + '/waitlist', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+        if (!r.ok) { const d = await r.json().catch(() => ({})); return fail(d.error || "That didn't go through. Text 640-220-9270 and we'll add you."); }
+      } catch (e) { return fail("That didn't go through. Text 640-220-9270 and we'll add you."); }
+    }
+    this.setState(st => ({ wl: Object.assign({}, st.wl, { step: 'done', sending: false, err: '' }) }));
+  };
+
+  // Anonymous visit + booking-step counts for the artist's monthly report. No names, phones or emails are sent.
+  track = (type, extra) => {
+    if (!API_BASE) return;
+    try {
+      if (!this._sid) { this._sid = sessionStorage.getItem('kx-sid') || Math.random().toString(36).slice(2); sessionStorage.setItem('kx-sid', this._sid); }
+      const body = JSON.stringify(Object.assign({ type, sid: this._sid, artist: this.state.artist, at: Date.now() }, extra || {}));
+      if (navigator.sendBeacon) navigator.sendBeacon(API_BASE + '/events', new Blob([body], { type: 'text/plain' }));
+    } catch (e) {}
+  };
+  trackStep = () => {
+    const s = this.state, p = this._trk || {};
+    const svc = s.artist === 'Kymani' ? s.kSvc : s.service;
+    if (s.page !== p.page) this.track('view', { page: s.page });
+    if (s.page === 'book' && svc && svc !== p.svc) this.track('book_service', { service: svc });
+    if (s.page === 'book' && s.time && s.time !== p.time) this.track('book_time');
+    if (s.page === 'deposit' && p.page !== 'deposit') this.track('book_submit');
+    this._trk = { page: s.page, svc, time: s.time };
   };
 
   emailOk = (v) => /^[^\s@]+@[^\s@.]+(\.[^\s@.]+)*\.[A-Za-z]{2,}$/.test(String(v || '').trim());
@@ -5534,6 +5634,29 @@ class Component extends DCLogic {
           }))
         });
       }),
+      ...(() => {
+        const w = s.wl || {}, step = w.step || 'idle';
+        const setW = (patch) => this.setState(st => ({ wl: Object.assign({}, st.wl, patch, { err: '' }) }));
+        const closed = this.availOf(s).closedWeekdays || [];
+        const svcName = s.artist === 'Kymani' ? s.kSvc : (s.service ? s.service + (s.setType && !FULL_SET_ONLY.includes(s.service) ? ' · ' + s.setType : '') : '');
+        const chip = (on) => on ? { bg: '#2A0A16', fg: '#FFF1F6', border: '#2A0A16' } : { bg: '#fff', fg: '#2A0A16', border: '#EBC6D3' };
+        const tog = (key, v) => () => this.setState(st => { const cur = ((st.wl || {})[key] || []); return { wl: Object.assign({}, st.wl, { [key]: cur.includes(v) ? cur.filter(k => k !== v) : cur.concat(v), err: '' }) }; });
+        return {
+          wlIdle: step === 'idle', wlForm: step === 'form', wlDone: step === 'done', wlArtist: s.artist,
+          wlFor: svcName ? 'For ' + svcName + '. Tell us which days and times work, and we\'ll text you if one opens up.' : 'Tell us which days and times work, and we\'ll text you if one opens up. Picking your service above helps us find the right amount of time.',
+          wlOpen: () => this.setState(st => ({ wl: { step: 'form', first: st.f.first || '', last: st.f.last || '', phone: st.f.phone || '', days: [], times: [], note: '' } })),
+          wlClose: () => this.setState({ wl: { step: 'idle' } }),
+          wlFirst: w.first || '', wlLast: w.last || '', wlPhone: this.fmtPhone(w.phone || ''), wlNote: w.note || '',
+          onWlFirst: (e) => setW({ first: e.target.value.slice(0, 60) }),
+          onWlLast: (e) => setW({ last: e.target.value.slice(0, 60) }),
+          onWlPhone: (e) => setW({ phone: e.target.value.replace(/[^0-9]/g, '').slice(0, 10) }),
+          onWlNote: (e) => setW({ note: e.target.value }),
+          wlDayChips: [0, 1, 2, 3, 4, 5, 6].filter(d => !closed.includes(d)).map(d => Object.assign({ label: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'][d], onClick: tog('days', d) }, chip((w.days || []).includes(d)))),
+          wlTimeChips: [['Morning', 'Morning (before 12)'], ['Afternoon', 'Afternoon (12–4)'], ['Evening', 'Evening (after 4)']].map(([k, label]) => Object.assign({ label, onClick: tog('times', k) }, chip((w.times || []).includes(k)))),
+          wlHasErr: !!w.err, wlErr: w.err || '', wlSending: !!w.sending, wlSubmitLabel: w.sending ? 'Joining…' : 'Join the waitlist',
+          wlSubmit: this.joinWaitlist
+        };
+      })(),
       artistChoices: [
         Object.assign({ name:'Kymani', note:'Owner · 6+ years', onClick:() => this.setState(st => ({ artist:'Kymani', day: st.day && new Date(st.day + 'T00:00:00').getDay() === 1 ? null : st.day, time: st.day && new Date(st.day + 'T00:00:00').getDay() === 1 ? null : st.time })) }, this.chip(s.artist === 'Kymani')),
         Object.assign({ name:'Jharis', note:'Master Nail Tech · 10+ years', onClick:() => this.setState(st => ({ artist:'Jharis', monthOffset: 0, day: st.day && (AVAILABILITY.Jharis.daysOff.includes(st.day) || AVAILABILITY.Jharis.fullyBooked.includes(st.day) || st.day > AVAILABILITY.Jharis.openThrough) ? null : st.day })) }, this.chip(s.artist === 'Jharis'))
@@ -5567,6 +5690,8 @@ class Component extends DCLogic {
       f_first: s.f.first, f_last: s.f.last, f_phone: this.fmtPhone(s.f.phone), f_email: s.f.email, emailBad: !!s.emailTouched && !!s.f.email.trim() && !this.emailOk(s.f.email), f_agree: s.f.agree,
       onF_first: this.onField('first'), onF_last: this.onField('last'), onF_phone: this.onPhone,
       onF_email: this.onField('email'), onEmailBlur: () => this.setState({ emailTouched: true }), onF_agree: this.onField('agree'),
+      f_heard: s.f.heard || '', f_heardColor: s.f.heard ? '#2A0A16' : '#9B7E8A',
+      onF_heard: (e) => { const v = e.target.value; this.setState(st => ({ f: Object.assign({}, st.f, { heard: v }) })); },
       bookTotalTime: s.totalTime || '—',
       bookTotalPrice: s.totalPrice || '—',
       bookService: (s.artist === 'Kymani' ? this.kymaniServiceName(s) : s.service) || 'Not selected',
