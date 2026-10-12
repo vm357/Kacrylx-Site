@@ -107,7 +107,9 @@
             <div ref="{{ heroLayer3 }}" style="position:absolute; right:max(-6px, -0.5vw); top:max(-8px, -0.6vw); width:clamp(92px, 14vw, 164px); height:clamp(113px, 17.5vw, 202px); border-radius:16px; overflow:hidden; border:6px solid #FFF8FA; box-shadow:0 20px 44px rgba(42,10,22,0.22); will-change:transform;">
               <image-slot id="kx-hero-detail" role="img" aria-label="Kacrylx nail set" src="images/kx-hero-detail.webp" shape="rect" placeholder="Drop a detail shot"></image-slot>
             </div>
-            <span style="position:absolute; left:0; right:0; bottom:-6px; text-align:center; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:#865469; pointer-events:none;">Move your cursor</span>
+            <sc-if value="{{ canHover }}" hint-placeholder-val="{{ false }}">
+          <span style="position:absolute; left:0; right:0; bottom:-6px; text-align:center; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:#865469; pointer-events:none;">Move your cursor</span>
+        </sc-if>
           </div>
         </div>
       </div>
@@ -349,8 +351,8 @@
   <!-- ================= ABOUT ================= -->
   <sc-if value="{{ isAbout }}" hint-placeholder-val="{{ false }}">
     <div>
-      <div style="max-width:1280px; margin:0 auto; padding:clamp(32px,6vw,64px) clamp(18px,5vw,40px) clamp(52px,8vw,88px); display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:clamp(32px,5vw,64px); align-items:center;">
-        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(clamp(170px, 45%, 240px),1fr)); gap:16px;">
+      <div style="max-width:1280px; margin:0 auto; padding:clamp(32px,6vw,64px) clamp(18px,5vw,40px) clamp(52px,8vw,88px); display:grid; grid-template-columns:{{ aboutCols }}; gap:clamp(32px,5vw,64px); align-items:center;">
+        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(clamp(170px, 45%, 240px),1fr)); gap:16px; order:{{ aboutImgOrder }};">
           <div data-kx-reveal="0.06" style="border-radius:16px; height:clamp(187px, 28.3vw, 340px); overflow:hidden; background:#E6DCE0;transition:transform 0.85s cubic-bezier(0.16,0.84,0.24,1), box-shadow 0.85s cubic-bezier(0.16,0.84,0.24,1); will-change:transform;" style-hover="transform:translateY(-6px) scale(1.008); box-shadow:0 20px 44px rgba(122,66,88,0.15);">
             <image-slot id="kx-about-studio" role="img" aria-label="The Kacrylx studio" src="images/kx-about-studio.webp" shape="rect" placeholder="Studio photo"></image-slot>
           </div>
@@ -1988,6 +1990,9 @@ class Component extends DCLogic {
       servicesLoop: SERVICES.concat(SERVICES).map((name, i) => ({ name, revealDelay: i < SERVICES.length ? Math.min(i, 5) * 0.08 : 0 })),
       heroRef: this.heroRef, heroLayer1: this.heroLayer1, heroLayer2: this.heroLayer2, heroLayer3: this.heroLayer3,
       isHome: s.page === 'home', isGallery: s.page === 'gallery', isAbout: s.page === 'about',
+      aboutImgOrder: s.isMobile ? 2 : 0,
+      aboutCols: s.isMobile ? 'minmax(0,1fr)' : 'repeat(2,minmax(0,1fr))',
+      canHover: typeof window !== 'undefined' && !!window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches,
       isTestimonials: s.page === 'testimonials', isBook: s.page === 'book', isFaq: s.page === 'faq',
       isDeposit: s.page === 'deposit',
       showFooterCta: !['book', 'deposit', 'confirmed'].includes(s.page), isConfirmed: s.page === 'confirmed',
