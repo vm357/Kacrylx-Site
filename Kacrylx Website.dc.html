@@ -1290,6 +1290,8 @@ class Component extends DCLogic {
     document.querySelectorAll('[data-kx-shown]').forEach(n => n.removeAttribute('data-kx-shown'));
     requestAnimationFrame(this.kxReveal);
     this.fetchMenus();
+    this._onVis = () => { if (document.visibilityState === 'visible') this.fetchMenus(true); };
+    document.addEventListener('visibilitychange', this._onVis);
     this.loadHold();
     this.measureTotals();
     this._target = { x: 0, y: 0 };
@@ -1495,6 +1497,7 @@ class Component extends DCLogic {
       addOns: this.selectedAddOnNames(),
       serviceId: (this.selSvc(s) || {}).id || null,
       addonIds: this.selAddons(s).map(a => a.id),
+      sizeIdx: s.size,
       holdId: s.holdId || null,
       totalCents: price ? Math.round(parseFloat(price[1]) * 100) : null,
       notes: (s.f.notes || '').trim(),
@@ -1512,11 +1515,15 @@ class Component extends DCLogic {
       this.setState(st => { const avail = Object.assign({}, st.avail); delete avail[key]; return { avail }; });
 
       if (r.ok) {
-        this.setState({ bookSubmitting: false, ref: data.id, page: 'deposit', payCanceled: false, payError: false });
+        const srv = {};
+        if (Number.isInteger(data.totalCents)) srv.totalPrice = '$' + Math.round(data.totalCents / 100) + (/\+/.test(String(this.state.totalPrice)) ? '+' : '');
+        if (Number.isInteger(data.durationMin)) { srv.totalMins = data.durationMin; srv.totalTime = this.fmtMins(data.durationMin); }
+        this.setState(Object.assign({ bookSubmitting: false, ref: data.id, page: 'deposit', payCanceled: false, payError: false }, srv));
         window.scrollTo(0, 0);
         return;
       }
-      const msg = r.status === 409 ? 'That time was just booked by someone else. Please pick another time.'
+      if (r.status === 409) this.fetchMenus(true);
+      const msg = r.status === 409 ? (data.error && !/no longer available|just booked/i.test(data.error) ? data.error : 'That time was just booked by someone else. Please pick another time.')
         : r.status === 403 ? "We're unable to book this appointment online. Please text 640-220-9270."
         : r.status === 400 && data.error ? data.error
         : "We couldn't save your booking. Please try again, or text 640-220-9270.";
@@ -1749,9 +1756,12 @@ class Component extends DCLogic {
     this._mergedMenu[artist] = { src: live, out };
     return out;
   };
-  fetchMenus = () => {
-    if (!API_BASE || this._menuReq) return;
-    this._menuReq = true;
+  // Load the artists' menus; again whenever the tab comes back or the Book page opens (at most every 15 s)
+  fetchMenus = (force) => {
+    if (!API_BASE) return;
+    const now = Date.now();
+    if (this._menuReq && !(force && now - this._menuReq > 15000)) return;
+    this._menuReq = now;
     ['Jharis', 'Kymani'].forEach(a => {
       fetch(API_BASE + '/menu?artist=' + a)
         .then(r => (r.ok ? r.json() : null))
@@ -1880,6 +1890,7 @@ class Component extends DCLogic {
     if (this.state.menuOpen) this.setState({ menuOpen: false });
     if (this.state.page === page) { if (typeof window !== 'undefined') window.scrollTo(0, 0); return; }
     this.setState({ page, menuOpen: false });
+    if (page === 'book') this.fetchMenus(true);
     if (typeof window !== 'undefined') {
       window.scrollTo(0, 0);
       requestAnimationFrame(() => {
