@@ -747,7 +747,7 @@
           <div style="display:flex; flex-direction:column; gap:10px; font-size:15px; color:#3D0A1D;">
             <div style="display:flex; justify-content:space-between; gap:16px;"><span style="color:#7A4258;">Artist</span><span>{{ bookArtist }}</span></div>
             <div style="display:flex; justify-content:space-between; gap:16px;"><span style="color:#7A4258;">Service</span><span>{{ bookService }}</span></div>
-            <div style="display:flex; justify-content:space-between; gap:16px;"><span style="color:#7A4258;">Type</span><span>{{ bookSetType }}</span></div>
+            <div style="display:flex; justify-content:space-between; gap:16px;"><span style="color:#7A4258; flex:none;">Add-ons</span><span style="text-align:right; text-wrap:pretty;">{{ bookAddons }}</span></div>
             <div style="display:flex; justify-content:space-between; gap:16px;"><span style="color:#7A4258;">When</span><span>{{ bookWhen }}</span></div>
             <div style="display:flex; justify-content:space-between; gap:16px; padding-top:10px; border-top:1px solid #E7B9CB;"><span style="color:#7A4258;">Estimated time</span><span>{{ bookTotalTime }}</span></div>
             <div style="display:flex; justify-content:space-between; gap:16px; font-size:18px;"><span style="color:#7A4258;">Estimated total</span><span>{{ bookTotalPrice }}</span></div>
@@ -2193,7 +2193,8 @@ class Component extends DCLogic {
       onF_heard: (e) => { const v = e.target.value; this.setState(st => ({ f: Object.assign({}, st.f, { heard: v }) })); },
       bookTotalTime: s.totalTime || '—',
       bookTotalPrice: s.totalPrice || '—',
-      bookService: (s.artist === 'Kymani' ? this.kymaniServiceName(s) : s.service) || 'Not selected',
+      bookService: this.svcLabel(s) || 'Not selected',
+      bookAddons: (() => { const l = this.selAddons(s).map(a => a.name); return l.length ? l.join(', ') : 'None'; })(),
       bookSetType: s.artist === 'Kymani' ? '—' : (s.setType || 'Not selected'),
       bookWhen: (s.day
         ? new Date(s.day + 'T00:00:00').toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })
