@@ -85,11 +85,11 @@
             <div style="display:flex; align-items:center; gap:12px; font-size:11px; letter-spacing:0.26em; text-transform:uppercase; color:#865469; animation:kxRise 0.7s cubic-bezier(0.22,0.61,0.36,1) 0.05s both;">
               <span style="width:34px; height:1px; background:#E0B9C8;"></span>Nail studio · Edison, NJ
             </div>
-            <h1 style="margin:0; font-family:'Playfair Display',serif; font-size:clamp(40px, 9vw, 88px); line-height:0.94; font-weight:700; letter-spacing:-0.02em; text-wrap:balance; animation:kxRise 0.7s cubic-bezier(0.22,0.61,0.36,1) 0.15s both;">Your Next Set <em style="font-style:italic; color:#E0397B;">Starts Here.</em></h1>
+            <h1 style="margin:0; font-family:'Playfair Display',serif; font-size:{{ heroH1Size }}; line-height:0.94; font-weight:700; letter-spacing:-0.02em; text-wrap:balance; animation:kxRise 0.7s cubic-bezier(0.22,0.61,0.36,1) 0.15s both;">Your Next Set <em style="font-style:italic; color:#E0397B;">Starts Here.</em></h1>
             <p style="margin:0; font-size:17px; line-height:1.75; color:#5C4450; max-width:450px; text-wrap:pretty; animation:kxRise 0.7s cubic-bezier(0.22,0.61,0.36,1) 0.26s both;">Kacrylx is a two-artist studio in Edison run by Kymani. Detailed art, clean prep and a set that lasts — booked one client at a time.</p>
             <div style="display:flex; gap:14px; align-items:center; padding-top:6px; animation:kxRise 0.7s cubic-bezier(0.22,0.61,0.36,1) 0.36s both;">
-              <a href="#" onClick="{{ goBook }}" style="padding:16px 34px; border-radius:999px; background:#E0397B; color:#fff; font-size:15px; font-weight:500; box-shadow:0 12px 28px rgba(224,57,123,0.32);" style-hover="background:#C4557A; color:#fff;">Book an Appointment</a>
-              <a href="#" onClick="{{ goGallery }}" style="padding:16px 30px; border-radius:999px; border:1px solid #E3C3D0; color:#2A0A16; font-size:15px;" style-hover="background:#FFEFF5; color:#2A0A16;">See the Work</a>
+              <a href="#" onClick="{{ goBook }}" style="padding:{{ heroBtnPadA }}; border-radius:999px; background:#E0397B; color:#fff; font-size:{{ heroBtnFont }}; font-weight:500; box-shadow:0 12px 28px rgba(224,57,123,0.32);" style-hover="background:#C4557A; color:#fff;">{{ heroBookLabel }}</a>
+              <a href="#" onClick="{{ goGallery }}" style="padding:{{ heroBtnPadB }}; border-radius:999px; border:1px solid #E3C3D0; color:#2A0A16; font-size:{{ heroBtnFont }};" style-hover="background:#FFEFF5; color:#2A0A16;">See the Work</a>
             </div>
             <div style="display:flex; gap:40px; padding-top:24px; border-top:1px solid #F1DDE4; margin-top:8px; animation:kxRise 0.7s cubic-bezier(0.22,0.61,0.36,1) 0.46s both;">
               <div style="display:flex; flex-direction:column; gap:2px;"><span style="font-family:'Playfair Display',serif; font-size:26px;">5.0 ★</span><span style="font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:#9B7E8A;">Client rating</span></div>
@@ -1990,6 +1990,11 @@ class Component extends DCLogic {
       servicesLoop: SERVICES.concat(SERVICES).map((name, i) => ({ name, revealDelay: i < SERVICES.length ? Math.min(i, 5) * 0.08 : 0 })),
       heroRef: this.heroRef, heroLayer1: this.heroLayer1, heroLayer2: this.heroLayer2, heroLayer3: this.heroLayer3,
       isHome: s.page === 'home', isGallery: s.page === 'gallery', isAbout: s.page === 'about',
+      heroBookLabel: s.isMobile ? 'View Menu' : 'Book an Appointment',
+      heroH1Size: s.isMobile ? 'clamp(42px, calc(9vw + 2px), 70px)' : 'clamp(40px, 9vw, 88px)',
+      heroBtnPadA: s.isMobile ? '12px 24px' : '16px 34px',
+      heroBtnPadB: s.isMobile ? '12px 22px' : '16px 30px',
+      heroBtnFont: s.isMobile ? '14px' : '15px',
       aboutImgOrder: s.isMobile ? 2 : 0,
       aboutCols: s.isMobile ? 'minmax(0,1fr)' : 'repeat(2,minmax(0,1fr))',
       canHover: typeof window !== 'undefined' && !!window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches,
