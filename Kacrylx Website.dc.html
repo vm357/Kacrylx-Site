@@ -50,6 +50,7 @@
         </sc-for>
       </div>
 </sc-if>
+<sc-if value="{{ navOn }}" hint-placeholder-val="{{ true }}">
 <div style="display:flex; align-items:center; gap:10px;">
       <a href="#" onClick="{{ goBook }}" style="padding:10px 24px; border-radius:999px; background:#E0397B; color:#fff; font-size:13px; font-weight:500; transition:background 0.35s ease, transform 0.55s cubic-bezier(0.16,0.84,0.24,1), box-shadow 0.55s cubic-bezier(0.16,0.84,0.24,1);" style-hover="background:#C4557A; color:#fff; transform:translateY(-2px) scale(1.03); box-shadow:0 12px 26px rgba(224,57,123,0.32);">Book Now</a>
 <sc-if value="{{ navMobile }}" hint-placeholder-val="{{ false }}">
@@ -60,6 +61,7 @@
 </button>
 </sc-if>
 </div>
+</sc-if>
     </div>
     <sc-if value="{{ menuShown }}" hint-placeholder-val="{{ false }}">
     <div style="border-top:1px solid #F1DDE4; background:#FFF8FA; padding:8px clamp(18px,5vw,40px) 18px; animation:kxMenuIn 0.32s cubic-bezier(0.16,0.84,0.24,1) both;">
@@ -611,6 +613,63 @@
             </sc-if>
           </sc-for>
         </div>
+        <sc-if value="{{ x2Show }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex; flex-direction:column; gap:14px; padding-top:20px; margin-top:6px; border-top:1px solid #F1DDE4;">
+            <div style="display:flex; flex-direction:column; gap:4px;">
+              <span style="font-family:'Playfair Display',serif; font-size:22px; line-height:1.2;">{{ x2Title }}</span>
+              <span style="font-size:14px; line-height:1.6; color:#5C4450; text-wrap:pretty;">Get both done in one visit. Booking two services makes the deposit $65.</span>
+            </div>
+            <sc-if value="{{ x2HasGroups }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex; flex-wrap:wrap; gap:10px;">
+                <sc-for list="{{ x2Groups }}" as="g" hint-placeholder-count="4">
+                  <button onClick="{{ g.onClick }}" style="cursor:pointer; font-family:'Poppins',sans-serif; font-size:14px; padding:10px 16px; border-radius:999px; background:{{ g.bg }}; border:1px solid {{ g.border }}; color:{{ g.fg }};">{{ g.name }}</button>
+                </sc-for>
+              </div>
+            </sc-if>
+            <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:12px;">
+              <sc-for list="{{ x2Items }}" as="ad" hint-placeholder-count="0">
+                <button data-kx="addon" onClick="{{ ad.onClick }}" style="cursor:pointer; text-align:left; font-family:'Poppins',sans-serif; padding:16px 18px; border-radius:12px; display:flex; flex-direction:column; gap:8px; background:{{ ad.bg }}; border:1px solid {{ ad.border }}; color:{{ ad.fg }};">
+                  <span style="font-size:14px; line-height:1.3;">{{ ad.name }}</span>
+                  <span style="display:flex; gap:14px; font-size:12px; letter-spacing:0.08em; text-transform:uppercase; opacity:0.72;"><span>{{ ad.time }}</span><span>{{ ad.price }}</span></span>
+                </button>
+              </sc-for>
+            </div>
+            <sc-if value="{{ x2HasSizes }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex; flex-direction:column; gap:8px;">
+                <span style="font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:{{ x2SizeLabelColor }};">{{ x2SizeLabel }}</span>
+                <div style="display:flex; flex-wrap:wrap; gap:10px;">
+                  <sc-for list="{{ x2Sizes }}" as="z" hint-placeholder-count="3">
+                    <button data-kx="size" onClick="{{ z.onClick }}" style="cursor:pointer; font-family:'Poppins',sans-serif; text-align:left; padding:10px 14px; border-radius:10px; display:flex; align-items:baseline; gap:10px; background:{{ z.bg }}; border:1px solid {{ z.border }}; color:{{ z.fg }};">
+                      <span style="font-size:11px; letter-spacing:0.16em; text-transform:uppercase; opacity:0.7;">{{ z.label }}</span>
+                      <span style="font-size:14px;">{{ z.price }}</span>
+                    </button>
+                  </sc-for>
+                </div>
+              </div>
+            </sc-if>
+            <sc-if value="{{ x2HasAddons }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex; flex-direction:column; gap:10px;">
+                <span style="font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:#865469;">{{ x2AddonsLabel }}</span>
+                <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:12px;">
+                  <sc-for list="{{ x2AddonItems }}" as="ad" hint-placeholder-count="0">
+                    <sc-if value="{{ ad.isCard }}" hint-placeholder-val="{{ true }}">
+                      <button data-kx="addon" onClick="{{ ad.onClick }}" style="cursor:pointer; text-align:left; font-family:'Poppins',sans-serif; padding:16px 18px; border-radius:12px; display:flex; flex-direction:column; gap:8px; background:{{ ad.bg }}; border:1px solid {{ ad.border }}; color:{{ ad.fg }};">
+                        <span style="font-size:14px; line-height:1.3;">{{ ad.name }}</span>
+                        <span style="display:flex; gap:14px; font-size:12px; letter-spacing:0.08em; text-transform:uppercase; opacity:0.72;"><span>{{ ad.time }}</span><span>{{ ad.price }}</span></span>
+                      </button>
+                    </sc-if>
+                    <sc-if value="{{ ad.isPanel }}" hint-placeholder-val="{{ false }}">
+                      <div style="background:#FFF8FA; border:1px solid #F1DDE4; border-radius:16px; padding:24px; grid-column:1 / -1; display:flex; flex-direction:column; gap:8px;">
+                        <span style="font-family:'Playfair Display',serif; font-size:20px;">{{ ad.name }}</span>
+                        <p style="margin:0; font-size:15px; line-height:1.8; color:#4A3340; max-width:70ch; white-space:pre-line; text-wrap:pretty;">{{ ad.desc }}</p>
+                      </div>
+                    </sc-if>
+                  </sc-for>
+                </div>
+              </div>
+            </sc-if>
+          </div>
+        </sc-if>
       </div>
       </sc-if>
 
@@ -737,6 +796,27 @@
             <option value="Other">Other</option>
           </select>
           <textarea value="{{ f_notes }}" onChange="{{ onNotes }}" maxlength="1000" placeholder="Inspo links, add-ons, anything we should know." aria-label="Inspo links, add-ons, anything we should know." rows="3" style="padding:15px 18px; border-radius:10px; border:1px solid #EBC6D3; background:#fff; font-family:'Poppins',sans-serif; font-size:15px; resize:vertical; color:#2A0A16;"></textarea>
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <span style="font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:#865469;">Inspo photos (optional, up to 3)</span>
+            <div style="display:flex; flex-wrap:wrap; gap:10px;">
+              <sc-for list="{{ inspoPics }}" as="p" hint-placeholder-count="0">
+                <div style="position:relative; width:96px; height:96px; border-radius:12px; overflow:hidden; border:1px solid #F1DDE4; background:#FFF8FA;">
+                  <img src="{{ p.url }}" alt="{{ p.alt }}" style="width:100%; height:100%; object-fit:cover; display:block;">
+                  <button onClick="{{ p.remove }}" aria-label="{{ p.removeAria }}" style="position:absolute; top:4px; right:4px; width:28px; height:28px; border-radius:999px; border:none; background:rgba(42,10,22,0.78); color:#FFF1F6; font-size:16px; line-height:1; cursor:pointer;">×</button>
+                </div>
+              </sc-for>
+              <sc-if value="{{ inspoCanAdd }}" hint-placeholder-val="{{ true }}">
+                <label style="width:96px; height:96px; border-radius:12px; border:1px dashed #D9A3B8; background:#FFF8FA; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; cursor:pointer; color:#7A4258; font-size:12px; text-align:center;">
+                  <span style="font-size:24px; line-height:1;">+</span>
+                  <span>{{ inspoAddLabel }}</span>
+                  <input type="file" accept="image/*" multiple="{{ true }}" onChange="{{ onInspo }}" aria-label="Upload inspo photos" style="position:absolute; width:1px; height:1px; opacity:0; overflow:hidden;">
+                </label>
+              </sc-if>
+            </div>
+            <sc-if value="{{ inspoHasErr }}" hint-placeholder-val="{{ false }}">
+              <span role="alert" style="font-size:13px; color:#A8425F;">{{ inspoErr }}</span>
+            </sc-if>
+          </div>
           <label style="display:flex; align-items:flex-start; gap:10px; font-size:14px; color:#5C4450; line-height:1.6;">
             <input type="checkbox" checked="{{ f_agree }}" onChange="{{ onF_agree }}" style="margin-top:3px;">
             <span>I understand and agree to the deposit, payment, late and cancellation policies listed on the <a href="#" onClick="{{ goFaq }}">Policies page</a>.</span>
@@ -786,7 +866,7 @@
       <div style="display:flex; flex-direction:column; gap:12px; max-width:640px;">
         <div style="font-size:11px; letter-spacing:0.24em; text-transform:uppercase; color:#865469;">Step 2 of 2 · Secure your slot</div>
         <h1 style="margin:0; font-family:'Playfair Display',serif; font-size:clamp(36px, 7.5vw, 64px); font-weight:600; line-height:1.02;">Secure your deposit.</h1>
-        <p style="margin:0; font-size:16px; line-height:1.8; color:#5C4450;">A $40 deposit confirms the appointment and goes toward your service total.</p>
+        <p style="margin:0; font-size:16px; line-height:1.8; color:#5C4450;">A {{ depositLabel }} deposit confirms the appointment and goes toward your service total.</p>
       </div>
 
       <div style="display:flex; flex-wrap:wrap; gap:28px; align-items:flex-start;">
@@ -811,7 +891,7 @@
             <div style="display:flex; justify-content:space-between; gap:16px;"><span style="color:#7A4258;">When</span><span>{{ bookWhen }}</span></div>
             <div style="display:flex; justify-content:space-between; gap:16px; padding-top:10px; border-top:1px solid #E7B9CB;"><span style="color:#7A4258;">Estimated time</span><span>{{ bookTotalTime }}</span></div>
             <div style="display:flex; justify-content:space-between; gap:16px;"><span style="color:#7A4258;">Estimated total</span><span>{{ bookTotalPrice }}</span></div>
-            <div style="display:flex; justify-content:space-between; gap:16px; padding-top:10px; border-top:1px solid #E7B9CB; font-size:18px;"><span style="color:#7A4258;">Deposit due now</span><span>$40</span></div>
+            <div style="display:flex; justify-content:space-between; gap:16px; padding-top:10px; border-top:1px solid #E7B9CB; font-size:18px;"><span style="color:#7A4258;">Deposit due now</span><span>{{ depositLabel }}</span></div>
             <div style="display:flex; justify-content:space-between; gap:16px; font-size:13px;"><span style="color:#7A4258;">Estimated balance at appointment</span><span>{{ bookRemainder }}</span></div>
           </div>
           <button disabled="{{ payBlocked }}" onClick="{{ payDeposit }}" style="margin-top:8px; padding:16px 20px; border-radius:999px; background:{{ payBtnBg }}; color:{{ payBtnFg }}; border:none; font-family:'Poppins',sans-serif; font-size:15px; cursor:{{ payBtnCursor }};">Pay $40 Deposit</button>
@@ -838,7 +918,7 @@
       <div style="display:flex; flex-direction:column; gap:14px; max-width:640px;">
         <div style="font-size:11px; letter-spacing:0.24em; text-transform:uppercase; color:#865469;">Deposit received</div>
         <h1 style="margin:0; font-family:'Playfair Display',serif; font-size:clamp(34px, 7vw, 60px); font-weight:600; line-height:1.05;">{{ thankYouLine }}</h1>
-        <p style="margin:0; font-size:16px; line-height:1.8; color:#5C4450;">Your appointment is confirmed and we can't wait to see you. A confirmation and the studio address are on the way to your email, and your $40 deposit has been applied to your service total.</p>
+        <p style="margin:0; font-size:16px; line-height:1.8; color:#5C4450;">Your appointment is confirmed and we can't wait to see you. A confirmation and the studio address are on the way to your email, and your {{ depositLabel }} deposit has been applied to your service total.</p>
       </div>
 
       <div style="width:100%; max-width:520px; box-sizing:border-box; background:#fff; border:1px solid #F1DDE4; border-radius:18px; padding:clamp(20px,5vw,32px); display:flex; flex-direction:column; gap:12px; text-align:left; font-size:15px; color:#3D0A1D;">
@@ -848,15 +928,68 @@
         <div style="display:flex; justify-content:space-between; gap:16px;"><span style="color:#7A4258;">Service</span><span>{{ bookService }}</span></div>
         <div style="display:flex; justify-content:space-between; gap:16px;"><span style="color:#7A4258;">When</span><span>{{ bookWhen }}</span></div>
         <div style="display:flex; justify-content:space-between; gap:16px;"><span style="color:#7A4258;">Estimated time</span><span>{{ bookTotalTime }}</span></div>
-        <div style="display:flex; justify-content:space-between; gap:16px; padding-top:10px; border-top:1px solid #F1DDE4;"><span style="color:#7A4258;">Deposit paid</span><span>$40</span></div>
+        <div style="display:flex; justify-content:space-between; gap:16px; padding-top:10px; border-top:1px solid #F1DDE4;"><span style="color:#7A4258;">Deposit paid</span><span>{{ depositLabel }}</span></div>
         <div style="display:flex; justify-content:space-between; gap:16px;"><span style="color:#7A4258;">Estimated balance at appointment</span><span>{{ bookRemainder }}</span></div>
       </div>
 
+      <sc-if value="{{ prepShow }}" hint-placeholder-val="{{ false }}">
+        <div style="width:100%; max-width:520px; box-sizing:border-box; background:#fff; border:1px solid #F1DDE4; border-radius:18px; padding:clamp(20px,5vw,32px); display:flex; flex-direction:column; gap:16px; text-align:left;">
+          <div style="display:flex; flex-direction:column; gap:6px; text-align:center;">
+            <div style="font-size:11px; letter-spacing:0.24em; text-transform:uppercase; color:#865469;">Before your visit</div>
+            <div style="font-family:'Playfair Display',serif; font-size:24px;">Three quick questions</div>
+            <p style="margin:0; font-size:14px; line-height:1.7; color:#5C4450; text-wrap:pretty;">Your answers help {{ bookArtist }} get ready for your appointment. Only she sees them. Please answer before you leave this page.</p>
+          </div>
+          <sc-for list="{{ prepQs }}" as="q" hint-placeholder-count="3">
+            <div role="group" aria-label="{{ q.label }}" style="display:flex; flex-direction:column; gap:10px; padding-top:14px; border-top:1px solid #F1DDE4;">
+              <span style="font-size:15px; line-height:1.5; color:#3D0A1D;">{{ q.label }}</span>
+              <div style="display:flex; gap:8px;">
+                <button onClick="{{ q.onYes }}" aria-pressed="{{ q.yesOn }}" style="cursor:pointer; font-family:'Poppins',sans-serif; font-size:14px; padding:10px 22px; border-radius:999px; background:{{ q.yesBg }}; border:1px solid {{ q.yesBorder }}; color:{{ q.yesFg }};">Yes</button>
+                <button onClick="{{ q.onNo }}" aria-pressed="{{ q.noOn }}" style="cursor:pointer; font-family:'Poppins',sans-serif; font-size:14px; padding:10px 22px; border-radius:999px; background:{{ q.noBg }}; border:1px solid {{ q.noBorder }}; color:{{ q.noFg }};">No</button>
+              </div>
+              <sc-if value="{{ q.showNote }}" hint-placeholder-val="{{ false }}">
+                <textarea rows="2" value="{{ q.note }}" onChange="{{ q.onNote }}" maxlength="300" placeholder="{{ q.ph }}" aria-label="{{ q.ph }}" style="padding:12px 14px; border-radius:10px; border:1px solid #EBC6D3; font-family:'Poppins',sans-serif; font-size:14px; line-height:1.6; color:#3D0A1D; resize:vertical;"></textarea>
+              </sc-if>
+            </div>
+          </sc-for>
+          <sc-if value="{{ prepHasErr }}" hint-placeholder-val="{{ false }}">
+            <p role="alert" style="margin:0; font-size:13px; line-height:1.6; color:#A8425F;">{{ prepErr }}</p>
+          </sc-if>
+          <button onClick="{{ prepSubmit }}" disabled="{{ prepSending }}" style="padding:15px 20px; border-radius:999px; background:#2A0A16; color:#FFF1F6; border:none; font-family:'Poppins',sans-serif; font-size:15px; cursor:pointer;">{{ prepBtnLabel }}</button>
+        </div>
+      </sc-if>
+      <sc-if value="{{ prepDone }}" hint-placeholder-val="{{ false }}">
+        <div role="status" style="width:100%; max-width:520px; box-sizing:border-box; background:#FFF8FA; border:1px solid #F1DDE4; border-radius:18px; padding:20px 24px; font-size:15px; line-height:1.7; color:#3D0A1D;">Thank you! {{ bookArtist }} will have your answers before your appointment.</div>
+      </sc-if>
+
+      <sc-if value="{{ prepDone }}" hint-placeholder-val="{{ false }}">
       <div style="display:flex; gap:14px; flex-wrap:wrap; justify-content:center;">
         <a href="#" onClick="{{ goHome }}" style="padding:15px 28px; border-radius:999px; background:#E0397B; color:#fff; font-size:14px;" style-hover="background:#C4557A; color:#fff;">Back to Home</a>
         <a href="#" onClick="{{ goFaq }}" style="padding:15px 28px; border-radius:999px; border:1px solid #EBC6D3; color:#3D0A1D; font-size:14px;" style-hover="background:#FBEFF3;">Read the Policies</a>
       </div>
+      </sc-if>
       <p style="margin:0; font-size:13px; line-height:1.8; color:#7A4258; max-width:520px;">Need to change something? Text 640-220-9270 at least 48 hours before your appointment.</p>
+    </div>
+  </sc-if>
+
+  <!-- ================= LEGAL ================= -->
+  <sc-if value="{{ isLegal }}" hint-placeholder-val="{{ false }}">
+    <div style="max-width:760px; margin:0 auto; padding:clamp(32px,6vw,64px) clamp(18px,5vw,40px) clamp(56px,9vw,96px); display:flex; flex-direction:column; gap:36px;">
+      <div style="display:flex; flex-direction:column; gap:14px;">
+        <h1 style="margin:0; font-family:'Playfair Display',serif; font-size:clamp(36px, 7.5vw, 60px); font-weight:600; line-height:1.04;">{{ legalTitle }}</h1>
+        <span style="font-size:12px; letter-spacing:0.16em; text-transform:uppercase; color:#7A4258;">Last updated {{ legalUpdated }}</span>
+        <p style="margin:0; font-size:16px; line-height:1.8; color:#5C4450; text-wrap:pretty;">{{ legalIntro }}</p>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:30px;">
+        <sc-for list="{{ legalSections }}" as="sec" hint-placeholder-count="5">
+          <section id="kx-{{ sec.id }}" style="display:flex; flex-direction:column; gap:10px; padding-top:24px; border-top:1px solid #F1DDE4;">
+            <h2 style="margin:0; font-family:'Playfair Display',serif; font-size:24px; font-weight:600; line-height:1.25;">{{ sec.h }}</h2>
+            <sc-for list="{{ sec.body }}" as="para" hint-placeholder-count="1">
+              <p style="margin:0; font-size:15px; line-height:1.8; color:#5C4450; text-wrap:pretty;">{{ para }}</p>
+            </sc-for>
+          </section>
+        </sc-for>
+      </div>
+      <p style="margin:0; font-size:14px; line-height:1.8; color:#5C4450;">Questions? Email <a href="mailto:nailsbykymani@yahoo.com" style="color:#B0184E;">nailsbykymani@yahoo.com</a> or text <a href="tel:6402209270" style="color:#B0184E;">640-220-9270</a>.</p>
     </div>
   </sc-if>
 
@@ -904,6 +1037,7 @@
 
   </div>
 
+  <sc-if value="{{ footerOn }}" hint-placeholder-val="{{ true }}">
   <!-- FOOTER -->
   <div style="background:#2A0A16; color:#FFE9F1;">
     <sc-if value="{{ showFooterCta }}" hint-placeholder-val="{{ true }}">
@@ -973,10 +1107,18 @@
     <div style="max-width:1280px; margin:0 auto; padding:0 clamp(18px,5vw,40px) 44px;">
       <div style="border-top:1px solid #4A1E30; padding-top:22px; display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; font-size:12px; color:#A87289;">
         <span>© 2026 Kacrylx. All rights reserved.</span>
+        <!-- Legal links hidden until the pages are ready -->
+<sc-if value="{{ false }}" hint-placeholder-val="{{ false }}"><nav aria-label="Legal" style="display:flex; flex-wrap:wrap; gap:4px 20px; align-items:center;">
+          <a href="Privacy.dc.html" onClick="{{ goPrivacy }}" style="color:#A87289; display:inline-block; padding:6px 0;" style-hover="color:#FF8FBE;">Privacy Policy</a>
+          <a href="Terms.dc.html" onClick="{{ goTerms }}" style="color:#A87289; display:inline-block; padding:6px 0;" style-hover="color:#FF8FBE;">Terms of Service</a>
+          <a href="Terms.dc.html#sms" onClick="{{ goSms }}" style="color:#A87289; display:inline-block; padding:6px 0;" style-hover="color:#FF8FBE;">SMS Terms</a>
+          <a href="#" onClick="{{ goFaq }}" style="color:#A87289; display:inline-block; padding:6px 0;" style-hover="color:#FF8FBE;">Booking Policies</a>
+        </nav></sc-if>
         <span>Crafted by <a href="https://kermitwebcraft.com" target="_blank" rel="noopener noreferrer" style="color:#FF8FBE; text-decoration:none; display:inline-block; padding-bottom:2px; background:linear-gradient(#FFC7DD, #FFC7DD) left bottom / 0% 1px no-repeat; transition:background-size 0.45s cubic-bezier(0.22,1,0.36,1), color 0.3s ease, transform 0.3s ease;" style-hover="background-size:100% 1px; color:#FFC7DD; transform:translateY(-1px);">Kermit Webcraft</a></span>
       </div>
     </div>
   </div>
+  </sc-if>
 
 
 </div>
@@ -1020,7 +1162,7 @@ const ARTISTS = [
 ];
 
 const POLICIES = [
-  { title:'Deposit', hint:'A $40 deposit is due at the time of your booking. This will be applied to your final payment at the time of your appointment. This payment is non-refundable and non-transferable in the event of a cancellation. All final payments are due at the time of appointment.' },
+  { title:'Deposit', hint:'A $40 deposit ($65 when booking two services) is due at the time of your booking. This will be applied to your final payment at the time of your appointment. This payment is non-refundable and non-transferable in the event of a cancellation. All final payments are due at the time of appointment.' },
   { title:'Payment', hint:'Accepted payments for your remaining balance are due in CASH ONLY. If you are unsure how much your nails cost please DM us on Instagram or text our phone number.' },
   { title:'Late Policy', hint:'If you are running late please let me know!\nI have a 10 minute grace period.\n10 minutes = $20 late fee\n15 minute = cancellation\nAfter 15 minutes your appointment will be cancelled or rescheduled, but forfeiting your deposit.' },
   { title:'Cancellation', hint:'All cancellations have to be made 24 hours in advance.\nSame Day Cancellations = 50% of the full service amount charged and deposit forfeited.\nNo Call No Show = BANNED from booking\nOr 100% of the full service amount charged in order to book again' }
@@ -1052,7 +1194,88 @@ const REVIEWS = [
 // Tue–Fri 10–7, Sat 9–5: hourly start times, last start an hour before close
 const WEEKDAY_TIMES = ['10:00 AM','10:30 AM','11:00 AM','11:30 AM','12:00 PM','12:30 PM','1:00 PM','1:30 PM','2:00 PM','2:30 PM','3:00 PM','3:30 PM','4:00 PM','4:30 PM','5:00 PM','5:30 PM','6:00 PM'];
 const SATURDAY_TIMES = ['9:00 AM','9:30 AM','10:00 AM','10:30 AM','11:00 AM','11:30 AM','12:00 PM','12:30 PM','1:00 PM','1:30 PM','2:00 PM','2:30 PM','3:00 PM','3:30 PM','4:00 PM'];
-const LABELS = { home:'Home', gallery:'Gallery', about:'About', testimonials:'Reviews', book:'Book an appointment', faq:'Policies', deposit:'Deposit', confirmed:'Booking confirmed' };
+const LEGAL_UPDATED = 'October 17, 2026';
+const LEGAL = {
+  privacy: {
+    title: 'Privacy Policy',
+    intro: 'This policy explains what information Kacrylx collects when you visit this website or book an appointment, how we use it, and the choices you have. Kacrylx is a nail studio in Edison, New Jersey, run by Kymani and Jharis.',
+    sections: [
+      { h: 'Information we collect', body: [
+        'When you book, we collect your name, mobile number, email address, the services and appointment time you choose, and any notes or inspiration photos you send us.',
+        'When you pay a deposit, your card is processed by Stripe. We never see or store your full card number. We receive a record of the payment, such as the amount and the last four digits of the card.',
+        'Like most websites, our hosting providers automatically log basic technical information such as your IP address, browser type and the pages you visit. We use this only to keep the site running and secure.'
+      ] },
+      { h: 'How we use it', body: [
+        'We use your information to schedule and manage your appointments, collect deposits, send booking confirmations and reminders, contact you about changes to your appointment, keep a record of past services so we can serve you better, and protect the site from spam and abuse.',
+        'We do not sell your personal information, and we do not use it for advertising.'
+      ] },
+      { h: 'Text messages', body: [
+        'If you give us your mobile number, we use it to send appointment-related texts, such as confirmations, reminders and schedule changes.',
+        'No mobile information will be shared with third parties or affiliates for marketing or promotional purposes. Text messaging opt-in data and consent are not shared with any third parties.',
+        'See our SMS Terms for details, including how to opt out.'
+      ] },
+      { h: 'Who we share it with', body: [
+        'We share information only with the service providers that help us run the business: Stripe (payments), Twilio (text messages), our email provider (confirmation and reminder emails), and Cloudflare and GitHub (website hosting and booking system). These providers may only use your information to provide their services to us.',
+        'We may also disclose information if required by law, or to protect the rights and safety of our clients, artists or business.'
+      ] },
+      { h: 'How long we keep it', body: [
+        'We keep your client and appointment history for as long as you are a client, and for a reasonable time afterward for our business and tax records. You can ask us to delete your information at any time, except for records we are legally required to keep.'
+      ] },
+      { h: 'Your choices', body: [
+        'You can ask to see, correct or delete the personal information we hold about you by emailing nailsbykymani@yahoo.com. You can stop text messages at any time by replying STOP.'
+      ] },
+      { h: 'Children', body: [
+        'Our booking system is not intended for children under 13, and we do not knowingly collect their information. Clients under 18 should book with a parent or guardian.'
+      ] },
+      { h: 'Changes to this policy', body: [
+        'If we change this policy, we will post the new version on this page and update the date at the top.'
+      ] }
+    ]
+  },
+  terms: {
+    title: 'Terms of Service',
+    intro: 'These terms apply when you use the Kacrylx website or book an appointment with Kymani or Jharis. By booking, you agree to these terms and to our Booking Policies.',
+    sections: [
+      { h: 'Bookings', body: [
+        'Online bookings are requests until your deposit is paid and the appointment is confirmed. Please give accurate contact details so we can reach you about your appointment.',
+        'We may decline or cancel a booking at our discretion, for example if a time was booked in error. If we cancel, your deposit will be refunded or applied to a new appointment.'
+      ] },
+      { h: 'Deposits and payment', body: [
+        'A $40 deposit is required to confirm an appointment, or $65 when you book two services in one visit. The deposit is applied to your total at the appointment. The remaining balance is due in cash at your appointment.',
+        'Prices shown on the website are starting prices. The final price may change based on length, design and add-ons agreed at your appointment.'
+      ] },
+      { h: 'Late arrivals, cancellations and no-shows', body: [
+        'Late arrival, rescheduling, cancellation and no-show rules, including when a deposit is non-refundable, are listed on our Booking Policies page and form part of these terms.'
+      ] },
+      { h: 'Your health and safety', body: [
+        'Please tell your artist about any allergies, skin conditions, infections or medical conditions that may affect your service before it begins. We may refuse or stop a service if continuing could be unsafe.',
+        'Contact your artist within 48 hours if you have a concern about your set.'
+      ] },
+      { h: 'Photos', body: [
+        'We may photograph your finished nails and share them on our website and social media. We will not show your face or name without your permission. Tell your artist if you would prefer your nails not be photographed.'
+      ] },
+      { id: 'sms', h: 'SMS Terms', body: [
+        'Kacrylx appointment alerts: by giving us your mobile number when you book, you agree to receive text messages about your appointments, such as confirmations, reminders and schedule changes.',
+        'Message frequency varies depending on your bookings. Message and data rates may apply.',
+        'Reply STOP to stop receiving messages at any time. Reply HELP for help, or contact us at 640-220-9270 or nailsbykymani@yahoo.com.',
+        'Carriers are not liable for delayed or undelivered messages. See our Privacy Policy for how we handle your information.'
+      ] },
+      { h: 'Website content', body: [
+        'The photos, designs and text on this website belong to Kacrylx and its artists. Please do not copy or reuse them without permission.'
+      ] },
+      { h: 'Limitation of liability', body: [
+        'To the extent allowed by law, Kacrylx is not liable for indirect or consequential damages arising from use of the website or our services. Our total liability for any claim is limited to the amount you paid for the service involved.'
+      ] },
+      { h: 'Governing law', body: [
+        'These terms are governed by the laws of the State of New Jersey.'
+      ] },
+      { h: 'Changes to these terms', body: [
+        'We may update these terms from time to time. The version on this page, with the date at the top, is the current one.'
+      ] }
+    ]
+  }
+};
+const LABELS = { privacy:'Privacy Policy', terms:'Terms of Service', home:'Home', gallery:'Gallery', about:'About', testimonials:'Reviews', book:'Book an appointment', faq:'Policies', deposit:'Deposit', confirmed:'Booking confirmed' };
 
 class Component extends DCLogic {
   state = { page: this.props.page || 'home', menus:{}, holdId:null, holdNote:'', navCondensed:false, isMobile: typeof window !== 'undefined' && window.innerWidth < 760, menuOpen:false, artist:'Kymani', service:null, setType:null, day:null, monthOffset:0, time:null, rating:5, photos:[], size:null, card:{}, cardTouched:false, kGen:null, kSvc:null, kAddons:{}, f:{ first: this.props.previewFirstName || '', last:'', phone:'', email:'', notes:'', agree:false }, totalTime:'—', totalPrice:'—', totalMins:0, avail:{}, addons:{}, raddons:{} };
@@ -1271,6 +1494,7 @@ class Component extends DCLogic {
 
   componentDidMount() {
     this.restoreBooking();
+    this.fetchTeam();
     setTimeout(() => this.trackStep(), 0);
     this.fetchAvail();
     addEventListener('resize', this.onWidth, { passive: true });
@@ -1477,12 +1701,12 @@ class Component extends DCLogic {
     return keep;
   };
 
-  selectedAddOnNames = () => this.selAddons(this.state).map(a => a.name);
+  selectedAddOnNames = () => this.selAddons(this.state).concat(this.x2SelAddons(this.state)).map(a => a.name);
 
   requestBooking = async () => {
     const s = this.state;
     if (s.bookSubmitting) return;
-    if (!(s.artist === 'Kymani' ? s.kSvc : s.service)) return;
+    if (!(this.kFlow(s.artist) ? s.kSvc : s.service)) return;
     this.setState({ menuOpen: false, bookError: '' });
     if (!API_BASE) { this.setState({ page: 'deposit' }); window.scrollTo(0, 0); return; }
 
@@ -1498,6 +1722,9 @@ class Component extends DCLogic {
       serviceId: (this.selSvc(s) || {}).id || null,
       addonIds: this.selAddons(s).map(a => a.id),
       sizeIdx: s.size,
+      secondServiceId: (this.x2Svc(s) || {}).id || null,
+      secondSizeIdx: s.x2Size,
+      secondAddonIds: this.x2SelAddons(s).map(a => a.id),
       holdId: s.holdId || null,
       totalCents: price ? Math.round(parseFloat(price[1]) * 100) : null,
       notes: (s.f.notes || '').trim(),
@@ -1515,6 +1742,7 @@ class Component extends DCLogic {
       this.setState(st => { const avail = Object.assign({}, st.avail); delete avail[key]; return { avail }; });
 
       if (r.ok) {
+        if ((this.state.inspo || []).length) await this.sendInspo(data.id);
         const srv = {};
         if (Number.isInteger(data.totalCents)) srv.totalPrice = '$' + Math.round(data.totalCents / 100) + (/\+/.test(String(this.state.totalPrice)) ? '+' : '');
         if (Number.isInteger(data.durationMin)) { srv.totalMins = data.durationMin; srv.totalTime = this.fmtMins(data.durationMin); }
@@ -1552,13 +1780,13 @@ class Component extends DCLogic {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           ref,
-          amount: 4000,
+          amount: this.depositOf(snap) * 100,
           currency: 'usd',
           customer: { first: snap.f.first, last: snap.f.last, email: snap.f.email, phone: snap.f.phone },
           appointment: {
             artist: this.state.artist,
             service: this.svcLabel(this.state),
-            setType: this.state.artist === 'Kymani' ? null : this.state.setType,
+            setType: this.kFlow(this.state.artist) ? null : this.state.setType,
             day: this.state.day, time: this.state.time,
             estimatedMinutes: this.state.totalMins, estimatedTotal: this.state.totalPrice
           },
@@ -1622,7 +1850,7 @@ class Component extends DCLogic {
     const t = this.state.totalPrice || '';
     const m = String(t).match(/\$(\d+)/);
     if (!m) return 'Quoted at appointment';
-    const rest = parseInt(m[1], 10) - 40;
+    const rest = parseInt(m[1], 10) - this.depositOf(this.state);
     return (rest > 0 ? '$' + rest : '$0') + (/\+/.test(String(t)) ? '+' : '');
   };
 
@@ -1735,9 +1963,113 @@ class Component extends DCLogic {
   // Sums the time and price shown on every selected chip in the booking form.
   // ---------- booking menu (from the artist's dashboard, via the API) ----------
   fmtMins = (n) => { n = Math.max(0, Math.round(+n || 0)); const h = Math.floor(n / 60), m = n % 60; return h ? h + ' hr' + (m ? ' ' + m + ' min' : '') : m + ' min'; };
+
+
+  // ---------- inspo photos: shrunk in the browser, sent after the booking is saved ----------
+  shrinkPhoto = (file) => new Promise((res, rej) => {
+    const url = URL.createObjectURL(file), img = new Image();
+    img.onload = () => {
+      const k = Math.min(1, 1200 / Math.max(img.width, img.height));
+      const c = document.createElement('canvas'); c.width = Math.round(img.width * k); c.height = Math.round(img.height * k);
+      c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+      URL.revokeObjectURL(url); res(c.toDataURL('image/jpeg', 0.8));
+    };
+    img.onerror = () => { URL.revokeObjectURL(url); rej(new Error('bad image')); };
+    img.src = url;
+  });
+  onInspo = async (e) => {
+    const files = Array.from((e && e.target && e.target.files) || []);
+    if (e && e.target) e.target.value = '';
+    const room = 3 - (this.state.inspo || []).length;
+    if (!files.length || room <= 0) return;
+    this.setState({ inspoBusy: true, inspoErr: '' });
+    const out = [];
+    for (const f of files.slice(0, room)) {
+      if (!/^image\//.test(f.type)) continue;
+      try { out.push(await this.shrinkPhoto(f)); } catch (err) {}
+    }
+    this.setState(st => ({ inspoBusy: false, inspo: (st.inspo || []).concat(out).slice(0, 3),
+      inspoErr: files.length > room ? 'You can add up to 3 photos.' : out.length < Math.min(files.length, room) ? "One of those photos couldn't be added. Try a JPG or PNG." : '' }));
+  };
+  sendInspo = async (id) => {
+    const pics = this.state.inspo || [];
+    if (!API_BASE || !id || !pics.length) return true;
+    const phone = String(this.state.f.phone || '').replace(/\D/g, '');
+    let ok = true;
+    for (let i = 0; i < pics.length; i++) {
+      try {
+        const r = await fetch(API_BASE + '/bookings/' + encodeURIComponent(id) + '/inspo', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ phone, idx: i, data: pics[i] }) });
+        if (!r.ok) ok = false;
+      } catch (e) { ok = false; }
+    }
+    return ok;
+  };
+  inspoVals = (s) => {
+    const pics = s.inspo || [];
+    return {
+      inspoPics: pics.map((url, i) => ({ url, alt: 'Inspo photo ' + (i + 1), removeAria: 'Remove inspo photo ' + (i + 1), remove: (e) => { if (e && e.preventDefault) e.preventDefault(); this.setState(st => ({ inspo: (st.inspo || []).filter((_, j) => j !== i), inspoErr: '' })); } })),
+      inspoCanAdd: pics.length < 3, inspoAddLabel: s.inspoBusy ? 'Adding…' : pics.length ? 'Add more' : 'Add photos',
+      onInspo: this.onInspo, inspoHasErr: !!s.inspoErr, inspoErr: s.inspoErr || ''
+    };
+  };
+  // ---------- pre-visit questions (after the deposit) ----------
+  prepKey = () => 'kx-prep-' + (this.state.ref || '');
+  sendPrep = async () => {
+    const s = this.state, p = s.prep || {};
+    if (!p.damaged || !p.allergies || !p.diabetic) { this.setState({ prep: Object.assign({}, p, { err: 'Please answer all three questions.' }) }); return; }
+    const answers = { damaged: p.damaged, damagedNote: p.damaged === 'yes' ? (p.damagedNote || '').trim() : '', allergies: p.allergies, allergiesNote: p.allergies === 'yes' ? (p.allergiesNote || '').trim() : '', diabetic: p.diabetic };
+    const done = () => { try { sessionStorage.setItem(this.prepKey(), '1'); } catch (e) {} this.setState({ prep: Object.assign({}, answers, { done: true }) }); };
+    if (!API_BASE || !s.ref || !/^KX-/.test(s.ref)) { done(); return; }
+    this.setState({ prep: Object.assign({}, p, { sending: true, err: '' }) });
+    try {
+      const r = await fetch(API_BASE + '/bookings/' + encodeURIComponent(s.ref) + '/prep', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ phone: String(s.f.phone || '').replace(/\D/g, ''), answers }) });
+      const d = await r.json().catch(() => ({}));
+      if (!r.ok) { this.setState({ prep: Object.assign({}, p, { sending: false, err: d.error || "Your answers didn't send. Please try again." }) }); return; }
+      done();
+    } catch (e) { this.setState({ prep: Object.assign({}, p, { sending: false, err: "Your answers didn't send. Check your connection and try again." }) }); }
+  };
+  prepVals = (s) => {
+    const p = s.prep || {};
+    let sent = !!p.done;
+    if (!sent && s.ref) { try { sent = sessionStorage.getItem('kx-prep-' + s.ref) === '1'; } catch (e) {} }
+    const setP = (patch) => this.setState(st => ({ prep: Object.assign({}, st.prep, patch, { err: '' }) }));
+    const yn = (on) => on ? { bg: '#2A0A16', fg: '#FFF1F6', border: '#2A0A16' } : { bg: '#fff', fg: '#2A0A16', border: '#EBC6D3' };
+    const Q = [
+      ['damaged', 'Are any of your nails damaged?', 'Which nails, and what happened? (broken, lifting, bitten…)'],
+      ['allergies', 'Do you have any allergies that I should know about?', 'What are you allergic to?'],
+      ['diabetic', 'Are you diabetic?', null]
+    ];
+    return {
+      prepShow: s.page === 'confirmed' && !sent, prepDone: s.page === 'confirmed' && sent,
+      prepQs: Q.map(([k, label, ph]) => {
+        const y = yn(p[k] === 'yes'), n = yn(p[k] === 'no');
+        return {
+          label, ph: ph || '', showNote: !!ph && p[k] === 'yes', note: p[k + 'Note'] || '',
+          onNote: (e) => { const v = e.target.value.slice(0, 300); setP({ [k + 'Note']: v }); },
+          onYes: () => setP({ [k]: 'yes' }), onNo: () => setP({ [k]: 'no' }),
+          yesOn: p[k] === 'yes' ? 'true' : 'false', noOn: p[k] === 'no' ? 'true' : 'false',
+          yesBg: y.bg, yesFg: y.fg, yesBorder: y.border, noBg: n.bg, noFg: n.fg, noBorder: n.border
+        };
+      }),
+      prepHasErr: !!p.err, prepErr: p.err || '', prepSending: !!p.sending,
+      prepBtnLabel: p.sending ? 'Sending…' : 'Send my answers', prepSubmit: this.sendPrep
+    };
+  };
+  // Team members added in the dashboard book like Kymani: same menu, prices and hours
+  kFlow = (artist) => artist !== 'Jharis';
+  fetchTeam = () => {
+    if (!API_BASE) return;
+    fetch(API_BASE + '/artists').then(r => (r.ok ? r.json() : null)).then(d => {
+      if (!d || !Array.isArray(d.artists)) return;
+      const team = d.artists.filter(a => a && a.name && a.name !== 'Kymani' && a.name !== 'Jharis');
+      this.setState({ team });
+      team.forEach(m => fetch(API_BASE + '/menu?artist=' + encodeURIComponent(m.name)).then(r => (r.ok ? r.json() : null))
+        .then(x => { if (x && Array.isArray(x.services) && x.services.length) this.setState(st => ({ menus: Object.assign({}, st.menus, { [m.name]: x.services }) })); }).catch(() => {}));
+    }).catch(() => {});
+  };
   menuOf = (artist) => {
     const live = (this.state.menus || {})[artist];
-    const base = (MENU_FALLBACK[artist] || []).filter(x => x.on).map(x => Object.assign({}, x, { addons: (x.addons || []).filter(a => a.on) }));
+    const base = (MENU_FALLBACK[artist] || (artist !== 'Jharis' ? MENU_FALLBACK.Kymani : []) || []).filter(x => x.on).map(x => Object.assign({}, x, { addons: (x.addons || []).filter(a => a.on) }));
     if (!live) return base;
     // An API that predates descriptions: fill them in from the saved copy and undo the old Tier chain
     const old = live.some(v => v.desc === undefined);
@@ -1762,8 +2094,8 @@ class Component extends DCLogic {
     const now = Date.now();
     if (this._menuReq && !(force && now - this._menuReq > 15000)) return;
     this._menuReq = now;
-    ['Jharis', 'Kymani'].forEach(a => {
-      fetch(API_BASE + '/menu?artist=' + a)
+    ['Jharis', 'Kymani'].concat((this.state.team || []).map(m => m.name)).forEach(a => {
+      fetch(API_BASE + '/menu?artist=' + encodeURIComponent(a))
         .then(r => (r.ok ? r.json() : null))
         .then(d => { if (d && Array.isArray(d.services) && d.services.length) this.setState(st => ({ menus: Object.assign({}, st.menus, { [a]: d.services }) })); })
         .catch(() => {});
@@ -1775,8 +2107,8 @@ class Component extends DCLogic {
     if (s.artist === 'Jharis') return s.setType ? m.filter(x => x.group === s.setType) : [];
     return s.kGen ? m.filter(x => x.group === s.kGen) : [];
   };
-  selSvc = (s) => { const id = s.artist === 'Kymani' ? s.kSvc : s.service; return id ? (this.menuOf(s.artist).find(x => x.id === id) || null) : null; };
-  selAddMap = (s) => (s.artist === 'Kymani' ? s.kAddons : s.addons) || {};
+  selSvc = (s) => { const id = this.kFlow(s.artist) ? s.kSvc : s.service; return id ? (this.menuOf(s.artist).find(x => x.id === id) || null) : null; };
+  selAddMap = (s) => (this.kFlow(s.artist) ? s.kAddons : s.addons) || {};
   addonVisible = (v, a, picked) => {
     let p = a.parent; const seen = new Set();
     while (p) { if (seen.has(p) || !picked[p]) return false; seen.add(p); const q = (v.addons || []).find(x => x.id === p); if (!q) return false; p = q.parent; }
@@ -1784,10 +2116,31 @@ class Component extends DCLogic {
   };
   selAddons = (s) => { const v = this.selSvc(s); if (!v) return []; const m = this.selAddMap(s); return (v.addons || []).filter(a => m[a.id] && this.addonVisible(v, a, m)); };
   needsSize = (s) => { const v = this.selSvc(s); return !!(v && v.sizes && v.sizes.length); };
+  labelOf = (artist, v) => (artist === 'Jharis' && v.group !== 'Manicures' && v.group !== 'Pedicures' ? v.name + ' · ' + this.sideOf(v) : v.name);
   svcLabel = (s) => {
     const v = this.selSvc(s); if (!v) return null;
-    return s.artist === 'Jharis' && v.group !== 'Manicures' && v.group !== 'Pedicures' ? v.name + ' · ' + this.sideOf(v) : v.name;
+    const w = this.x2Svc(s);
+    return this.labelOf(s.artist, v) + (w ? ' + ' + this.labelOf(s.artist, w) : '');
   };
+  // Second service: a pedicure with a hand service, or a hand service with a pedicure
+  isFoot = (v) => /pedi/i.test((v.group || '') + ' ' + (v.name || ''));
+  x2Svc = (s) => {
+    const v = this.selSvc(s); if (!v || !s.x2Svc) return null;
+    const w = this.menuOf(s.artist).find(x => x.id === s.x2Svc);
+    return w && this.isFoot(w) !== this.isFoot(v) ? w : null;
+  };
+  x2SelAddons = (s) => { const w = this.x2Svc(s); if (!w) return []; const m = s.x2Addons || {}; return (w.addons || []).filter(a => m[a.id] && this.addonVisible(w, a, m)); };
+  toggleX2Addon = (id) => this.setState(st => {
+    const cur = Object.assign({}, st.x2Addons || {});
+    if (cur[id]) { delete cur[id]; return { x2Addons: cur }; }
+    const w = this.x2Svc(st), list = (w && w.addons) || [], me = list.find(a => a.id === id), g = me && this.addonGroup(me.name);
+    if (g) list.forEach(a => { if (a.id !== id && this.addonGroup(a.name) === g) delete cur[a.id]; });
+    cur[id] = true;
+    return { x2Addons: cur };
+  });
+  x2SizeMissing = (s) => { const w = this.x2Svc(s); return !!(w && w.sizes && w.sizes.length && s.x2Size == null); };
+  sizeMissing = (s) => (this.needsSize(s) && s.size === null) || this.x2SizeMissing(s);
+  depositOf = (s) => (s && this.x2Svc(s) ? 65 : 40);
   calcTotals = (s) => {
     const v = this.selSvc(s);
     if (!v) return { mins: 0, time: '—', price: '—' };
@@ -1795,15 +2148,23 @@ class Component extends DCLogic {
     const z = v.sizes && v.sizes.length && s.size != null ? v.sizes[s.size] : null;
     if (z) { dollars = +z.price || 0; plus = !!z.plus; }
     this.selAddons(s).forEach(a => { mins += +a.mins || 0; dollars += +a.price || 0; });
+    const w = this.x2Svc(s);
+    if (w) {
+      mins += +w.mins || 0;
+      const z2 = w.sizes && w.sizes.length && s.x2Size != null ? w.sizes[s.x2Size] : null;
+      dollars += z2 ? (+z2.price || 0) : (+w.price || 0);
+      if (z2 ? z2.plus : w.plus) plus = true;
+      this.x2SelAddons(s).forEach(a => { mins += +a.mins || 0; dollars += +a.price || 0; });
+    }
     return { mins, time: this.fmtMins(mins), price: '$' + Math.max(0, dollars) + (plus ? '+' : '') };
   };
-  pickSvc = (id) => this.setState(st => (st.artist === 'Kymani'
-    ? { kSvc: st.kSvc === id ? null : id, kAddons: {}, size: null }
-    : { service: st.service === id ? null : id, addons: {}, size: null }));
+  pickSvc = (id) => this.setState(st => (this.kFlow(st.artist)
+    ? { kSvc: st.kSvc === id ? null : id, kAddons: {}, size: null, x2Svc: null, x2Size: null, x2Gen: null, x2Addons: {} }
+    : { service: st.service === id ? null : id, addons: {}, size: null, x2Svc: null, x2Size: null, x2Gen: null, x2Addons: {} }));
   // Add-ons where only one can be picked per service: art tiers, and the soak-offs
   addonGroup = (name) => /\bTier\s*\d/i.test(name || '') ? 'tier' : /soak[\s-]*off/i.test(name || '') ? 'soak' : null;
   toggleAddon = (id) => this.setState(st => {
-    const key = st.artist === 'Kymani' ? 'kAddons' : 'addons';
+    const key = this.kFlow(st.artist) ? 'kAddons' : 'addons';
     const cur = Object.assign({}, st[key] || {});
     if (cur[id]) { delete cur[id]; return { [key]: cur }; }
     const svc = this.selSvc(st);
@@ -1837,16 +2198,39 @@ class Component extends DCLogic {
       return on && String(a.desc || '').trim() ? [card, { isCard: false, isPanel: true, name: a.name, desc: a.desc }] : [card];
     }) : [];
     const picked = s.artist === 'Jharis' ? !!s.setType : !!s.kGen;
+    const x2 = this.x2Svc(s);
+    const x2Pool = chosen ? this.menuOf(s.artist).filter(x => this.isFoot(x) !== this.isFoot(chosen)) : [];
+    const x2Names = [...new Set(x2Pool.map(x => x.group))];
+    const x2Gen = x2Names.length === 1 ? x2Names[0] : (s.x2Gen || (x2 && x2.group) || null);
     return {
-      menuSections, menuEmpty: picked && !pool.length, svcHint: !picked, svcHintText: s.artist === 'Kymani' ? 'Choose a service above to see the sets.' : 'Choose a category above to see the services.',
-      showSvcStep: true, svcStepLabel: s.artist === 'Kymani' ? '3 · Pick your set' : '3 · Choose a service',
+      x2Show: !!chosen && x2Pool.length > 0,
+      x2Title: chosen && this.isFoot(chosen) ? 'Make it a full glam moment' : 'Treat yourself to a pedicure',
+      x2HasGroups: x2Names.length > 1,
+      x2Groups: x2Names.map(name => Object.assign({ name, onClick: () => this.setState({ x2Gen: name }) }, this.chip(x2Gen === name))),
+      x2Items: x2Gen ? x2Pool.filter(x => x.group === x2Gen).map(v => Object.assign({ name: v.name, time: '+' + this.fmtMins(v.mins), price: fmtP(v),
+        onClick: () => this.setState(st => (st.x2Svc === v.id ? { x2Svc: null, x2Size: null, x2Addons: {} } : { x2Svc: v.id, x2Size: null, x2Gen: v.group, x2Addons: {} })) }, this.chip(!!x2 && x2.id === v.id))) : [],
+      x2HasSizes: !!(x2 && x2.sizes && x2.sizes.length),
+      x2AddonsLabel: x2 ? 'Add-ons for ' + x2.name + ' (optional)' : '',
+      ...(() => {
+        const m2 = s.x2Addons || {};
+        const list = x2 ? (x2.addons || []).filter(a => this.addonVisible(x2, a, m2)).flatMap(a => {
+          const on = !!m2[a.id];
+          const card = Object.assign({ isCard: true, isPanel: false, name: a.name, time: a.mins ? '+' + this.fmtMins(a.mins) : '', price: (+a.price < 0 ? '− $' + Math.abs(+a.price) : '+ $' + (+a.price || 0)), onClick: () => this.toggleX2Addon(a.id) }, this.chip(on));
+          return on && String(a.desc || '').trim() ? [card, { isCard: false, isPanel: true, name: a.name, desc: a.desc }] : [card];
+        }) : [];
+        return { x2HasAddons: list.length > 0, x2AddonItems: list };
+      })(),
+      x2SizeLabel: s.x2Size == null ? 'Choose your length (required)' : 'Length', x2SizeLabelColor: s.x2Size == null ? '#A8425F' : '#865469',
+      x2Sizes: x2 && x2.sizes ? x2.sizes.map((z, i) => Object.assign({ label: z.label, price: '$' + (+z.price || 0) + (z.plus ? '+' : ''), onClick: () => this.setState({ x2Size: i }) }, this.chip(s.x2Size === i))) : [],
+      menuSections, menuEmpty: picked && !pool.length, svcHint: !picked, svcHintText: this.kFlow(s.artist) ? 'Choose a service above to see the sets.' : 'Choose a category above to see the services.',
+      showSvcStep: true, svcStepLabel: this.kFlow(s.artist) ? '3 · Pick your set' : '3 · Choose a service',
       showAddonStep: true, addonHint: !chosen, noAddons: !!chosen && !addonItems.length, addonItems,
-      showGroups: true, groupStepLabel: s.artist === 'Kymani' ? '2 · Choose a service' : '2 · Choose a category',
+      showGroups: true, groupStepLabel: this.kFlow(s.artist) ? '2 · Choose a service' : '2 · Choose a category',
       menuGroups: [...new Set(this.menuOf(s.artist).map(x => x.group))].map(name => {
-        const cur = s.artist === 'Kymani' ? s.kGen : s.setType;
+        const cur = this.kFlow(s.artist) ? s.kGen : s.setType;
         return Object.assign({ name, onClick: () => this.setState(st => {
-          if ((st.artist === 'Kymani' ? st.kGen : st.setType) === name) return null;
-          return st.artist === 'Kymani' ? { kGen: name, kSvc: null, kAddons: {}, size: null } : { setType: name, service: null, addons: {}, size: null };
+          if ((this.kFlow(st.artist) ? st.kGen : st.setType) === name) return null;
+          return this.kFlow(st.artist) ? { kGen: name, kSvc: null, kAddons: {}, size: null, x2Svc: null, x2Size: null, x2Gen: null, x2Addons: {} } : { setType: name, service: null, addons: {}, size: null, x2Svc: null, x2Size: null, x2Gen: null, x2Addons: {} };
         }) }, this.chip(cur === name));
       }),
       hasHoldNote: !!s.holdNote, holdNote: s.holdNote || ''
@@ -1866,7 +2250,7 @@ class Component extends DCLogic {
       const patch = { page: 'book', artist: d.artist, holdId: id, day: d.date, time: d.time, monthOffset: Math.max(0, (y - now.getFullYear()) * 12 + (mo - 1 - now.getMonth())),
         holdNote: 'Hi ' + (d.firstName || 'there') + '! ' + new Date(d.date + 'T00:00:00').toLocaleString('en-US', { weekday: 'long', month: 'long', day: 'numeric' }) + ' at ' + d.time + ' is held for you. Finish below and pay the deposit to lock it in.' };
       const v = this.menuOf(d.artist).find(x => x.id === d.serviceId);
-      if (v) Object.assign(patch, d.artist === 'Kymani' ? { kGen: v.group, kSvc: v.id, kAddons: {} } : { setType: v.group, service: v.id, addons: {} });
+      if (v) Object.assign(patch, this.kFlow(d.artist) ? { kGen: v.group, kSvc: v.id, kAddons: {} } : { setType: v.group, service: v.id, addons: {} });
       this.setState(patch);
     } catch (e) {}
   };
@@ -1913,8 +2297,8 @@ class Component extends DCLogic {
   WIZ = [['artist', 'Artist'], ['group', 'Category'], ['svc', 'Service'], ['addon', 'Add-ons'], ['time', 'Date & time'], ['details', 'Your details']];
   wizDone = (s, k) => {
     if (k === 'artist') return !!s.artist;
-    if (k === 'group') return !!(s.artist === 'Kymani' ? s.kGen : s.setType);
-    if (k === 'svc') return !!this.selSvc(s) && !(this.needsSize(s) && s.size === null);
+    if (k === 'group') return !!(this.kFlow(s.artist) ? s.kGen : s.setType);
+    if (k === 'svc') return !!this.selSvc(s) && !this.sizeMissing(s);
     if (k === 'time') return !!(s.day && s.time);
     return true;
   };
@@ -1944,7 +2328,7 @@ class Component extends DCLogic {
     const d = (k, disp) => (on && k !== key ? 'none' : disp);
     const done = this.wizDone(s, key);
     const hint = done ? '' : key === 'artist' ? 'Choose an artist to continue.'
-      : key === 'group' ? (s.artist === 'Kymani' ? 'Choose a service to continue.' : 'Choose Full set or Refill to continue.')
+      : key === 'group' ? (this.kFlow(s.artist) ? 'Choose a service to continue.' : 'Choose Full set or Refill to continue.')
       : key === 'svc' ? (this.selSvc(s) ? 'Pick a nail length to continue.' : 'Choose a service to continue.')
       : key === 'time' ? (s.day ? 'Pick a time to continue.' : 'Pick a date to continue.') : '';
     return {
@@ -1979,6 +2363,14 @@ class Component extends DCLogic {
   }
 
   renderVals() {
+    const v = this.baseVals();
+    // the pre-visit questions must be answered before leaving the confirmation page
+    if (v.prepShow) Object.assign(v, { navOn: false, footerOn: false, navDesktop: false, navMobile: false, menuShown: false, goHome: (e) => { if (e && e.preventDefault) e.preventDefault(); } });
+    else Object.assign(v, { navOn: true, footerOn: true });
+    return v;
+  }
+
+  baseVals() {
     const s = this.state;
 
     return {
@@ -2011,6 +2403,11 @@ class Component extends DCLogic {
       canHover: typeof window !== 'undefined' && !!window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches,
       isTestimonials: s.page === 'testimonials', isBook: s.page === 'book', isFaq: s.page === 'faq',
       isDeposit: s.page === 'deposit',
+      isLegal: !!LEGAL[s.page],
+      legalTitle: LEGAL[s.page] ? LEGAL[s.page].title : '',
+      legalUpdated: LEGAL_UPDATED,
+      legalIntro: LEGAL[s.page] ? LEGAL[s.page].intro : '',
+      legalSections: LEGAL[s.page] ? LEGAL[s.page].sections.map((x, i) => Object.assign({ id: 's' + (i + 1) }, x)) : [],
       showFooterCta: !['book', 'deposit', 'confirmed'].includes(s.page), isConfirmed: s.page === 'confirmed',
       goDeposit: () => this.requestBooking(),
       bookError: s.bookError || '',
@@ -2020,6 +2417,9 @@ class Component extends DCLogic {
       bookConfirmation: s.ref || 'KX-000000',
       thankYouLine: s.f.first ? 'Thank you, ' + s.f.first + '.' : 'Thank you',
       bookRemainder: this.remainder(s),
+      depositLabel: '$' + this.depositOf(s),
+      ...this.prepVals(s),
+      ...this.inspoVals(s),
       ...['card','exp','cvc','zip','cardName'].reduce((acc, k) => {
         acc['c_' + k] = {
           value: s.card[k] || '',
@@ -2038,6 +2438,8 @@ class Component extends DCLogic {
 
       goHome: this.go('home'), goGallery: this.go('gallery'), goAbout: this.go('about'),
       goTestimonials: this.go('testimonials'), goBook: this.go('book'), goFaq: this.go('faq'),
+      goPrivacy: this.go('privacy'), goTerms: this.go('terms'),
+      goSms: (e) => { this.go('terms')(e); setTimeout(() => { const el = document.getElementById('kx-sms'); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 100, behavior: 'smooth' }); }, 120); },
       goContactSection: this.goContactSection,
       bookKymani: (e) => { if (e && e.preventDefault) e.preventDefault(); this.setState({ page:'book', artist:'Kymani' }); window.scrollTo({ top:0 }); },
       bookJharis: (e) => { if (e && e.preventDefault) e.preventDefault(); this.setState({ page:'book', artist:'Jharis' }); window.scrollTo({ top:0 }); },
@@ -2118,12 +2520,13 @@ class Component extends DCLogic {
       hasPhotos: s.photos.length > 0,
       photos: s.photos.map(p => ({ bg: 'url("' + p.url + '")', onRemove: this.removePhoto(p.id) })),
 
-      bookBlocked: !!s.bookSubmitting || !(s.artist === 'Kymani' ? s.kSvc : s.service) || !s.day || !s.time || !this.detailsComplete(s.f) || (this.needsSize(s) && s.size === null),
-      bookBtnBg: !(s.artist === 'Kymani' ? s.kSvc : s.service) || !s.day || !s.time || !this.detailsComplete(s.f) || (this.needsSize(s) && s.size === null) ? '#D9C3CD' : '#2A0A16',
-      bookBtnFg: !(s.artist === 'Kymani' ? s.kSvc : s.service) || !s.day || !s.time || !this.detailsComplete(s.f) || (this.needsSize(s) && s.size === null) ? '#7A4258' : '#FFF1F6',
-      bookBtnCursor: !(s.artist === 'Kymani' ? s.kSvc : s.service) || !s.day || !s.time || !this.detailsComplete(s.f) || (this.needsSize(s) && s.size === null) ? 'not-allowed' : 'pointer',
-      bookBlockedNote: !(s.artist === 'Kymani' ? s.kSvc : s.service) ? 'Choose a service before requesting your booking.'
+      bookBlocked: !!s.bookSubmitting || !(this.kFlow(s.artist) ? s.kSvc : s.service) || !s.day || !s.time || !this.detailsComplete(s.f) || this.sizeMissing(s),
+      bookBtnBg: !(this.kFlow(s.artist) ? s.kSvc : s.service) || !s.day || !s.time || !this.detailsComplete(s.f) || this.sizeMissing(s) ? '#D9C3CD' : '#2A0A16',
+      bookBtnFg: !(this.kFlow(s.artist) ? s.kSvc : s.service) || !s.day || !s.time || !this.detailsComplete(s.f) || this.sizeMissing(s) ? '#7A4258' : '#FFF1F6',
+      bookBtnCursor: !(this.kFlow(s.artist) ? s.kSvc : s.service) || !s.day || !s.time || !this.detailsComplete(s.f) || this.sizeMissing(s) ? 'not-allowed' : 'pointer',
+      bookBlockedNote: !(this.kFlow(s.artist) ? s.kSvc : s.service) ? 'Choose a service before requesting your booking.'
         : (this.needsSize(s) && s.size === null) ? 'Pick a nail length before requesting your booking.'
+        : this.x2SizeMissing(s) ? 'Pick a length for your second service before requesting your booking.'
         : !s.day ? 'Pick a date before requesting your booking.'
         : !s.time ? 'Pick a time before requesting your booking.'
         : (s.f.email.trim() && !this.emailOk(s.f.email)) ? 'Enter a full email address, like name@gmail.com.'
@@ -2131,7 +2534,7 @@ class Component extends DCLogic {
         : 'Add your name, mobile number, email and agree to the policies.',
       ...this.menuVals(s),
       isJharis: s.artist === 'Jharis',
-      isKymani: s.artist === 'Kymani',
+      isKymani: this.kFlow(s.artist),
       // Nail Fix is refill-only
       setTypeChoices: [
         { name:'Full set', note:'New application on bare or removed nails.' },
@@ -2174,7 +2577,7 @@ class Component extends DCLogic {
       artistChoices: [
         Object.assign({ name:'Kymani', note:'Owner · 6+ years', onClick:() => this.setState(st => ({ artist:'Kymani', day: st.day && new Date(st.day + 'T00:00:00').getDay() === 1 ? null : st.day, time: st.day && new Date(st.day + 'T00:00:00').getDay() === 1 ? null : st.time })) }, this.chip(s.artist === 'Kymani')),
         Object.assign({ name:'Jharis', note:'Master Nail Tech · 10+ years', onClick:() => this.setState(st => ({ artist:'Jharis', monthOffset: 0, day: st.day && (AVAILABILITY.Jharis.daysOff.includes(st.day) || AVAILABILITY.Jharis.fullyBooked.includes(st.day) || st.day > AVAILABILITY.Jharis.openThrough) ? null : st.day })) }, this.chip(s.artist === 'Jharis'))
-      ],
+      ].concat((s.team || []).map(m => Object.assign({ name: m.name, note: 'Nail artist', onClick: () => this.setState({ artist: m.name, monthOffset: 0, day: null, time: null }) }, this.chip(s.artist === m.name)))),
       dayCells: this.buildMonth(s),
       monthLabel: this.monthLabel(s.monthOffset),
       monthPrev: () => this.setState(st => ({ monthOffset: Math.max(0, st.monthOffset - 1) })),
@@ -2205,8 +2608,8 @@ class Component extends DCLogic {
       bookTotalTime: s.totalTime || '—',
       bookTotalPrice: s.totalPrice || '—',
       bookService: this.svcLabel(s) || 'Not selected',
-      bookAddons: (() => { const l = this.selAddons(s).map(a => a.name); return l.length ? l.join(', ') : 'None'; })(),
-      bookSetType: s.artist === 'Kymani' ? '—' : (s.setType || 'Not selected'),
+      bookAddons: (() => { const l = this.selAddons(s).concat(this.x2SelAddons(s)).map(a => a.name); return l.length ? l.join(', ') : 'None'; })(),
+      bookSetType: this.kFlow(s.artist) ? '—' : (s.setType || 'Not selected'),
       bookWhen: (s.day
         ? new Date(s.day + 'T00:00:00').toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })
         : 'Select a day') + ' · ' + (s.time || 'Select a time')
