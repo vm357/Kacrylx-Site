@@ -190,6 +190,29 @@
         </div>
       </div>
 
+      <!-- hours + cta -->
+      <div id="home-contact" style="background:#FFF8FA; padding:clamp(52px,8vw,90px) 0;">
+        <div style="max-width:1280px; margin:0 auto; padding:0 clamp(18px,5vw,40px); display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:clamp(30px,5vw,56px); align-items:center;">
+          <div data-kx-reveal="0" style="display:flex; flex-direction:column; gap:18px;">
+            <h2 style="margin:0; font-family:'Playfair Display',serif; font-size:clamp(36px, 7.5vw, 64px); font-weight:600; line-height:1.02;">Get in touch</h2>
+            <p style="margin:0; font-size:16px; line-height:1.8; color:#5C4450; max-width:460px;">Questions about a set, an add-on or availability? Call, email or send a DM.</p>
+            <div style="display:flex; flex-direction:column; gap:14px; font-size:16px;">
+              <div style="display:flex; flex-direction:column; gap:3px;"><span style="font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:#865469;">Phone</span><a href="tel:6402209270">640-220-9270</a></div>
+              <div style="display:flex; flex-direction:column; gap:3px;"><span style="font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:#865469;">Email</span><a href="mailto:info@kacrylxbeauty.com">info@kacrylxbeauty.com</a></div>
+              <div style="display:flex; flex-direction:column; gap:3px;"><span style="font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:#865469;">Instagram</span><a href="https://instagram.com/kacrylx" target="_blank" rel="noopener noreferrer">@kacrylx</a></div>
+              <div style="display:flex; flex-direction:column; gap:3px;"><span style="font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:#865469;">Facebook</span><a href="https://facebook.com/kacrylx" target="_blank" rel="noopener noreferrer">Kacrylx</a></div>
+              <div style="display:flex; flex-direction:column; gap:3px;"><span style="font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:#865469;">Location</span><span>Edison, NJ 08837 — address shared on booking.</span></div>
+            </div>
+          </div>
+          <div data-kx-reveal="0.14" style="background:#fff; border:1px solid #F1DDE4; border-radius:18px; padding:clamp(22px,4vw,34px); display:flex; flex-direction:column; gap:14px;">
+            <div style="font-family:'Playfair Display',serif; font-size:26px;">Hours</div>
+            <sc-for list="{{ hours }}" as="h" hint-placeholder-count="7">
+              <div style="display:flex; justify-content:space-between; font-size:15px; color:#5C4450; padding-bottom:10px; border-bottom:1px solid #F6E7EC;"><span>{{ h.day }}</span><span>{{ h.time }}</span></div>
+            </sc-for>
+            <a href="#" onClick="{{ goBook }}" style="margin-top:10px; text-align:center; padding:15px 20px; border-radius:999px; background:#E0397B; color:#fff; font-size:14px;" style-hover="background:#C4557A; color:#fff;">Book an Appointment</a>
+          </div>
+        </div>
+      </div>
       <!-- reviews -->
       <div style="background:#F7D9E3; padding:clamp(52px,8vw,90px) 0;">
         <div style="max-width:1280px; margin:0 auto; padding:0 clamp(18px,5vw,40px); display:flex; flex-direction:column; gap:32px;">
@@ -233,120 +256,59 @@
         </div>
       </div>
 
-      <!-- hours + cta -->
-      <div id="home-contact" style="background:#FFF8FA; padding:clamp(52px,8vw,90px) 0;">
-        <div style="max-width:1280px; margin:0 auto; padding:0 clamp(18px,5vw,40px); display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:clamp(30px,5vw,56px); align-items:center;">
-          <div data-kx-reveal="0" style="display:flex; flex-direction:column; gap:18px;">
-            <h2 style="margin:0; font-family:'Playfair Display',serif; font-size:clamp(36px, 7.5vw, 64px); font-weight:600; line-height:1.02;">Get in touch</h2>
-            <p style="margin:0; font-size:16px; line-height:1.8; color:#5C4450; max-width:460px;">Questions about a set, an add-on or availability? Call, email or send a DM.</p>
-            <div style="display:flex; flex-direction:column; gap:14px; font-size:16px;">
-              <div style="display:flex; flex-direction:column; gap:3px;"><span style="font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:#865469;">Phone</span><a href="tel:6402209270">640-220-9270</a></div>
-              <div style="display:flex; flex-direction:column; gap:3px;"><span style="font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:#865469;">Email</span><a href="mailto:nailsbykymani@yahoo.com">nailsbykymani@yahoo.com</a></div>
-              <div style="display:flex; flex-direction:column; gap:3px;"><span style="font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:#865469;">Instagram</span><a href="https://instagram.com/kacrylx" target="_blank" rel="noopener noreferrer">@kacrylx</a></div>
-              <div style="display:flex; flex-direction:column; gap:3px;"><span style="font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:#865469;">Facebook</span><a href="https://facebook.com/kacrylx" target="_blank" rel="noopener noreferrer">Kacrylx</a></div>
-              <div style="display:flex; flex-direction:column; gap:3px;"><span style="font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:#865469;">Location</span><span>Edison, NJ 08837 — address shared on booking.</span></div>
-            </div>
-          </div>
-          <div data-kx-reveal="0.14" style="background:#fff; border:1px solid #F1DDE4; border-radius:18px; padding:clamp(22px,4vw,34px); display:flex; flex-direction:column; gap:14px;">
-            <div style="font-family:'Playfair Display',serif; font-size:26px;">Hours</div>
-            <sc-for list="{{ hours }}" as="h" hint-placeholder-count="7">
-              <div style="display:flex; justify-content:space-between; font-size:15px; color:#5C4450; padding-bottom:10px; border-bottom:1px solid #F6E7EC;"><span>{{ h.day }}</span><span>{{ h.time }}</span></div>
-            </sc-for>
-            <a href="#" onClick="{{ goBook }}" style="margin-top:10px; text-align:center; padding:15px 20px; border-radius:999px; background:#E0397B; color:#fff; font-size:14px;" style-hover="background:#C4557A; color:#fff;">Book an Appointment</a>
-          </div>
-        </div>
-      </div>
     </div>
   </sc-if>
 
   <!-- ================= GALLERY ================= -->
   <sc-if value="{{ isGallery }}" hint-placeholder-val="{{ false }}">
-    <div style="max-width:1280px; margin:0 auto; padding:clamp(32px,6vw,64px) clamp(18px,5vw,40px) clamp(56px,9vw,96px); display:flex; flex-direction:column; gap:40px;">
-      <div style="display:flex; align-items:flex-end; justify-content:space-between; gap:40px; flex-wrap:wrap;">
-        <div data-kx-reveal="0.05" style="display:flex; flex-direction:column; gap:14px; max-width:620px;">
-          <h1 style="margin:0; font-family:'Playfair Display',serif; font-size:clamp(36px, 7.5vw, 64px); font-weight:600; line-height:1.02;">The Gallery</h1>
-          <p style="margin:0; font-size:16px; line-height:1.8; color:#5C4450;">Save what you love and bring it to your appointment — inspo photos are always welcome.</p>
+    <div ref="{{ galRef }}" onPointerDown="{{ galDown }}" style="position:relative; height:{{ galH }}; min-height:520px; background:#160A10; overflow:hidden; touch-action:none; user-select:none; -webkit-user-select:none; cursor:{{ galCursor }};">
+      <div ref="{{ galWrapRef }}" style="position:absolute; left:0; top:0; width:1px; height:1px; transform-origin:0 0; will-change:transform;">
+        <sc-for list="{{ galTiles }}" as="t" hint-placeholder-count="0">
+          <div data-gi="{{ t.i }}" style="position:absolute; left:{{ t.left }}px; top:{{ t.top }}px; width:300px; height:375px; border-radius:6px; overflow:hidden; background:#2A1520; opacity:{{ t.opacity }}; transform:scale({{ t.scale }}); transition:{{ t.transition }}; cursor:pointer;">
+            <img loading="lazy" src="{{ t.src }}" alt="{{ t.alt }}" draggable="false" style="width:100%; height:100%; object-fit:cover; display:block; pointer-events:none; opacity:{{ t.imgOpacity }};">
+          </div>
+        </sc-for>
+      </div>
+      <div style="position:absolute; left:0; right:0; top:0; height:22%; background:linear-gradient(to bottom, rgba(22,10,16,0.94), rgba(22,10,16,0)); pointer-events:none;"></div>
+      <div style="position:absolute; left:clamp(18px,4vw,40px); right:clamp(18px,4vw,40px); top:clamp(18px,3vw,32px); display:flex; align-items:flex-end; justify-content:flex-end; gap:16px 32px; flex-wrap:wrap; pointer-events:none; opacity:{{ galUiOpacity }}; transition:opacity 0.8s ease;">
+        <div data-gctl="1" role="tablist" aria-label="Filter by artist" style="pointer-events:auto; display:flex; gap:4px; padding:4px; border-radius:999px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.14); backdrop-filter:blur(10px);">
+          <sc-for list="{{ galFilters }}" as="f" hint-placeholder-count="3">
+            <button role="tab" aria-selected="{{ f.on }}" onClick="{{ f.onClick }}" style="min-height:40px; padding:0 18px; border:none; border-radius:999px; background:{{ f.bg }}; color:{{ f.fg }}; font-size:13px; cursor:pointer; transition:background 0.3s ease, color 0.3s ease;">{{ f.label }}</button>
+          </sc-for>
         </div>
-        <a href="#" onClick="{{ goBook }}" data-kx-reveal="0.18" style="padding:15px 30px; border-radius:999px; background:#E0397B; color:#fff; font-size:14px;" style-hover="background:#C4557A; color:#fff;">Book this look</a>
       </div>
-      <div data-kx-reveal="0" style="font-size:11px; letter-spacing:0.24em; text-transform:uppercase; color:#865469;">Work done by Kacrylx</div>
-      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:18px;">
-          <div data-kx-reveal="0.06" style="border-radius:14px; overflow:hidden; background:#E6DCE0; height:clamp(420px, calc(560px - 20vw), 470px); transition:transform 0.85s cubic-bezier(0.16,0.84,0.24,1), box-shadow 0.85s cubic-bezier(0.16,0.84,0.24,1); will-change:transform;" style-hover="transform:translateY(-6px) scale(1.008); box-shadow:0 20px 44px rgba(122,66,88,0.15);">
-            <image-slot id="kx-gallery-1" role="img" aria-label="Nail set from the gallery" src="images/kx-gallery-1.webp" shape="rect" placeholder="Photo 1"></image-slot>
-          </div>
-          <div data-kx-reveal="0.15" style="border-radius:14px; overflow:hidden; background:#E6DCE0; height:clamp(420px, calc(560px - 20vw), 470px); transition:transform 0.85s cubic-bezier(0.16,0.84,0.24,1), box-shadow 0.85s cubic-bezier(0.16,0.84,0.24,1); will-change:transform;" style-hover="transform:translateY(-6px) scale(1.008); box-shadow:0 20px 44px rgba(122,66,88,0.15);">
-            <image-slot id="kx-gallery-2" role="img" aria-label="Nail set from the gallery" src="images/kx-gallery-2.webp" shape="rect" placeholder="Photo 2"></image-slot>
-          </div>
-          <div data-kx-reveal="0.24" style="border-radius:14px; overflow:hidden; background:#E6DCE0; height:clamp(420px, calc(560px - 20vw), 470px); transition:transform 0.85s cubic-bezier(0.16,0.84,0.24,1), box-shadow 0.85s cubic-bezier(0.16,0.84,0.24,1); will-change:transform;" style-hover="transform:translateY(-6px) scale(1.008); box-shadow:0 20px 44px rgba(122,66,88,0.15);">
-            <image-slot id="kx-gallery-3" role="img" aria-label="Nail set from the gallery" src="images/kx-gallery-3.webp" shape="rect" placeholder="Photo 3"></image-slot>
-          </div>
-          <div data-kx-reveal="0.33" style="border-radius:14px; overflow:hidden; background:#E6DCE0; height:clamp(420px, calc(560px - 20vw), 470px); transition:transform 0.85s cubic-bezier(0.16,0.84,0.24,1), box-shadow 0.85s cubic-bezier(0.16,0.84,0.24,1); will-change:transform;" style-hover="transform:translateY(-6px) scale(1.008); box-shadow:0 20px 44px rgba(122,66,88,0.15);">
-            <image-slot id="kx-gallery-14" role="img" aria-label="Nail set from the gallery" src="images/kx-gallery-14.webp" shape="rect" placeholder="Photo 14"></image-slot>
-          </div>
-          <div data-kx-reveal="0.1" style="grid-column:1 / -1; display:flex; justify-content:flex-end; padding-top:14px;">
-            <a href="#" onClick="{{ bookKymani }}" style="display:flex; align-items:center; gap:8px; font-size:15px; color:#E0397B; transition:color 0.28s ease, gap 0.28s cubic-bezier(0.22,0.61,0.36,1);" style-hover="color:#C4557A; gap:15px;">
-              <span>Book with Kacrylx</span>
-              <span>→</span>
-            </a>
-          </div>
-          <div data-kx-reveal="0" style="grid-column:1 / -1; padding-top:22px; font-size:11px; letter-spacing:0.24em; text-transform:uppercase; color:#865469;">Work done by Crowncrylix</div>
-          <div data-kx-reveal="0.06" style="border-radius:14px; overflow:hidden; background:#E6DCE0; height:clamp(420px, calc(560px - 20vw), 470px); transition:transform 0.85s cubic-bezier(0.16,0.84,0.24,1), box-shadow 0.85s cubic-bezier(0.16,0.84,0.24,1); will-change:transform;" style-hover="transform:translateY(-6px) scale(1.008); box-shadow:0 20px 44px rgba(122,66,88,0.15);">
-            <image-slot id="kx-gallery-4" role="img" aria-label="Nail set from the gallery" src="images/kx-gallery-4.webp" shape="rect" placeholder="Photo 4"></image-slot>
-          </div>
-          <div data-kx-reveal="0.15" style="border-radius:14px; overflow:hidden; background:#E6DCE0; height:clamp(420px, calc(560px - 20vw), 470px); transition:transform 0.85s cubic-bezier(0.16,0.84,0.24,1), box-shadow 0.85s cubic-bezier(0.16,0.84,0.24,1); will-change:transform;" style-hover="transform:translateY(-6px) scale(1.008); box-shadow:0 20px 44px rgba(122,66,88,0.15);">
-            <image-slot id="kx-gallery-5" role="img" aria-label="Nail set from the gallery" src="images/kx-gallery-5.webp" shape="rect" placeholder="Photo 5"></image-slot>
-          </div>
-          <div data-kx-reveal="0.24" style="border-radius:14px; overflow:hidden; background:#E6DCE0; height:clamp(420px, calc(560px - 20vw), 470px); transition:transform 0.85s cubic-bezier(0.16,0.84,0.24,1), box-shadow 0.85s cubic-bezier(0.16,0.84,0.24,1); will-change:transform;" style-hover="transform:translateY(-6px) scale(1.008); box-shadow:0 20px 44px rgba(122,66,88,0.15);">
-            <image-slot id="kx-gallery-6" role="img" aria-label="Nail set from the gallery" src="images/kx-gallery-6.webp" shape="rect" placeholder="Photo 6"></image-slot>
-          </div>
-          <div data-kx-reveal="0.33" style="border-radius:14px; overflow:hidden; background:#E6DCE0; height:clamp(420px, calc(560px - 20vw), 470px); transition:transform 0.85s cubic-bezier(0.16,0.84,0.24,1), box-shadow 0.85s cubic-bezier(0.16,0.84,0.24,1); will-change:transform;" style-hover="transform:translateY(-6px) scale(1.008); box-shadow:0 20px 44px rgba(122,66,88,0.15);">
-            <image-slot id="kx-gallery-15" role="img" aria-label="Nail set from the gallery" src="images/kx-gallery-15.webp" shape="rect" placeholder="Photo 15"></image-slot>
-          </div>
-          <div data-kx-reveal="0.1" style="grid-column:1 / -1; display:flex; justify-content:flex-end; padding-top:14px;">
-            <a href="#" onClick="{{ bookJharis }}" style="display:flex; align-items:center; gap:8px; font-size:15px; color:#E0397B; transition:color 0.28s ease, gap 0.28s cubic-bezier(0.22,0.61,0.36,1);" style-hover="color:#C4557A; gap:15px;">
-              <span>Book with Crowncrylix</span>
-              <span>→</span>
-            </a>
-          </div>
-          <div data-kx-reveal="0" style="grid-column:1 / -1; padding-top:22px; font-size:11px; letter-spacing:0.24em; text-transform:uppercase; color:#865469;">Work done by Kacrylx</div>
-          <div data-kx-reveal="0.06" style="border-radius:14px; overflow:hidden; background:#E6DCE0; height:clamp(420px, calc(560px - 20vw), 470px); transition:transform 0.85s cubic-bezier(0.16,0.84,0.24,1), box-shadow 0.85s cubic-bezier(0.16,0.84,0.24,1); will-change:transform;" style-hover="transform:translateY(-6px) scale(1.008); box-shadow:0 20px 44px rgba(122,66,88,0.15);">
-            <image-slot id="kx-gallery-7" role="img" aria-label="Nail set from the gallery" src="images/kx-gallery-7.webp" shape="rect" placeholder="Photo 7"></image-slot>
-          </div>
-          <div data-kx-reveal="0.15" style="border-radius:14px; overflow:hidden; background:#E6DCE0; height:clamp(420px, calc(560px - 20vw), 470px); transition:transform 0.85s cubic-bezier(0.16,0.84,0.24,1), box-shadow 0.85s cubic-bezier(0.16,0.84,0.24,1); will-change:transform;" style-hover="transform:translateY(-6px) scale(1.008); box-shadow:0 20px 44px rgba(122,66,88,0.15);">
-            <image-slot id="kx-gallery-8" role="img" aria-label="Nail set from the gallery" src="images/kx-gallery-8.webp" shape="rect" placeholder="Photo 8"></image-slot>
-          </div>
-          <div data-kx-reveal="0.24" style="border-radius:14px; overflow:hidden; background:#E6DCE0; height:clamp(420px, calc(560px - 20vw), 470px); transition:transform 0.85s cubic-bezier(0.16,0.84,0.24,1), box-shadow 0.85s cubic-bezier(0.16,0.84,0.24,1); will-change:transform;" style-hover="transform:translateY(-6px) scale(1.008); box-shadow:0 20px 44px rgba(122,66,88,0.15);">
-            <image-slot id="kx-gallery-9" role="img" aria-label="Nail set from the gallery" src="images/kx-gallery-9.webp" shape="rect" placeholder="Photo 9"></image-slot>
-          </div>
-          <div data-kx-reveal="0.33" style="border-radius:14px; overflow:hidden; background:#E6DCE0; height:clamp(420px, calc(560px - 20vw), 470px); transition:transform 0.85s cubic-bezier(0.16,0.84,0.24,1), box-shadow 0.85s cubic-bezier(0.16,0.84,0.24,1); will-change:transform;" style-hover="transform:translateY(-6px) scale(1.008); box-shadow:0 20px 44px rgba(122,66,88,0.15);">
-            <image-slot id="kx-gallery-16" role="img" aria-label="Nail set from the gallery" src="images/kx-gallery-16.webp" shape="rect" placeholder="Photo 16"></image-slot>
-          </div>
-          <div data-kx-reveal="0.1" style="grid-column:1 / -1; display:flex; justify-content:flex-end; padding-top:14px;">
-            <a href="#" onClick="{{ bookKymani }}" style="display:flex; align-items:center; gap:8px; font-size:15px; color:#E0397B; transition:color 0.28s ease, gap 0.28s cubic-bezier(0.22,0.61,0.36,1);" style-hover="color:#C4557A; gap:15px;">
-              <span>Book with Kacrylx</span>
-              <span>→</span>
-            </a>
-          </div>
-          <div data-kx-reveal="0" style="grid-column:1 / -1; padding-top:22px; font-size:11px; letter-spacing:0.24em; text-transform:uppercase; color:#865469;">Work done by Crowncrylix</div>
-          <div data-kx-reveal="0.06" style="border-radius:14px; overflow:hidden; background:#E6DCE0; height:clamp(420px, calc(560px - 20vw), 470px); transition:transform 0.85s cubic-bezier(0.16,0.84,0.24,1), box-shadow 0.85s cubic-bezier(0.16,0.84,0.24,1); will-change:transform;" style-hover="transform:translateY(-6px) scale(1.008); box-shadow:0 20px 44px rgba(122,66,88,0.15);">
-            <image-slot id="kx-gallery-10" role="img" aria-label="Nail set from the gallery" src="images/kx-gallery-10.webp" shape="rect" placeholder="Photo 10"></image-slot>
-          </div>
-          <div data-kx-reveal="0.15" style="border-radius:14px; overflow:hidden; background:#E6DCE0; height:clamp(420px, calc(560px - 20vw), 470px); transition:transform 0.85s cubic-bezier(0.16,0.84,0.24,1), box-shadow 0.85s cubic-bezier(0.16,0.84,0.24,1); will-change:transform;" style-hover="transform:translateY(-6px) scale(1.008); box-shadow:0 20px 44px rgba(122,66,88,0.15);">
-            <image-slot id="kx-gallery-11" role="img" aria-label="Nail set from the gallery" src="images/kx-gallery-11.webp" shape="rect" placeholder="Photo 11"></image-slot>
-          </div>
-          <div data-kx-reveal="0.24" style="border-radius:14px; overflow:hidden; background:#E6DCE0; height:clamp(420px, calc(560px - 20vw), 470px); transition:transform 0.85s cubic-bezier(0.16,0.84,0.24,1), box-shadow 0.85s cubic-bezier(0.16,0.84,0.24,1); will-change:transform;" style-hover="transform:translateY(-6px) scale(1.008); box-shadow:0 20px 44px rgba(122,66,88,0.15);">
-            <image-slot id="kx-gallery-12" role="img" aria-label="Nail set from the gallery" src="images/kx-gallery-12.webp" shape="rect" placeholder="Photo 12"></image-slot>
-          </div>
-          <div data-kx-reveal="0.33" style="border-radius:14px; overflow:hidden; background:#E6DCE0; height:clamp(420px, calc(560px - 20vw), 470px); transition:transform 0.85s cubic-bezier(0.16,0.84,0.24,1), box-shadow 0.85s cubic-bezier(0.16,0.84,0.24,1); will-change:transform;" style-hover="transform:translateY(-6px) scale(1.008); box-shadow:0 20px 44px rgba(122,66,88,0.15);">
-            <image-slot id="kx-gallery-13" role="img" aria-label="Nail set from the gallery" src="images/kx-gallery-13.webp" shape="rect" placeholder="Photo 13"></image-slot>
-          </div>
-          <div data-kx-reveal="0.1" style="grid-column:1 / -1; display:flex; justify-content:flex-end; padding-top:14px;">
-            <a href="#" onClick="{{ bookJharis }}" style="display:flex; align-items:center; gap:8px; font-size:15px; color:#E0397B; transition:color 0.28s ease, gap 0.28s cubic-bezier(0.22,0.61,0.36,1);" style-hover="color:#C4557A; gap:15px;">
-              <span>Book with Crowncrylix</span>
-              <span>→</span>
-            </a>
-          </div>
+      <div data-gctl="1" style="position:absolute; left:50%; bottom:clamp(14px,2.5vw,24px); transform:translateX(-50%); display:flex; align-items:stretch; gap:6px; max-width:calc(100% - 20px); opacity:{{ galUiOpacity }}; transition:opacity 0.8s ease;">
+        <div style="display:flex; align-items:center; justify-content:center; min-width:56px; padding:0 12px; border-radius:8px; background:#FFF8FA; color:#5E0E2C; font-size:12px; letter-spacing:0.1em; font-variant-numeric:tabular-nums;">{{ galPct }}</div>
+        <div style="display:flex; gap:2px; padding:4px; border-radius:8px; background:rgba(42,16,28,0.9); border:1px solid rgba(255,255,255,0.12); backdrop-filter:blur(10px);">
+          <sc-for list="{{ galZooms }}" as="z" hint-placeholder-count="4">
+            <button onClick="{{ z.onClick }}" aria-pressed="{{ z.on }}" style="min-height:40px; padding:0 12px; border:none; border-radius:6px; background:transparent; color:{{ z.fg }}; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; white-space:nowrap; cursor:pointer; display:flex; align-items:center; gap:7px; transition:color 0.3s ease;">
+              <span style="width:5px; height:5px; border-radius:50%; background:{{ z.dot }}; transition:background 0.3s ease;"></span>
+              <span>{{ z.label }}</span>
+            </button>
+          </sc-for>
+        </div>
       </div>
+      <sc-if value="{{ galHasSel }}" hint-placeholder-val="{{ false }}">
+        <div onClick="{{ galClose }}" style="position:absolute; inset:0; z-index:2; background:rgba(22,10,16,0.78); backdrop-filter:blur(6px); opacity:{{ galScrim }}; transition:opacity 0.8s ease;"></div>
+        <img loading="lazy" src="{{ galFly.src }}" alt="{{ galFly.alt }}" style="position:absolute; z-index:3; left:{{ galFly.left }}px; top:{{ galFly.top }}px; width:{{ galFly.w }}px; height:{{ galFly.h }}px; object-fit:cover; border-radius:{{ galFly.r }}px; transition:{{ galFly.tr }}; pointer-events:none;">
+        <div data-gctl="1" style="position:absolute; z-index:4; left:{{ galPanel.left }}; top:{{ galPanel.top }}; right:0; bottom:0; display:flex; flex-direction:column; justify-content:{{ galPanel.justify }}; gap:14px; padding:{{ galPanel.pad }}; box-sizing:border-box; pointer-events:{{ galPanel.pe }}; overflow-y:{{ galPanel.ov }}; overscroll-behavior:contain; touch-action:pan-y;">
+          <span style="font-size:12px; letter-spacing:0.24em; text-transform:uppercase; color:#F2A7C3; opacity:{{ galTxtO }}; transform:translateY({{ galTxtY }}px); transition:{{ galTx1 }};">{{ galCur.num }} · {{ galCur.label }}</span>
+          <h2 style="margin:0; font-family:'Playfair Display',serif; font-size:{{ galPanel.titleSize }}; font-weight:600; line-height:1.04; color:#FFFFFF; opacity:{{ galTxtO }}; transform:translateY({{ galTxtY }}px); transition:{{ galTx2 }};">{{ galCur.t }}</h2>
+          <p style="margin:0; max-width:440px; font-size:16px; line-height:1.7; color:#EBD3DD; text-wrap:pretty; opacity:{{ galTxtO }}; transform:translateY({{ galTxtY }}px); transition:{{ galTx3 }};">{{ galCur.d }}</p>
+          <div style="display:flex; gap:10px; flex-wrap:wrap; padding-top:6px; pointer-events:auto; opacity:{{ galTxtO }}; transform:translateY({{ galTxtY }}px); transition:{{ galTx4 }};">
+            <a href="#" onClick="{{ galCur.book }}" style="display:flex; align-items:center; min-height:46px; padding:0 24px; border-radius:999px; background:#E0397B; color:#FFFFFF; font-size:14px; font-weight:400;" style-hover="background:#C4557A; color:#FFFFFF;">Book with {{ galCur.label }}</a>
+            <button onClick="{{ galClose }}" style="display:flex; align-items:center; gap:8px; min-height:46px; padding:0 20px; border-radius:999px; border:1px solid rgba(255,255,255,0.3); background:transparent; color:#FFFFFF; font-size:14px; cursor:pointer;" style-hover="background:rgba(255,255,255,0.1);">
+              <span aria-hidden="true">←</span>
+              <span>Back to gallery</span>
+            </button>
+          </div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ galLoading }}" hint-placeholder-val="{{ true }}">
+        <div style="position:absolute; inset:0; z-index:5; display:flex; align-items:center; justify-content:center; background:#160A10; opacity:{{ galLoadO }}; transition:opacity 0.7s ease; pointer-events:none;">
+          <canvas ref="{{ galCanvasRef }}" width="300" height="300" style="width:180px; height:180px;"></canvas>
+        </div>
+      </sc-if>
     </div>
   </sc-if>
 
@@ -366,7 +328,7 @@
           </div>
         </div>
         <div data-kx-reveal="0.12" style="display:flex; flex-direction:column; gap:20px;">
-          <div style="font-size:11px; letter-spacing:0.26em; text-transform:uppercase; color:#865469;">About</div>
+          <sc-if value="{{ showAboutEyebrow }}" hint-placeholder-val="{{ false }}"><div style="font-size:11px; letter-spacing:0.26em; text-transform:uppercase; color:#865469;">About</div></sc-if>
           <h1 style="margin:0; font-family:'Playfair Display',serif; font-size:clamp(34px, 7vw, 60px); font-weight:600; line-height:1.02;">A small studio with a big standard</h1>
           <p style="margin:0; font-size:16px; line-height:1.85; color:#5C4450;">Kacrylx is owned by <strong>Kymani</strong>, a nail artist who built the studio around the experience she wanted as a client: a clean space, unhurried appointments and work that holds up.</p>
           <p style="margin:0; font-size:16px; line-height:1.85; color:#5C4450;">Two artists work here. Between them they cover everything from a simple gel manicure to detailed art, line work and bling sets — plus men's manicures and pedicures.</p>
@@ -422,6 +384,15 @@
               <span style="font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:#A2617C;">{{ r.artistLabel }}</span>
             </div>
             <p style="margin:0; font-size:16px; line-height:1.75; color:#3E2430;">{{ r.text }}</p>
+            <sc-if value="{{ r.hasPhotos }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex; flex-wrap:wrap; gap:8px;">
+                <sc-for list="{{ r.photoList }}" as="rp" hint-placeholder-count="0">
+                  <a href="{{ rp.url }}" target="_blank" rel="noopener" style="display:block; width:84px; height:84px; border-radius:10px; overflow:hidden; background:#F7E6EC;">
+                    <img loading="lazy" src="{{ rp.url }}" alt="{{ rp.alt }}" style="width:100%; height:100%; object-fit:cover; display:block;">
+                  </a>
+                </sc-for>
+              </div>
+            </sc-if>
             <div style="padding-top:8px; border-top:1px solid #F6E7EC; font-size:14px;">{{ r.name }}</div>
           </div>
         </sc-for>
@@ -452,8 +423,8 @@
         <div style="display:flex; flex-direction:column; gap:12px;">
           <label style="display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; padding:26px; border-radius:12px; border:1px dashed #C4557A; background:#fff; cursor:pointer; text-align:center;" style-hover="background:#FFF3F8;">
             <span style="font-size:15px; color:#2A0A16;">Add photos of your nails <span style="color:#7A4258;">(optional)</span></span>
-            <span style="font-size:13px; color:#7A4258;">JPG or PNG, up to 5 MB each</span>
-            <input type="file" accept="image/*" multiple="{{ true }}" onChange="{{ onPhotos }}" style="display:none;">
+            <span style="font-size:13px; color:#7A4258;">Up to 3 photos</span>
+            <input type="file" accept="image/*" multiple="{{ true }}" disabled="{{ photosFull }}" onChange="{{ onPhotos }}" style="display:none;">
           </label>
           <sc-if value="{{ hasPhotos }}" hint-placeholder-val="{{ false }}">
             <div style="display:flex; flex-wrap:wrap; gap:12px;">
@@ -473,12 +444,16 @@
 <sc-if value="{{ revArtistMissing }}" hint-placeholder-val="{{ false }}">
 <p style="margin:-8px 0 0; font-size:12px; line-height:1.6; color:#B0184E;">Choose Kymani or Jharis to submit a review.</p>
         </sc-if>
-        <button disabled="{{ revBlocked }}" onClick="{{ submitReview }}" style="align-self:flex-start; padding:15px 40px; border-radius:999px; background:#2A0A16; color:#FFF1F6; border:none; font-family:'Poppins',sans-serif; font-size:14px; cursor:{{ revCursor }}; opacity:{{ revOpacity }}; transition:background 0.35s ease, transform 0.55s cubic-bezier(0.16,0.84,0.24,1), box-shadow 0.55s cubic-bezier(0.16,0.84,0.24,1);" style-hover="background:#4A1E30; transform:translateY(-3px); box-shadow:0 16px 32px rgba(42,10,22,0.28);">Submit Review</button>
+        <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" value="{{ revHp }}" onChange="{{ onRevHp }}" style="position:absolute; left:-9999px; width:1px; height:1px; opacity:0;">
+        <sc-if value="{{ revHasErr }}" hint-placeholder-val="{{ false }}">
+          <p role="alert" style="margin:-8px 0 0; font-size:13px; line-height:1.6; color:#B0184E;">{{ revErr }}</p>
+        </sc-if>
+        <button disabled="{{ revBlocked }}" onClick="{{ submitReview }}" style="align-self:flex-start; padding:15px 40px; border-radius:999px; background:#2A0A16; color:#FFF1F6; border:none; font-family:'Poppins',sans-serif; font-size:14px; cursor:{{ revCursor }}; opacity:{{ revOpacity }}; transition:background 0.35s ease, transform 0.55s cubic-bezier(0.16,0.84,0.24,1), box-shadow 0.55s cubic-bezier(0.16,0.84,0.24,1);" style-hover="background:#4A1E30; transform:translateY(-3px); box-shadow:0 16px 32px rgba(42,10,22,0.28);">{{ revSendLabel }}</button>
 </sc-if>
 <sc-if value="{{ revSent }}" hint-placeholder-val="{{ false }}">
 <div style="display:flex; flex-direction:column; align-items:flex-start; gap:14px;">
 <h2 style="margin:0; font-family:'Playfair Display',serif; font-size:clamp(25px, 4.2vw, 34px); font-weight:600;">Thank you, {{ revSentName }}.</h2>
-<p style="margin:0; font-size:15px; line-height:1.7; color:#4A2331; max-width:56ch;">Your review has been added to the top of the page. We appreciate you taking the time to share it.</p>
+<p style="margin:0; font-size:15px; line-height:1.7; color:#4A2331; max-width:56ch;">{{ revSentMsg }}</p>
 <button onClick="{{ revWriteAnother }}" style="padding:13px 28px; border-radius:999px; background:#fff; color:#3D0A1D; border:1px solid #EBC6D3; font-family:'Poppins',sans-serif; font-size:14px; cursor:pointer;">Write another review</button>
 </div>
 </sc-if>
@@ -801,7 +776,7 @@
             <div style="display:flex; flex-wrap:wrap; gap:10px;">
               <sc-for list="{{ inspoPics }}" as="p" hint-placeholder-count="0">
                 <div style="position:relative; width:96px; height:96px; border-radius:12px; overflow:hidden; border:1px solid #F1DDE4; background:#FFF8FA;">
-                  <img src="{{ p.url }}" alt="{{ p.alt }}" style="width:100%; height:100%; object-fit:cover; display:block;">
+                  <img loading="lazy" src="{{ p.url }}" alt="{{ p.alt }}" style="width:100%; height:100%; object-fit:cover; display:block;">
                   <button onClick="{{ p.remove }}" aria-label="{{ p.removeAria }}" style="position:absolute; top:4px; right:4px; width:28px; height:28px; border-radius:999px; border:none; background:rgba(42,10,22,0.78); color:#FFF1F6; font-size:16px; line-height:1; cursor:pointer;">×</button>
                 </div>
               </sc-for>
@@ -977,19 +952,56 @@
       <div style="display:flex; flex-direction:column; gap:14px;">
         <h1 style="margin:0; font-family:'Playfair Display',serif; font-size:clamp(36px, 7.5vw, 60px); font-weight:600; line-height:1.04;">{{ legalTitle }}</h1>
         <span style="font-size:12px; letter-spacing:0.16em; text-transform:uppercase; color:#7A4258;">Last updated {{ legalUpdated }}</span>
-        <p style="margin:0; font-size:16px; line-height:1.8; color:#5C4450; text-wrap:pretty;">{{ legalIntro }}</p>
+        <sc-if value="{{ legalHasIntro }}" hint-placeholder-val="{{ true }}">
+          <p style="margin:0; font-size:16px; line-height:1.8; color:#5C4450; text-wrap:pretty;">{{ legalIntro }}</p>
+        </sc-if>
       </div>
+      <sc-if value="{{ legalHasToc }}" hint-placeholder-val="{{ false }}">
+        <nav aria-label="Table of contents" style="background:#FFF3F7; border:1px solid #F1DDE4; border-radius:16px; padding:clamp(18px,4vw,28px); display:flex; flex-direction:column; gap:12px;">
+          <span style="font-size:12px; letter-spacing:0.16em; text-transform:uppercase; color:#7A4258;">Contents</span>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr)); gap:2px 24px;">
+            <sc-for list="{{ legalToc }}" as="tc" hint-placeholder-count="0">
+              <a href="{{ tc.href }}" onClick="{{ tc.onClick }}" style="display:block; padding:6px 0; font-size:14px; line-height:1.5; color:#B0184E;" style-hover="color:#E0397B;">{{ tc.h }}</a>
+            </sc-for>
+          </div>
+        </nav>
+      </sc-if>
       <div style="display:flex; flex-direction:column; gap:30px;">
         <sc-for list="{{ legalSections }}" as="sec" hint-placeholder-count="5">
-          <section id="kx-{{ sec.id }}" style="display:flex; flex-direction:column; gap:10px; padding-top:24px; border-top:1px solid #F1DDE4;">
-            <h2 style="margin:0; font-family:'Playfair Display',serif; font-size:24px; font-weight:600; line-height:1.25;">{{ sec.h }}</h2>
-            <sc-for list="{{ sec.body }}" as="para" hint-placeholder-count="1">
-              <p style="margin:0; font-size:15px; line-height:1.8; color:#5C4450; text-wrap:pretty;">{{ para }}</p>
+          <section id="kx-{{ sec.id }}" style="display:flex; flex-direction:column; gap:10px; padding-top:{{ sec.padTop }}; border-top:{{ sec.border }};">
+            <sc-if value="{{ sec.hasH }}" hint-placeholder-val="{{ true }}">
+              <h2 style="margin:0; font-family:'Playfair Display',serif; font-size:24px; font-weight:600; line-height:1.25;">{{ sec.h }}</h2>
+            </sc-if>
+            <sc-for list="{{ sec.blocks }}" as="b" hint-placeholder-count="1">
+              <sc-if value="{{ b.isH3 }}" hint-placeholder-val="{{ false }}">
+                <h3 style="margin:10px 0 0; font-size:16px; font-weight:600; line-height:1.4; color:#2A0A16;">{{ b.x }}</h3>
+              </sc-if>
+              <sc-if value="{{ b.isP }}" hint-placeholder-val="{{ true }}">
+                <p style="margin:0; font-size:15px; line-height:1.8; color:#5C4450; text-wrap:pretty; overflow-wrap:anywhere;"><sc-if value="{{ b.hasLead }}" hint-placeholder-val="{{ false }}"><strong style="font-weight:600; color:#2A0A16;">{{ b.lead }} </strong></sc-if>{{ b.x }}</p>
+              </sc-if>
+              <sc-if value="{{ b.isTable }}" hint-placeholder-val="{{ false }}">
+                <div style="border:1px solid #F1DDE4; border-radius:14px; overflow:hidden; background:#FFFFFF;">
+                  <sc-for list="{{ b.rows }}" as="tr" hint-placeholder-count="0">
+                    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr)); gap:4px 18px; padding:14px 16px; border-top:{{ tr.border }};">
+                      <span style="font-size:14px; font-weight:600; line-height:1.5; color:#2A0A16;">{{ tr.cat }}</span>
+                      <span style="font-size:14px; line-height:1.6; color:#5C4450; grid-column:span 1;">{{ tr.ex }}</span>
+                      <span style="font-size:13px; letter-spacing:0.08em; color:{{ tr.color }};">Collected: {{ tr.yes }}</span>
+                    </div>
+                  </sc-for>
+                </div>
+              </sc-if>
+              <sc-if value="{{ b.isUl }}" hint-placeholder-val="{{ false }}">
+                <ul style="margin:0; padding-left:22px; display:flex; flex-direction:column; gap:8px;">
+                  <sc-for list="{{ b.items }}" as="li" hint-placeholder-count="0">
+                    <li style="font-size:15px; line-height:1.75; color:#5C4450; text-wrap:pretty;">{{ li }}</li>
+                  </sc-for>
+                </ul>
+              </sc-if>
             </sc-for>
           </section>
         </sc-for>
       </div>
-      <p style="margin:0; font-size:14px; line-height:1.8; color:#5C4450;">Questions? Email <a href="mailto:nailsbykymani@yahoo.com" style="color:#B0184E;">nailsbykymani@yahoo.com</a> or text <a href="tel:6402209270" style="color:#B0184E;">640-220-9270</a>.</p>
+      <p style="margin:0; font-size:14px; line-height:1.8; color:#5C4450;">Questions? Email <a href="mailto:info@kacrylxbeauty.com" style="color:#B0184E;">info@kacrylxbeauty.com</a> or text <a href="tel:6402209270" style="color:#B0184E;">640-220-9270</a>.</p>
     </div>
   </sc-if>
 
@@ -1100,20 +1112,18 @@
       <div style="display:flex; flex-direction:column; gap:12px; font-size:14px;">
         <span style="font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:#A87289;">Studio</span>
         <a href="tel:6402209270" style="color:#FFE9F1; display:inline-block; align-self:flex-start; padding:6px 0; border-bottom:1px solid transparent; transition:color 0.28s ease, border-color 0.28s ease, transform 0.28s cubic-bezier(0.22,0.61,0.36,1);" style-hover="color:#FF8FBE; border-color:#FF8FBE; transform:translateY(-2px);">640-220-9270</a>
-        <a href="mailto:nailsbykymani@yahoo.com" style="color:#FFE9F1; display:inline-block; align-self:flex-start; padding:6px 0; border-bottom:1px solid transparent; transition:color 0.28s ease, border-color 0.28s ease, transform 0.28s cubic-bezier(0.22,0.61,0.36,1);" style-hover="color:#FF8FBE; border-color:#FF8FBE; transform:translateY(-2px);">nailsbykymani@yahoo.com</a>
+        <a href="mailto:info@kacrylxbeauty.com" style="color:#FFE9F1; display:inline-block; align-self:flex-start; padding:6px 0; border-bottom:1px solid transparent; transition:color 0.28s ease, border-color 0.28s ease, transform 0.28s cubic-bezier(0.22,0.61,0.36,1);" style-hover="color:#FF8FBE; border-color:#FF8FBE; transform:translateY(-2px);">info@kacrylxbeauty.com</a>
         <span style="color:#E4BCCC;">Based in NJ</span>
       </div>
     </div>
     <div style="max-width:1280px; margin:0 auto; padding:0 clamp(18px,5vw,40px) 44px;">
       <div style="border-top:1px solid #4A1E30; padding-top:22px; display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; font-size:12px; color:#A87289;">
         <span>© 2026 Kacrylx. All rights reserved.</span>
-        <!-- Legal links hidden until the pages are ready -->
-<sc-if value="{{ false }}" hint-placeholder-val="{{ false }}"><nav aria-label="Legal" style="display:flex; flex-wrap:wrap; gap:4px 20px; align-items:center;">
+        <nav aria-label="Legal" style="display:flex; flex-wrap:wrap; gap:4px 20px; align-items:center;">
           <a href="Privacy.dc.html" onClick="{{ goPrivacy }}" style="color:#A87289; display:inline-block; padding:6px 0;" style-hover="color:#FF8FBE;">Privacy Policy</a>
           <a href="Terms.dc.html" onClick="{{ goTerms }}" style="color:#A87289; display:inline-block; padding:6px 0;" style-hover="color:#FF8FBE;">Terms of Service</a>
-          <a href="Terms.dc.html#sms" onClick="{{ goSms }}" style="color:#A87289; display:inline-block; padding:6px 0;" style-hover="color:#FF8FBE;">SMS Terms</a>
           <a href="#" onClick="{{ goFaq }}" style="color:#A87289; display:inline-block; padding:6px 0;" style-hover="color:#FF8FBE;">Booking Policies</a>
-        </nav></sc-if>
+        </nav>
         <span>Crafted by <a href="https://kermitwebcraft.com" target="_blank" rel="noopener noreferrer" style="color:#FF8FBE; text-decoration:none; display:inline-block; padding-bottom:2px; background:linear-gradient(#FFC7DD, #FFC7DD) left bottom / 0% 1px no-repeat; transition:background-size 0.45s cubic-bezier(0.22,1,0.36,1), color 0.3s ease, transform 0.3s ease;" style-hover="background-size:100% 1px; color:#FFC7DD; transform:translateY(-1px);">Kermit Webcraft</a></span>
       </div>
     </div>
@@ -1127,6 +1137,54 @@
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:1000},&quot;page&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;home&quot;,&quot;gallery&quot;,&quot;about&quot;,&quot;testimonials&quot;,&quot;faq&quot;,&quot;book&quot;],&quot;default&quot;:&quot;home&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
 
 // services whose panel offers nail-length options — a length must be picked to book
+
+const GAL = [
+  { n:1, a:'Kymani', t:'Candy Shop', d:'A mismatched set with smiley faces, polka dots, checkerboard and a bright neon fade. No two nails alike.' },
+  { n:2, a:'Kymani', t:'Strawberry Picnic', d:'Soft pink with hand-painted strawberries, red gingham and lace detail on long almond nails.' },
+  { n:3, a:'Kymani', t:'Hibiscus Heat', d:'Turquoise and orange with hibiscus flowers and gold outlines. Pure vacation energy.' },
+  { n:14, a:'Kymani', t:'Merlot Swirl', d:'Short and sweet, with deep red swirls over a sheer nude base.' },
+  { n:7, a:'Kymani', t:'Garden Party', d:'Mix-and-match florals, polka dots and chrome accents in green, black and cream.' },
+  { n:8, a:'Kymani', t:'Pastel Sugar', d:'Long square nails in a pastel ombré, finished with gems and 3D charms.' },
+  { n:9, a:'Kymani', t:'Pink Chrome Stiletto', d:'Sheer pink stilettos with gold chrome outlines and a lime French tip.' },
+  { n:16, a:'Kymani', t:'Butterfly Kisses', d:'Pink butterflies over a nude base, with fine black linework.' },
+  { n:4, a:'Jharis', t:'Emerald Chrome', d:'Deep emerald almonds framed in gold chrome, with a nude base peeking through.' },
+  { n:5, a:'Jharis', t:'Ice & Glitter', d:'Pink glitter, aqua fades and a white 3D flower on a bold flared shape.' },
+  { n:6, a:'Jharis', t:'Mint Edge', d:'Mint French tips with silver chrome detail on a long almond shape.' },
+  { n:15, a:'Jharis', t:'Sunset Pop', d:'Short square nails with blue and orange airbrushed fades.' },
+  { n:10, a:'Jharis', t:'Crown Jewels', d:'Milky white long squares stacked with chrome and colored gemstones.' },
+  { n:11, a:'Jharis', t:'Jelly Garden', d:'Green jelly, tortoiseshell and hand-painted leaves across almond nails.' },
+  { n:12, a:'Jharis', t:'Blue Chrome', d:'Short nails with cobalt chrome bands and a clean sheer base.' },
+  { n:13, a:'Jharis', t:'Neon Carnival', d:'Hot pink, orange and blue stripes and swirls. Loud in the best way.' }
+].map(g => ({ ...g, src: 'images/kx-gallery-' + g.n + '.webp', label: g.a }));
+const galShuffle = (arr) => { const a = arr.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+const galAll = (src) => { const by = {}; src.forEach(g => { (by[g.a] = by[g.a] || []).push(g); }); const names = Object.keys(by).sort((p, q) => (p === 'Kymani' ? -1 : q === 'Kymani' ? 1 : p.localeCompare(q))), out = []; for (let i = 0; i < 24; i++) names.forEach(nm => { if (by[nm][i]) out.push(by[nm][i]); }); return out; };
+const galMix = (src) => { const by = {}; src.forEach(g => { (by[g.a] = by[g.a] || []).push(g); }); const names = galShuffle(Object.keys(by)), lists = names.map(nm => galShuffle(by[nm])), out = []; for (let i = 0; i < 24; i++) lists.forEach(l => { if (l[i]) out.push(l[i]); }); return out; };
+const GAL_TW = 300, GAL_TH = 375, GAL_COLS = 8, GAL_ROWS = 6, GAL_EASE = 'cubic-bezier(.87,0,.13,1)';
+// Spread the photos over the wall: every photo gets an equal share of tiles, placed randomly, then tiles are swapped
+// until copies of the same photo sit as far apart as possible and same-artist photos rarely touch.
+const galLayout = (list) => {
+  const n = list.length, C = GAL_COLS, Rw = GAL_ROWS, T = C * Rw;
+  const at = galShuffle(Array.from({ length: T }, (_, t) => t % n));
+  const pos = (t) => [t % C, Math.floor(t / C)];
+  const d2 = (p, q) => { const [a, b] = pos(p), [c, e] = pos(q); return (a - c) * (a - c) + (b - e) * (b - e) * 1.56; };
+  // cost of tile t holding image i: closeness to its other copies, plus same-artist neighbours
+  const cost = (t, i) => {
+    let c = 0;
+    for (let u = 0; u < T; u++) if (u !== t && at[u] === i) c += 100 / d2(t, u) ** 2;
+    const [x, y] = pos(t);
+    [[x - 1, y], [x + 1, y], [x, y - 1], [x, y + 1]].forEach(([p, q]) => { if (p >= 0 && p < C && q >= 0 && q < Rw) { const k = at[q * C + p]; if (k !== i && list[k].a === list[i].a) c += 1; } });
+    return c;
+  };
+  for (let it = 0; it < 4000; it++) {
+    const p = Math.floor(Math.random() * T), q = Math.floor(Math.random() * T), i = at[p], j = at[q];
+    if (i === j) continue;
+    const before = cost(p, i) + cost(q, j);
+    at[p] = j; at[q] = i;
+    if (cost(p, j) + cost(q, i) > before) { at[p] = i; at[q] = j; }
+  }
+  return at;
+};
+const galGapFor = (z) => z >= 1 ? 16 : z >= 0.6 ? 32 : 64;
 
 const SERVICES = ['Basic Gel Manicure','Gel Manicure','Overlays','Short Nails','Basic French','Artsy French','Plain Jane','Ombre','Regular Art Sets','Detailed Art Sets','Line Work','Artist Choice Freestyle','Character Set','Bling Sets','Regular Pedicure','Spa Pedicure','Artwork Pedicure','Enhancement Pedicure','Polish Change',"Men's Manicure","Men's Pedicure",'Nail Fix'];
 
@@ -1196,83 +1254,15 @@ const WEEKDAY_TIMES = ['10:00 AM','10:30 AM','11:00 AM','11:30 AM','12:00 PM','1
 const SATURDAY_TIMES = ['9:00 AM','9:30 AM','10:00 AM','10:30 AM','11:00 AM','11:30 AM','12:00 PM','12:30 PM','1:00 PM','1:30 PM','2:00 PM','2:30 PM','3:00 PM','3:30 PM','4:00 PM'];
 const LEGAL_UPDATED = 'October 17, 2026';
 const LEGAL = {
+  // Privacy Policy text supplied by Kacrylx (generated with Termly), kept word for word
   privacy: {
-    title: 'Privacy Policy',
-    intro: 'This policy explains what information Kacrylx collects when you visit this website or book an appointment, how we use it, and the choices you have. Kacrylx is a nail studio in Edison, New Jersey, run by Kymani and Jharis.',
-    sections: [
-      { h: 'Information we collect', body: [
-        'When you book, we collect your name, mobile number, email address, the services and appointment time you choose, and any notes or inspiration photos you send us.',
-        'When you pay a deposit, your card is processed by Stripe. We never see or store your full card number. We receive a record of the payment, such as the amount and the last four digits of the card.',
-        'Like most websites, our hosting providers automatically log basic technical information such as your IP address, browser type and the pages you visit. We use this only to keep the site running and secure.'
-      ] },
-      { h: 'How we use it', body: [
-        'We use your information to schedule and manage your appointments, collect deposits, send booking confirmations and reminders, contact you about changes to your appointment, keep a record of past services so we can serve you better, and protect the site from spam and abuse.',
-        'We do not sell your personal information, and we do not use it for advertising.'
-      ] },
-      { h: 'Text messages', body: [
-        'If you give us your mobile number, we use it to send appointment-related texts, such as confirmations, reminders and schedule changes.',
-        'No mobile information will be shared with third parties or affiliates for marketing or promotional purposes. Text messaging opt-in data and consent are not shared with any third parties.',
-        'See our SMS Terms for details, including how to opt out.'
-      ] },
-      { h: 'Who we share it with', body: [
-        'We share information only with the service providers that help us run the business: Stripe (payments), Twilio (text messages), our email provider (confirmation and reminder emails), and Cloudflare and GitHub (website hosting and booking system). These providers may only use your information to provide their services to us.',
-        'We may also disclose information if required by law, or to protect the rights and safety of our clients, artists or business.'
-      ] },
-      { h: 'How long we keep it', body: [
-        'We keep your client and appointment history for as long as you are a client, and for a reasonable time afterward for our business and tax records. You can ask us to delete your information at any time, except for records we are legally required to keep.'
-      ] },
-      { h: 'Your choices', body: [
-        'You can ask to see, correct or delete the personal information we hold about you by emailing nailsbykymani@yahoo.com. You can stop text messages at any time by replying STOP.'
-      ] },
-      { h: 'Children', body: [
-        'Our booking system is not intended for children under 13, and we do not knowingly collect their information. Clients under 18 should book with a parent or guardian.'
-      ] },
-      { h: 'Changes to this policy', body: [
-        'If we change this policy, we will post the new version on this page and update the date at the top.'
-      ] }
-    ]
+    title: 'Privacy Policy', updated: 'October 18, 2026', intro: '', toc: true,
+    sections: [{"id":"intro","h":"","blocks":[{"k":"p","x":"This Privacy Notice for Kacrylx (\"we,\" \"us,\" or \"our\"), describes how and why we might access, collect, store, use, and/or share (\"process\") your personal information when you use our services (\"Services\"), including when you:"},{"k":"ul","items":["Visit our website at https://kacrylx.com or any website of ours that links to this Privacy Notice","Use Kacrylx Nail Studio. Nail care and nail art services, including online appointment booking and deposit payments.","Engage with us in other related ways, including any marketing or events"]},{"k":"p","lead":"Questions or concerns?","x":"Reading this Privacy Notice will help you understand your privacy rights and choices. We are responsible for making decisions about how your personal information is processed. If you do not agree with our policies and practices, please do not use our Services. If you still have any questions or concerns, please contact us at Info@kacrylxbeauty.com."}]},{"id":"summary","h":"Summary of key points","blocks":[{"k":"p","x":"This summary provides key points from our Privacy Notice, but you can find out more details about any of these topics by clicking the link following each key point or by using our table of contents below to find the section you are looking for."},{"k":"p","lead":"What personal information do we process?","x":"When you visit, use, or navigate our Services, we may process personal information depending on how you interact with us and the Services, the choices you make, and the products and features you use. Learn more about personal information you disclose to us."},{"k":"p","lead":"Do we process any sensitive personal information?","x":"Some of the information may be considered \"special\" or \"sensitive\" in certain jurisdictions, for example your racial or ethnic origins, sexual orientation, and religious beliefs. We do not process sensitive personal information."},{"k":"p","lead":"Do we collect any information from third parties?","x":"We do not collect any information from third parties."},{"k":"p","lead":"How do we process your information?","x":"We process your information to provide, improve, and administer our Services, communicate with you, for security and fraud prevention, and to comply with law. We may also process your information for other purposes with your consent. We process your information only when we have a valid legal reason to do so. Learn more about how we process your information."},{"k":"p","lead":"In what situations and with which parties do we share personal information?","x":"We may share information in specific situations and with specific third parties. Learn more about when and with whom we share your personal information."},{"k":"p","lead":"How do we keep your information safe?","x":"We have adequate organizational and technical processes and procedures in place to protect your personal information. However, no electronic transmission over the internet or information storage technology can be guaranteed to be 100% secure, so we cannot promise or guarantee that hackers, cybercriminals, or other unauthorized third parties will not be able to defeat our security and improperly collect, access, steal, or modify your information. Learn more about how we keep your information safe."},{"k":"p","lead":"What are your rights?","x":"Depending on where you are located geographically, the applicable privacy law may mean you have certain rights regarding your personal information. Learn more about your privacy rights."},{"k":"p","lead":"How do you exercise your rights?","x":"The easiest way to exercise your rights is by submitting a data subject access request, or by contacting us. We will consider and act upon any request in accordance with applicable data protection laws."},{"k":"p","x":"Want to learn more about what we do with any information we collect? Review the Privacy Notice in full."}]},{"id":"infocollect","h":"1. What information do we collect?","blocks":[{"k":"h3","x":"Personal information you disclose to us"},{"k":"p","lead":"In Short:","x":"We collect personal information that you provide to us."},{"k":"p","x":"We collect personal information that you voluntarily provide to us when you express an interest in obtaining information about us or our products and Services, when you participate in activities on the Services, or otherwise when you contact us."},{"k":"p","lead":"Personal Information Provided by You.","x":"The personal information that we collect depends on the context of your interactions with us and the Services, the choices you make, and the products and features you use. The personal information we collect may include the following:"},{"k":"ul","items":["names","phone numbers","email addresses","debit/credit card numbers"]},{"k":"p","lead":"Sensitive Information.","x":"We do not process sensitive information."},{"k":"p","lead":"Payment Data.","x":"We may collect data necessary to process your payment if you choose to make purchases, such as your payment instrument number, and the security code associated with your payment instrument. All payment data is handled and stored by Stripe. You may find their privacy notice link(s) here: https://stripe.com/privacy."},{"k":"p","x":"All personal information that you provide to us must be true, complete, and accurate, and you must notify us of any changes to such personal information."}]},{"id":"infouse","h":"2. How do we process your information?","blocks":[{"k":"p","lead":"In Short:","x":"We process your information to provide, improve, and administer our Services, communicate with you, for security and fraud prevention, and to comply with law. We may also process your information for other purposes with your consent."},{"k":"p","x":"We process your personal information for a variety of reasons, depending on how you interact with our Services, including:"},{"k":"ul","items":["To deliver and facilitate delivery of services to the user. We may process your information to provide you with the requested service."]}]},{"id":"whoshare","h":"3. When and with whom do we share your personal information?","blocks":[{"k":"p","lead":"In Short:","x":"We may share information in specific situations described in this section and/or with the following third parties."},{"k":"p","x":"We may need to share your personal information in the following situations:"},{"k":"ul","items":["Business Transfers. We may share or transfer your information in connection with, or during negotiations of, any merger, sale of company assets, financing, or acquisition of all or a portion of our business to another company."]}]},{"id":"inforetain","h":"4. How long do we keep your information?","blocks":[{"k":"p","lead":"In Short:","x":"We keep your information for as long as necessary to fulfill the purposes outlined in this Privacy Notice unless otherwise required by law."},{"k":"p","x":"We will only keep your personal information for as long as it is necessary for the purposes set out in this Privacy Notice, unless a longer retention period is required or permitted by law (such as tax, accounting, or other legal requirements)."},{"k":"p","x":"When we have no ongoing legitimate business need to process your personal information, we will either delete or anonymize such information, or, if this is not possible (for example, because your personal information has been stored in backup archives), then we will securely store your personal information and isolate it from any further processing until deletion is possible."}]},{"id":"infosafe","h":"5. How do we keep your information safe?","blocks":[{"k":"p","lead":"In Short:","x":"We aim to protect your personal information through a system of organizational and technical security measures."},{"k":"p","x":"We have implemented appropriate and reasonable technical and organizational security measures designed to protect the security of any personal information we process. However, despite our safeguards and efforts to secure your information, no electronic transmission over the Internet or information storage technology can be guaranteed to be 100% secure, so we cannot promise or guarantee that hackers, cybercriminals, or other unauthorized third parties will not be able to defeat our security and improperly collect, access, steal, or modify your information. Although we will do our best to protect your personal information, transmission of personal information to and from our Services is at your own risk. You should only access the Services within a secure environment."}]},{"id":"infominors","h":"6. Do we collect information from minors?","blocks":[{"k":"p","lead":"In Short:","x":"We do not knowingly collect data from or market to children under 18 years of age."},{"k":"p","x":"We do not knowingly collect, solicit data from, or market to children under 18 years of age, nor do we knowingly sell such personal information. By using the Services, you represent that you are at least 18 or that you are the parent or guardian of such a minor and consent to such minor dependent’s use of the Services. If we learn that personal information from users less than 18 years of age has been collected, we will deactivate the account and take reasonable measures to promptly delete such data from our records. If you become aware of any data we may have collected from children under age 18, please contact us at Info@kacrylxbeauty.com."}]},{"id":"privacyrights","h":"7. What are your privacy rights?","blocks":[{"k":"p","lead":"In Short:","x":"You may review, change, or terminate your account at any time, depending on your country, province, or state of residence."},{"k":"p","lead":"Withdrawing your consent:","x":"If we are relying on your consent to process your personal information, which may be express and/or implied consent depending on the applicable law, you have the right to withdraw your consent at any time. You can withdraw your consent at any time by contacting us by using the contact details provided in the section \"HOW CAN YOU CONTACT US ABOUT THIS NOTICE?\" below."},{"k":"p","x":"However, please note that this will not affect the lawfulness of the processing before its withdrawal nor, when applicable law allows, will it affect the processing of your personal information conducted in reliance on lawful processing grounds other than consent."},{"k":"p","lead":"Opting out of marketing and promotional communications:","x":"You can unsubscribe from our marketing and promotional communications at any time by replying \"STOP\" or \"UNSUBSCRIBE\" to the SMS messages that we send, or by contacting us using the details provided in the section \"HOW CAN YOU CONTACT US ABOUT THIS NOTICE?\" below. You will then be removed from the marketing lists. However, we may still communicate with you — for example, to send you service-related messages that are necessary for the administration and use of your account, to respond to service requests, or for other non-marketing purposes."},{"k":"p","x":"No mobile information will be shared with third parties or affiliates for marketing or promotional purposes. Information sharing to subcontractors in support services, such as customer service, is permitted. All other use case categories exclude text messaging originator opt-in data and consent; this information will not be shared with third parties."},{"k":"p","x":"If you have questions or comments about your privacy rights, you may email us at Info@kacrylxbeauty.com."}]},{"id":"DNT","h":"8. Controls for Do-Not-Track features","blocks":[{"k":"p","x":"Most web browsers and some mobile operating systems and mobile applications include a Do-Not-Track (\"DNT\") feature or setting you can activate to signal your privacy preference not to have data about your online browsing activities monitored and collected. At this stage, no uniform technology standard for recognizing and implementing DNT signals has been finalized. As such, we do not currently respond to DNT browser signals or any other mechanism that automatically communicates your choice not to be tracked online. If a standard for online tracking is adopted that we must follow in the future, we will inform you about that practice in a revised version of this Privacy Notice."},{"k":"p","x":"California law requires us to let you know how we respond to web browser DNT signals. Because there currently is not an industry or legal standard for recognizing or honoring DNT signals, we do not respond to them at this time."}]},{"id":"uslaws","h":"9. Do United States residents have specific privacy rights?","blocks":[{"k":"p","lead":"In Short:","x":"If you are a resident of New Jersey, you may have the right to request access to and receive details about the personal information we maintain about you and how we have processed it, correct inaccuracies, get a copy of, or delete your personal information. You may also have the right to withdraw your consent to our processing of your personal information. These rights may be limited in some circumstances by applicable law. More information is provided below."},{"k":"h3","x":"Categories of Personal Information We Collect"},{"k":"p","x":"The table below shows the categories of personal information we have collected in the past twelve (12) months. The table includes illustrative examples of each category and does not reflect the personal information we collect from you. For a comprehensive inventory of all personal information we process, please refer to the section \""},{"k":"p","x":"WHAT INFORMATION DO WE COLLECT?"},{"k":"p","x":"\""},{"k":"table","head":["Category","Examples","Collected"],"rows":[["A. Identifiers","Contact details, such as real name, alias, postal address, telephone or mobile contact number, unique personal identifier, online identifier, Internet Protocol address, email address, and account name","YES"],["B. Protected classification characteristics under state or federal law","Gender, age, date of birth, race and ethnicity, national origin, marital status, and other demographic data","YES"],["C. Commercial information","Transaction information, purchase history, financial details, and payment information","YES"],["D. Biometric information","Fingerprints and voiceprints","NO"],["E. Internet or other similar network activity","Browsing history, search history, online behavior, interest data, and interactions with our and other websites, applications, systems, and advertisements","NO"],["F. Geolocation data","Device location","NO"],["G. Audio, electronic, sensory, or similar information","Images and audio, video or call recordings created in connection with our business activities","NO"],["H. Professional or employment-related information","Business contact details in order to provide you our Services at a business level or job title, work history, and professional qualifications if you apply for a job with us","NO"],["I. Education Information","Student records and directory information","NO"],["J. Inferences drawn from collected personal information","Inferences drawn from any of the collected personal information listed above to create a profile or summary about, for example, an individual’s preferences and characteristics","NO"],["K. Sensitive personal Information","","NO"]]},{"k":"p","x":"We may also collect other personal information outside of these categories through instances where you interact with us in person, online, or by phone or mail in the context of:"},{"k":"ul","items":["Receiving help through our customer support channels;","Participation in customer surveys or contests; and","Facilitation in the delivery of our Services and to respond to your inquiries."]},{"k":"p","x":"We will use and retain the collected personal information as needed to provide the Services or for:"},{"k":"ul","items":["Category A - As long as the user has an account with us","Category B - As long as the user has an account with us","Category C - As long as the user has an account with us"]},{"k":"h3","x":"Sources of Personal Information"},{"k":"p","x":"Learn more about the sources of personal information we collect in \""},{"k":"p","x":"WHAT INFORMATION DO WE COLLECT?"},{"k":"p","x":"\""},{"k":"h3","x":"How We Use and Share Personal Information"},{"k":"p","x":"Learn more about how we use your personal information in the section, \""},{"k":"p","x":"HOW DO WE PROCESS YOUR INFORMATION?"},{"k":"p","x":"\""},{"k":"p","x":"Will your information be shared with anyone else?"},{"k":"p","x":"We may disclose your personal information with our service providers pursuant to a written contract between us and each service provider. Learn more about how we disclose personal information to in the section, \"WHEN AND WITH WHOM DO WE SHARE YOUR PERSONAL INFORMATION?\""},{"k":"p","x":"We may use your personal information for our own business purposes, such as for undertaking internal research for technological development and demonstration. This is not considered to be \"selling\" of your personal information."},{"k":"p","x":"We have not disclosed, sold, or shared any personal information to third parties for a business or commercial purpose in the preceding twelve (12) months. We will not sell or share personal information in the future belonging to website visitors, users, and other consumers."},{"k":"h3","x":"Your Rights"},{"k":"p","x":"You have rights under certain US state data protection laws. However, these rights are not absolute, and in certain cases, we may decline your request as permitted by law. These rights include:"},{"k":"ul","items":["Right to know whether or not we are processing your personal data","Right to access your personal data","Right to correct inaccuracies in your personal data","Right to request the deletion of your personal data","Right to obtain a copy of the personal data you previously shared with us","Right to non-discrimination for exercising your rights","Right to opt out of the processing of your personal data if it is used for targeted advertising, the sale of personal data, or profiling in furtherance of decisions that produce legal or similarly significant effects (\"profiling\")"]},{"k":"h3","x":"How to Exercise Your Rights"},{"k":"p","x":"To exercise these rights, you can contact us by submitting a"},{"k":"p","x":"data subject access request"},{"k":"p","x":", by emailing us at Info@kacrylxbeauty.com,"},{"k":"p","x":"or by referring to the contact details at the bottom of this document."},{"k":"p","x":"Under certain US state data protection laws, you can designate an authorized agent to make a request on your behalf. We may deny a request from an authorized agent that does not submit proof that they have been validly authorized to act on your behalf in accordance with applicable laws."},{"k":"h3","x":"Request Verification"},{"k":"p","x":"Upon receiving your request, we will need to verify your identity to determine you are the same person about whom we have the information in our system. We will only use personal information provided in your request to verify your identity or authority to make the request. However, if we cannot verify your identity from the information already maintained by us, we may request that you provide additional information for the purposes of verifying your identity and for security or fraud-prevention purposes."},{"k":"p","x":"If you submit the request through an authorized agent, we may need to collect additional information to verify your identity before processing your request and the agent will need to provide a written and signed permission from you to submit such request on your behalf."},{"k":"h3","x":"Appeals"},{"k":"p","x":"Under certain US state data protection laws, if we decline to take action regarding your request, you may appeal our decision by emailing us at Info@kacrylxbeauty.com. We will inform you in writing of any action taken or not taken in response to the appeal, including a written explanation of the reasons for the decisions. If your appeal is denied, you may submit a complaint to your state attorney general."}]},{"id":"policyupdates","h":"10. Do we make updates to this notice?","blocks":[{"k":"p","lead":"In Short:","x":"Yes, we will update this notice as necessary to stay compliant with relevant laws."},{"k":"p","x":"We may update this Privacy Notice from time to time. The updated version will be indicated by an updated \"Revised\" date at the top of this Privacy Notice. If we make material changes to this Privacy Notice, we may notify you either by prominently posting a notice of such changes or by directly sending you a notification. We encourage you to review this Privacy Notice frequently to be informed of how we are protecting your information."}]},{"id":"contact","h":"11. How can you contact us about this notice?","blocks":[{"k":"p","x":"If you have questions or comments about this notice, you may email us at Info@kacrylxbeauty.com or contact us by post at:"},{"k":"p","x":"Kacrylx"},{"k":"p","x":"Edison, NJ 08837"},{"k":"p","x":"United States"}]},{"id":"request","h":"12. How can you review, update, or delete the data we collect from you?","blocks":[{"k":"p","x":"Based on the applicable laws of your country or state of residence in the US, you may have the right to request access to the personal information we collect from you, details about how we have processed it, correct inaccuracies, or delete your personal information. You may also have the right to withdraw your consent to our processing of your personal information. These rights may be limited in some circumstances by applicable law. To request to review, update, or delete your personal information, please fill out and submit a data subject access request"},{"k":"p","x":"."},{"k":"p","x":"This Privacy Policy was created using Termly's Privacy Policy Generator"}]}]
   },
+  // Terms of Service text supplied by Kacrylx (generated with Termly), kept word for word
   terms: {
-    title: 'Terms of Service',
-    intro: 'These terms apply when you use the Kacrylx website or book an appointment with Kymani or Jharis. By booking, you agree to these terms and to our Booking Policies.',
-    sections: [
-      { h: 'Bookings', body: [
-        'Online bookings are requests until your deposit is paid and the appointment is confirmed. Please give accurate contact details so we can reach you about your appointment.',
-        'We may decline or cancel a booking at our discretion, for example if a time was booked in error. If we cancel, your deposit will be refunded or applied to a new appointment.'
-      ] },
-      { h: 'Deposits and payment', body: [
-        'A $40 deposit is required to confirm an appointment, or $65 when you book two services in one visit. The deposit is applied to your total at the appointment. The remaining balance is due in cash at your appointment.',
-        'Prices shown on the website are starting prices. The final price may change based on length, design and add-ons agreed at your appointment.'
-      ] },
-      { h: 'Late arrivals, cancellations and no-shows', body: [
-        'Late arrival, rescheduling, cancellation and no-show rules, including when a deposit is non-refundable, are listed on our Booking Policies page and form part of these terms.'
-      ] },
-      { h: 'Your health and safety', body: [
-        'Please tell your artist about any allergies, skin conditions, infections or medical conditions that may affect your service before it begins. We may refuse or stop a service if continuing could be unsafe.',
-        'Contact your artist within 48 hours if you have a concern about your set.'
-      ] },
-      { h: 'Photos', body: [
-        'We may photograph your finished nails and share them on our website and social media. We will not show your face or name without your permission. Tell your artist if you would prefer your nails not be photographed.'
-      ] },
-      { id: 'sms', h: 'SMS Terms', body: [
-        'Kacrylx appointment alerts: by giving us your mobile number when you book, you agree to receive text messages about your appointments, such as confirmations, reminders and schedule changes.',
-        'Message frequency varies depending on your bookings. Message and data rates may apply.',
-        'Reply STOP to stop receiving messages at any time. Reply HELP for help, or contact us at 640-220-9270 or nailsbykymani@yahoo.com.',
-        'Carriers are not liable for delayed or undelivered messages. See our Privacy Policy for how we handle your information.'
-      ] },
-      { h: 'Website content', body: [
-        'The photos, designs and text on this website belong to Kacrylx and its artists. Please do not copy or reuse them without permission.'
-      ] },
-      { h: 'Limitation of liability', body: [
-        'To the extent allowed by law, Kacrylx is not liable for indirect or consequential damages arising from use of the website or our services. Our total liability for any claim is limited to the amount you paid for the service involved.'
-      ] },
-      { h: 'Governing law', body: [
-        'These terms are governed by the laws of the State of New Jersey.'
-      ] },
-      { h: 'Changes to these terms', body: [
-        'We may update these terms from time to time. The version on this page, with the date at the top, is the current one.'
-      ] }
-    ]
+    title: 'Terms of Service', updated: 'October 18, 2026', intro: '', toc: true,
+    sections: [{"id":"agreement","h":"Agreement to our legal terms","blocks":[{"k":"p","x":"We are Kacrylx (\"Company,\" \"we,\" \"us,\" \"our\"), a company registered in New Jersey, United States, in Edison, NJ 08837."},{"k":"p","x":"We operate the website https://kacrylx.com (the \"Site\"), as well as any other related products and services that refer or link to these legal terms (the \"Legal Terms\") (collectively, the \"Services\")."},{"k":"p","x":"Kacrylx is a nail studio website that provides information about nail services, pricing, and policies, showcases nail art and previous work, and allows clients to book appointments online. The website facilitates appointment scheduling and deposit payments processed through Stripe. Deposits are designated as nonrefundable under the studio's booking policy, subject to applicable law. Kacrylx may maintain internal client records to manage appointments and client relationships."},{"k":"p","x":"You can contact us by email at Info@kacrylxbeauty.com or by mail to Edison, NJ 08837, United States."},{"k":"p","x":"These Legal Terms constitute a legally binding agreement made between you, whether personally or on behalf of an entity (\"you\"), and Kacrylx, concerning your access to and use of the Services. You agree that by accessing the Services, you have read, understood, and agreed to be bound by all of these Legal Terms. IF YOU DO NOT AGREE WITH ALL OF THESE LEGAL TERMS, THEN YOU ARE EXPRESSLY PROHIBITED FROM USING THE SERVICES AND YOU MUST DISCONTINUE USE IMMEDIATELY."},{"k":"p","x":"Supplemental terms and conditions or documents that may be posted on the Services from time to time are hereby expressly incorporated herein by reference. We reserve the right, in our sole discretion, to make changes or modifications to these Legal Terms at any time and for any reason. We will alert you about any changes by updating the \"Last updated\" date of these Legal Terms, and you waive any right to receive specific notice of each such change. It is your responsibility to periodically review these Legal Terms to stay informed of updates. You will be subject to, and will be deemed to have been made aware of and to have accepted, the changes in any revised Legal Terms by your continued use of the Services after the date such revised Legal Terms are posted."},{"k":"p","x":"The Services are intended for users who are at least 13 years of age. All users who are minors in the jurisdiction in which they reside (generally under the age of 18) must have the permission of, and be directly supervised by, their parent or guardian to use the Services. If you are a minor, you must have your parent or guardian read and agree to these Legal Terms prior to you using the Services."},{"k":"p","x":"We recommend that you print a copy of these Legal Terms for your records."}]},{"id":"services","h":"1. Our services","blocks":[{"k":"p","x":"The information provided when using the Services is not intended for distribution to or use by any person or entity in any jurisdiction or country where such distribution or use would be contrary to law or regulation or which would subject us to any registration requirement within such jurisdiction or country. Accordingly, those persons who choose to access the Services from other locations do so on their own initiative and are solely responsible for compliance with local laws, if and to the extent local laws are applicable."},{"k":"p","x":"The Services are not tailored to comply with industry-specific regulations (Health Insurance Portability and Accountability Act (HIPAA), Federal Information Security Management Act (FISMA), etc.), so if your interactions would be subjected to such laws, you may not use the Services. You may not use the Services in a way that would violate the Gramm-Leach-Bliley Act (GLBA)."}]},{"id":"ip","h":"2. Intellectual property rights","blocks":[{"k":"h3","x":"Our intellectual property"},{"k":"p","x":"We are the owner or the licensee of all intellectual property rights in our Services, including all source code, databases, functionality, software, website designs, audio, video, text, photographs, and graphics in the Services (collectively, the \"Content\"), as well as the trademarks, service marks, and logos contained therein (the \"Marks\")."},{"k":"p","x":"Our Content and Marks are protected by copyright and trademark laws (and various other intellectual property rights and unfair competition laws) and treaties in the United States and around the world."},{"k":"p","x":"The Content and Marks are provided in or through the Services \"AS IS\" for your personal, non-commercial use or internal business purpose only."},{"k":"h3","x":"Your use of our Services"},{"k":"p","x":"Subject to your compliance with these Legal Terms, including the \"PROHIBITED ACTIVITIES\" section below, we grant you a non-exclusive, non-transferable, revocable license to:"},{"k":"ul","items":["access the Services; and","download or print a copy of any portion of the Content to which you have properly gained access,"]},{"k":"p","x":"solely for your personal, non-commercial use or internal business purpose."},{"k":"p","x":"Except as set out in this section or elsewhere in our Legal Terms, no part of the Services and no Content or Marks may be copied, reproduced, aggregated, republished, uploaded, posted, publicly displayed, encoded, translated, transmitted, distributed, sold, licensed, or otherwise exploited for any commercial purpose whatsoever, without our express prior written permission."},{"k":"p","x":"If you wish to make any use of the Services, Content, or Marks other than as set out in this section or elsewhere in our Legal Terms, please address your request to: Info@kacrylxbeauty.com. If we ever grant you the permission to post, reproduce, or publicly display any part of our Services or Content, you must identify us as the owners or licensors of the Services, Content, or Marks and ensure that any copyright or proprietary notice appears or is visible on posting, reproducing, or displaying our Content."},{"k":"p","x":"We reserve all rights not expressly granted to you in and to the Services, Content, and Marks."},{"k":"p","x":"Any breach of these Intellectual Property Rights will constitute a material breach of our Legal Terms and your right to use our Services will terminate immediately."},{"k":"h3","x":"Your submissions and contributions"},{"k":"p","x":"Please review this section and the \"PROHIBITED ACTIVITIES\" section carefully prior to using our Services to understand the (a) rights you give us and (b) obligations you have when you post or upload any content through the Services."},{"k":"p","lead":"Submissions:","x":"By directly sending us any question, comment, suggestion, idea, feedback, or other information about the Services (\"Submissions\"), you agree to assign to us all intellectual property rights in such Submission. You agree that we shall own this Submission and be entitled to its unrestricted use and dissemination for any lawful purpose, commercial or otherwise, without acknowledgment or compensation to you."},{"k":"p","lead":"Contributions:","x":"The Services may invite you to chat, contribute to, or participate in blogs, message boards, online forums, and other functionality during which you may create, submit, post, display, transmit, publish, distribute, or broadcast content and materials to us or through the Services, including but not limited to text, writings, video, audio, photographs, music, graphics, comments, reviews, rating suggestions, personal information, or other material (\"Contributions\"). Any Submission that is publicly posted shall also be treated as a Contribution."},{"k":"p","x":"You understand that Contributions may be viewable by other users of the Services and possibly through third-party websites."},{"k":"p","lead":"When you post Contributions, you grant us a license (including use of your name, trademarks, and logos):","x":"By posting any Contributions, you grant us an unrestricted, unlimited, irrevocable, perpetual, non-exclusive, transferable, royalty-free, fully-paid, worldwide right, and license to: use, copy, reproduce, distribute, sell, resell, publish, broadcast, retitle, store, publicly perform, publicly display, reformat, translate, excerpt (in whole or in part), and exploit your Contributions (including, without limitation, your image, name, and voice) for any purpose, commercial, advertising, or otherwise, to prepare derivative works of, or incorporate into other works, your Contributions, and to sublicense the licenses granted in this section. Our use and distribution may occur in any media formats and through any media channels."},{"k":"p","x":"This license includes our use of your name, company name, and franchise name, as applicable, and any of the trademarks, service marks, trade names, logos, and personal and commercial images you provide."},{"k":"p","lead":"You are responsible for what you post or upload:","x":"By sending us Submissions and/or posting Contributions through any part of the Services or making Contributions accessible through the Services by linking your account through the Services to any of your social networking accounts, you:"},{"k":"ul","items":["confirm that you have read and agree with our \"PROHIBITED ACTIVITIES\" and will not post, send, publish, upload, or transmit through the Services any Submission nor post any Contribution that is illegal, harassing, hateful, harmful, defamatory, obscene, bullying, abusive, discriminatory, threatening to any person or group, sexually explicit, false, inaccurate, deceitful, or misleading;","to the extent permissible by applicable law, waive any and all moral rights to any such Submission and/or Contribution;","warrant that any such Submission and/or Contributions are original to you or that you have the necessary rights and licenses to submit such Submissions and/or Contributions and that you have full authority to grant us the above-mentioned rights in relation to your Submissions and/or Contributions; and","warrant and represent that your Submissions and/or Contributions do not constitute confidential information."]},{"k":"p","x":"You are solely responsible for your Submissions and/or Contributions and you expressly agree to reimburse us for any and all losses that we may suffer because of your breach of (a) this section, (b) any third party’s intellectual property rights, or (c) applicable law."},{"k":"p","lead":"We may remove or edit your Content:","x":"Although we have no obligation to monitor any Contributions, we shall have the right to remove or edit any Contributions at any time without notice if in our reasonable opinion we consider such Contributions harmful or in breach of these Legal Terms. If we remove or edit any such Contributions, we may also suspend or disable your account and report you to the authorities."},{"k":"h3","x":"Copyright infringement"},{"k":"p","x":"We respect the intellectual property rights of others. If you believe that any material available on or through the Services infringes upon any copyright you own or control, please immediately refer to the \"COPYRIGHT INFRINGEMENTS\" section below."}]},{"id":"userreps","h":"3. User representations","blocks":[{"k":"p","x":"By using the Services, you represent and warrant that: (1) you have the legal capacity and you agree to comply with these Legal Terms; (2) you are not under the age of 13; (3) you are not a minor in the jurisdiction in which you reside, or if a minor, you have received parental permission to use the Services; (4) you will not access the Services through automated or non-human means, whether through a bot, script or otherwise; (5) you will not use the Services for any illegal or unauthorized purpose; and (6) your use of the Services will not violate any applicable law or regulation."},{"k":"p","x":"If you provide any information that is untrue, inaccurate, not current, or incomplete, we have the right to suspend or terminate your account and refuse any and all current or future use of the Services (or any portion thereof)."}]},{"id":"prohibited","h":"4. Prohibited activities","blocks":[{"k":"p","x":"You may not access or use the Services for any purpose other than that for which we make the Services available. The Services may not be used in connection with any commercial endeavors except those that are specifically endorsed or approved by us."},{"k":"p","x":"As a user of the Services, you agree not to:"},{"k":"ul","items":["Systematically retrieve data or other content from the Services to create or compile, directly or indirectly, a collection, compilation, database, or directory without written permission from us.","Trick, defraud, or mislead us and other users, especially in any attempt to learn sensitive account information such as user passwords.","Circumvent, disable, or otherwise interfere with security-related features of the Services, including features that prevent or restrict the use or copying of any Content or enforce limitations on the use of the Services and/or the Content contained therein.","Disparage, tarnish, or otherwise harm, in our opinion, us and/or the Services.","Use any information obtained from the Services in order to harass, abuse, or harm another person.","Make improper use of our support services or submit false reports of abuse or misconduct.","Use the Services in a manner inconsistent with any applicable laws or regulations.","Engage in unauthorized framing of or linking to the Services.","Upload or transmit (or attempt to upload or to transmit) viruses, Trojan horses, or other material, including excessive use of capital letters and spamming (continuous posting of repetitive text), that interferes with any party’s uninterrupted use and enjoyment of the Services or modifies, impairs, disrupts, alters, or interferes with the use, features, functions, operation, or maintenance of the Services.","Engage in any automated use of the system, such as using scripts to send comments or messages, or using any data mining, robots, or similar data gathering and extraction tools.","Delete the copyright or other proprietary rights notice from any Content.","Attempt to impersonate another user or person or use the username of another user.","Upload or transmit (or attempt to upload or to transmit) any material that acts as a passive or active information collection or transmission mechanism, including without limitation, clear graphics interchange formats (\"gifs\"), 1×1 pixels, web bugs, cookies, or other similar devices (sometimes referred to as \"spyware\" or \"passive collection mechanisms\" or \"pcms\").","Interfere with, disrupt, or create an undue burden on the Services or the networks or services connected to the Services.","Harass, annoy, intimidate, or threaten any of our employees or agents engaged in providing any portion of the Services to you.","Attempt to bypass any measures of the Services designed to prevent or restrict access to the Services, or any portion of the Services.","Copy or adapt the Services' software, including but not limited to Flash, PHP, HTML, JavaScript, or other code.","Except as permitted by applicable law, decipher, decompile, disassemble, or reverse engineer any of the software comprising or in any way making up a part of the Services.","Except as may be the result of standard search engine or Internet browser usage, use, launch, develop, or distribute any automated system, including without limitation, any spider, robot, cheat utility, scraper, or offline reader that accesses the Services, or use or launch any unauthorized script or other software.","Use a buying agent or purchasing agent to make purchases on the Services.","Make any unauthorized use of the Services, including collecting usernames and/or email addresses of users by electronic or other means for the purpose of sending unsolicited email, or creating user accounts by automated means or under false pretenses.","Use the Services as part of any effort to compete with us or otherwise use the Services and/or the Content for any revenue-generating endeavor or commercial enterprise."]}]},{"id":"ugc","h":"5. User generated contributions","blocks":[{"k":"p","x":"The Services may invite you to chat, contribute to, or participate in blogs, message boards, online forums, and other functionality, and may provide you with the opportunity to create, submit, post, display, transmit, perform, publish, distribute, or broadcast content and materials to us or on the Services, including but not limited to text, writings, video, audio, photographs, graphics, comments, suggestions, or personal information or other material (collectively, \"Contributions\"). Contributions may be viewable by other users of the Services and through third-party websites. As such, any Contributions you transmit may be treated as non-confidential and non-proprietary. When you create or make available any Contributions, you thereby represent and warrant that:"},{"k":"ul","items":["The creation, distribution, transmission, public display, or performance, and the accessing, downloading, or copying of your Contributions do not and will not infringe the proprietary rights, including but not limited to the copyright, patent, trademark, trade secret, or moral rights of any third party.","You are the creator and owner of or have the necessary licenses, rights, consents, releases, and permissions to use and to authorize us, the Services, and other users of the Services to use your Contributions in any manner contemplated by the Services and these Legal Terms.","You have the written consent, release, and/or permission of each and every identifiable individual person in your Contributions to use the name or likeness of each and every such identifiable individual person to enable inclusion and use of your Contributions in any manner contemplated by the Services and these Legal Terms.","Your Contributions are not false, inaccurate, or misleading.","Your Contributions are not unsolicited or unauthorized advertising, promotional materials, pyramid schemes, chain letters, spam, mass mailings, or other forms of solicitation.","Your Contributions are not obscene, lewd, lascivious, filthy, violent, harassing, libelous, slanderous, or otherwise objectionable (as determined by us).","Your Contributions do not ridicule, mock, disparage, intimidate, or abuse anyone.","Your Contributions are not used to harass or threaten (in the legal sense of those terms) any other person and to promote violence against a specific person or class of people.","Your Contributions do not violate any applicable law, regulation, or rule.","Your Contributions do not violate the privacy or publicity rights of any third party.","Your Contributions do not violate any applicable law concerning child pornography, or otherwise intended to protect the health or well-being of minors.","Your Contributions do not include any offensive comments that are connected to race, national origin, gender, sexual preference, or physical handicap.","Your Contributions do not otherwise violate, or link to material that violates, any provision of these Legal Terms, or any applicable law or regulation."]},{"k":"p","x":"Any use of the Services in violation of the foregoing violates these Legal Terms and may result in, among other things, termination or suspension of your rights to use the Services."}]},{"id":"license","h":"6. Contribution license","blocks":[{"k":"p","x":"By posting your Contributions to any part of the Services, you automatically grant, and you represent and warrant that you have the right to grant, to us an unrestricted, unlimited, irrevocable, perpetual, non-exclusive, transferable, royalty-free, fully-paid, worldwide right, and license to host, use, copy, reproduce, disclose, sell, resell, publish, broadcast, retitle, archive, store, cache, publicly perform, publicly display, reformat, translate, transmit, excerpt (in whole or in part), and distribute such Contributions (including, without limitation, your image and voice) for any purpose, commercial, advertising, or otherwise, and to prepare derivative works of, or incorporate into other works, such Contributions, and grant and authorize sublicenses of the foregoing. The use and distribution may occur in any media formats and through any media channels."},{"k":"p","x":"This license will apply to any form, media, or technology now known or hereafter developed, and includes our use of your name, company name, and franchise name, as applicable, and any of the trademarks, service marks, trade names, logos, and personal and commercial images you provide. You waive all moral rights in your Contributions, and you warrant that moral rights have not otherwise been asserted in your Contributions."},{"k":"p","x":"We do not assert any ownership over your Contributions. You retain full ownership of all of your Contributions and any intellectual property rights or other proprietary rights associated with your Contributions. We are not liable for any statements or representations in your Contributions provided by you in any area on the Services. You are solely responsible for your Contributions to the Services and you expressly agree to exonerate us from any and all responsibility and to refrain from any legal action against us regarding your Contributions."},{"k":"p","x":"We have the right, in our sole and absolute discretion, (1) to edit, redact, or otherwise change any Contributions; (2) to re-categorize any Contributions to place them in more appropriate locations on the Services; and (3) to pre-screen or delete any Contributions at any time and for any reason, without notice. We have no obligation to monitor your Contributions."}]},{"id":"reviews","h":"7. Guidelines for reviews","blocks":[{"k":"p","x":"We may provide you areas on the Services to leave reviews or ratings. When posting a review, you must comply with the following criteria: (1) you should have firsthand experience with the person/entity being reviewed; (2) your reviews should not contain offensive profanity, or abusive, racist, offensive, or hateful language; (3) your reviews should not contain discriminatory references based on religion, race, gender, national origin, age, marital status, sexual orientation, or disability; (4) your reviews should not contain references to illegal activity; (5) you should not be affiliated with competitors if posting negative reviews; (6) you should not make any conclusions as to the legality of conduct; (7) you may not post any false or misleading statements; and (8) you may not organize a campaign encouraging others to post reviews, whether positive or negative."},{"k":"p","x":"We may accept, reject, or remove reviews in our sole discretion. We have absolutely no obligation to screen reviews or to delete reviews, even if anyone considers reviews objectionable or inaccurate. Reviews are not endorsed by us, and do not necessarily represent our opinions or the views of any of our affiliates or partners. We do not assume liability for any review or for any claims, liabilities, or losses resulting from any review. By posting a review, you hereby grant to us a perpetual, non-exclusive, worldwide, royalty-free, fully paid, assignable, and sublicensable right and license to reproduce, modify, translate, transmit by any means, display, perform, and/or distribute all content relating to review."}]},{"id":"thirdparty","h":"8. Third-party websites and content","blocks":[{"k":"p","x":"The Services may contain (or you may be sent via the Site) links to other websites (\"Third-Party Websites\") as well as articles, photographs, text, graphics, pictures, designs, music, sound, video, information, applications, software, and other content or items belonging to or originating from third parties (\"Third-Party Content\"). Such Third-Party Websites and Third-Party Content are not investigated, monitored, or checked for accuracy, appropriateness, or completeness by us, and we are not responsible for any Third-Party Websites accessed through the Services or any Third-Party Content posted on, available through, or installed from the Services, including the content, accuracy, offensiveness, opinions, reliability, privacy practices, or other policies of or contained in the Third-Party Websites or the Third-Party Content. Inclusion of, linking to, or permitting the use or installation of any Third-Party Websites or any Third-Party Content does not imply approval or endorsement thereof by us. If you decide to leave the Services and access the Third-Party Websites or to use or install any Third-Party Content, you do so at your own risk, and you should be aware these Legal Terms no longer govern. You should review the applicable terms and policies, including privacy and data gathering practices, of any website to which you navigate from the Services or relating to any applications you use or install from the Services. Any purchases you make through Third-Party Websites will be through other websites and from other companies, and we take no responsibility whatsoever in relation to such purchases which are exclusively between you and the applicable third party. You agree and acknowledge that we do not endorse the products or services offered on Third-Party Websites and you shall hold us blameless from any harm caused by your purchase of such products or services. Additionally, you shall hold us blameless from any losses sustained by you or harm caused to you relating to or resulting in any way from any Third-Party Content or any contact with Third-Party Websites."}]},{"id":"sitemanage","h":"9. Services management","blocks":[{"k":"p","x":"We reserve the right, but not the obligation, to: (1) monitor the Services for violations of these Legal Terms; (2) take appropriate legal action against anyone who, in our sole discretion, violates the law or these Legal Terms, including without limitation, reporting such user to law enforcement authorities; (3) in our sole discretion and without limitation, refuse, restrict access to, limit the availability of, or disable (to the extent technologically feasible) any of your Contributions or any portion thereof; (4) in our sole discretion and without limitation, notice, or liability, to remove from the Services or otherwise disable all files and content that are excessive in size or are in any way burdensome to our systems; and (5) otherwise manage the Services in a manner designed to protect our rights and property and to facilitate the proper functioning of the Services."}]},{"id":"ppyes","h":"10. Privacy policy","blocks":[{"k":"p","x":"We care about data privacy and security. Please review our Privacy Policy: https://kacrylx.com/privacy. By using the Services, you agree to be bound by our Privacy Policy, which is incorporated into these Legal Terms. Please be advised the Services are hosted in the United States. If you access the Services from any other region of the world with laws or other requirements governing personal data collection, use, or disclosure that differ from applicable laws in the United States, then through your continued use of the Services, you are transferring your data to the United States, and you expressly consent to have your data transferred to and processed in the United States. Further, we do not knowingly accept, request, or solicit information from children or knowingly market to children. Therefore, in accordance with the U.S. Children’s Online Privacy Protection Act, if we receive actual knowledge that anyone under the age of 13 has provided personal information to us without the requisite and verifiable parental consent, we will delete that information from the Services as quickly as is reasonably practical."}]},{"id":"copyrightyes","h":"11. Copyright infringements","blocks":[{"k":"p","x":"We respect the intellectual property rights of others. If you believe that any material available on or through the Services infringes upon any copyright you own or control, please immediately notify us using the contact information provided below (a \"Notification\"). A copy of your Notification will be sent to the person who posted or stored the material addressed in the Notification. Please be advised that pursuant to applicable law you may be held liable for damages if you make material misrepresentations in a Notification. Thus, if you are not sure that material located on or linked to by the Services infringes your copyright, you should consider first contacting an attorney."}]},{"id":"terms","h":"12. Term and termination","blocks":[{"k":"p","x":"These Legal Terms shall remain in full force and effect while you use the Services. WITHOUT LIMITING ANY OTHER PROVISION OF THESE LEGAL TERMS, WE RESERVE THE RIGHT TO, IN OUR SOLE DISCRETION AND WITHOUT NOTICE OR LIABILITY, DENY ACCESS TO AND USE OF THE SERVICES (INCLUDING BLOCKING CERTAIN IP ADDRESSES), TO ANY PERSON FOR ANY REASON OR FOR NO REASON, INCLUDING WITHOUT LIMITATION FOR BREACH OF ANY REPRESENTATION, WARRANTY, OR COVENANT CONTAINED IN THESE LEGAL TERMS OR OF ANY APPLICABLE LAW OR REGULATION. WE MAY TERMINATE YOUR USE OR PARTICIPATION IN THE SERVICES OR DELETE ANY CONTENT OR INFORMATION THAT YOU POSTED AT ANY TIME, WITHOUT WARNING, IN OUR SOLE DISCRETION."},{"k":"p","x":"If we terminate or suspend your account for any reason, you are prohibited from registering and creating a new account under your name, a fake or borrowed name, or the name of any third party, even if you may be acting on behalf of the third party. In addition to terminating or suspending your account, we reserve the right to take appropriate legal action, including without limitation pursuing civil, criminal, and injunctive redress."}]},{"id":"modifications","h":"13. Modifications and interruptions","blocks":[{"k":"p","x":"We reserve the right to change, modify, or remove the contents of the Services at any time or for any reason at our sole discretion without notice. However, we have no obligation to update any information on our Services. We will not be liable to you or any third party for any modification, price change, suspension, or discontinuance of the Services."},{"k":"p","x":"We cannot guarantee the Services will be available at all times. We may experience hardware, software, or other problems or need to perform maintenance related to the Services, resulting in interruptions, delays, or errors. We reserve the right to change, revise, update, suspend, discontinue, or otherwise modify the Services at any time or for any reason without notice to you. You agree that we have no liability whatsoever for any loss, damage, or inconvenience caused by your inability to access or use the Services during any downtime or discontinuance of the Services. Nothing in these Legal Terms will be construed to obligate us to maintain and support the Services or to supply any corrections, updates, or releases in connection therewith."}]},{"id":"law","h":"14. Governing law","blocks":[{"k":"p","x":"These Legal Terms and your use of the Services are governed by and construed in accordance with the laws of the State of New Jersey applicable to agreements made and to be entirely performed within the State of New Jersey, without regard to its conflict of law principles."}]},{"id":"disputes","h":"15. Dispute resolution","blocks":[{"k":"h3","x":"Informal Negotiations"},{"k":"p","x":"To expedite resolution and control the cost of any dispute, controversy, or claim related to these Legal Terms (each a \"Dispute\" and collectively, the \"Disputes\") brought by either you or us (individually, a \"Party\" and collectively, the \"Parties\"), the Parties agree to first attempt to negotiate any Dispute (except those Disputes expressly provided below) informally for at least sixty (60) days before initiating arbitration. Such informal negotiations commence upon written notice from one Party to the other Party."},{"k":"h3","x":"Binding Arbitration"},{"k":"p","x":"If the Parties are unable to resolve a Dispute through informal negotiations, the Dispute (except those Disputes expressly excluded below) will be finally and exclusively resolved by binding arbitration. YOU UNDERSTAND THAT WITHOUT THIS PROVISION, YOU WOULD HAVE THE RIGHT TO SUE IN COURT AND HAVE A JURY TRIAL. The arbitration shall be commenced and conducted under the Commercial Arbitration Rules of the American Arbitration Association (\"AAA\") and, where appropriate, the AAA’s Supplementary Procedures for Consumer Related Disputes (\"AAA Consumer Rules\"), both of which are available at the American Arbitration Association (AAA) website. Your arbitration fees and your share of arbitrator compensation shall be governed by the AAA Consumer Rules and, where appropriate, limited by the AAA Consumer Rules. The arbitration may be conducted in person, through the submission of documents, by phone, or online. The arbitrator will make a decision in writing, but need not provide a statement of reasons unless requested by either Party. The arbitrator must follow applicable law, and any award may be challenged if the arbitrator fails to do so. Except where otherwise required by the applicable AAA rules or applicable law, the arbitration will take place in United States, New Jersey. Except as otherwise provided herein, the Parties may litigate in court to compel arbitration, stay proceedings pending arbitration, or to confirm, modify, vacate, or enter judgment on the award entered by the arbitrator."},{"k":"p","x":"If for any reason, a Dispute proceeds in court rather than arbitration, the Dispute shall be commenced or prosecuted in the state and federal courts located in Middlesex, New Jersey, and the Parties hereby consent to, and waive all defenses of lack of personal jurisdiction, and forum non conveniens with respect to venue and jurisdiction in such state and federal courts. Application of the United Nations Convention on Contracts for the International Sale of Goods and the Uniform Computer Information Transaction Act (UCITA) are excluded from these Legal Terms."},{"k":"p","x":"If this provision is found to be illegal or unenforceable, then neither Party will elect to arbitrate any Dispute falling within that portion of this provision found to be illegal or unenforceable and such Dispute shall be decided by a court of competent jurisdiction within the courts listed for jurisdiction above, and the Parties agree to submit to the personal jurisdiction of that court."},{"k":"h3","x":"Restrictions"},{"k":"p","x":"The Parties agree that any arbitration shall be limited to the Dispute between the Parties individually. To the full extent permitted by law, (a) no arbitration shall be joined with any other proceeding; (b) there is no right or authority for any Dispute to be arbitrated on a class-action basis or to utilize class action procedures; and (c) there is no right or authority for any Dispute to be brought in a purported representative capacity on behalf of the general public or any other persons."},{"k":"h3","x":"Exceptions to Informal Negotiations and Arbitration"},{"k":"p","x":"The Parties agree that the following Disputes are not subject to the above provisions concerning informal negotiations binding arbitration: (a) any Disputes seeking to enforce or protect, or concerning the validity of, any of the intellectual property rights of a Party; (b) any Dispute related to, or arising from, allegations of theft, piracy, invasion of privacy, or unauthorized use; and (c) any claim for injunctive relief. If this provision is found to be illegal or unenforceable, then neither Party will elect to arbitrate any Dispute falling within that portion of this provision found to be illegal or unenforceable and such Dispute shall be decided by a court of competent jurisdiction within the courts listed for jurisdiction above, and the Parties agree to submit to the personal jurisdiction of that court."}]},{"id":"corrections","h":"16. Corrections","blocks":[{"k":"p","x":"There may be information on the Services that contains typographical errors, inaccuracies, or omissions, including descriptions, pricing, availability, and various other information. We reserve the right to correct any errors, inaccuracies, or omissions and to change or update the information on the Services at any time, without prior notice."}]},{"id":"disclaimer","h":"17. Disclaimer","blocks":[{"k":"p","x":"THE SERVICES ARE PROVIDED ON AN AS-IS AND AS-AVAILABLE BASIS. YOU AGREE THAT YOUR USE OF THE SERVICES WILL BE AT YOUR SOLE RISK. TO THE FULLEST EXTENT PERMITTED BY LAW, WE DISCLAIM ALL WARRANTIES, EXPRESS OR IMPLIED, IN CONNECTION WITH THE SERVICES AND YOUR USE THEREOF, INCLUDING, WITHOUT LIMITATION, THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT. WE MAKE NO WARRANTIES OR REPRESENTATIONS ABOUT THE ACCURACY OR COMPLETENESS OF THE SERVICES' CONTENT OR THE CONTENT OF ANY WEBSITES OR MOBILE APPLICATIONS LINKED TO THE SERVICES AND WE WILL ASSUME NO LIABILITY OR RESPONSIBILITY FOR ANY (1) ERRORS, MISTAKES, OR INACCURACIES OF CONTENT AND MATERIALS, (2) PERSONAL INJURY OR PROPERTY DAMAGE, OF ANY NATURE WHATSOEVER, RESULTING FROM YOUR ACCESS TO AND USE OF THE SERVICES, (3) ANY UNAUTHORIZED ACCESS TO OR USE OF OUR SECURE SERVERS AND/OR ANY AND ALL PERSONAL INFORMATION AND/OR FINANCIAL INFORMATION STORED THEREIN, (4) ANY INTERRUPTION OR CESSATION OF TRANSMISSION TO OR FROM THE SERVICES, (5) ANY BUGS, VIRUSES, TROJAN HORSES, OR THE LIKE WHICH MAY BE TRANSMITTED TO OR THROUGH THE SERVICES BY ANY THIRD PARTY, AND/OR (6) ANY ERRORS OR OMISSIONS IN ANY CONTENT AND MATERIALS OR FOR ANY LOSS OR DAMAGE OF ANY KIND INCURRED AS A RESULT OF THE USE OF ANY CONTENT POSTED, TRANSMITTED, OR OTHERWISE MADE AVAILABLE VIA THE SERVICES. WE DO NOT WARRANT, ENDORSE, GUARANTEE, OR ASSUME RESPONSIBILITY FOR ANY PRODUCT OR SERVICE ADVERTISED OR OFFERED BY A THIRD PARTY THROUGH THE SERVICES, ANY HYPERLINKED WEBSITE, OR ANY WEBSITE OR MOBILE APPLICATION FEATURED IN ANY BANNER OR OTHER ADVERTISING, AND WE WILL NOT BE A PARTY TO OR IN ANY WAY BE RESPONSIBLE FOR MONITORING ANY TRANSACTION BETWEEN YOU AND ANY THIRD-PARTY PROVIDERS OF PRODUCTS OR SERVICES. AS WITH THE PURCHASE OF A PRODUCT OR SERVICE THROUGH ANY MEDIUM OR IN ANY ENVIRONMENT, YOU SHOULD USE YOUR BEST JUDGMENT AND EXERCISE CAUTION WHERE APPROPRIATE."}]},{"id":"liability","h":"18. Limitations of liability","blocks":[{"k":"p","x":"IN NO EVENT WILL WE OR OUR DIRECTORS, EMPLOYEES, OR AGENTS BE LIABLE TO YOU OR ANY THIRD PARTY FOR ANY DIRECT, INDIRECT, CONSEQUENTIAL, EXEMPLARY, INCIDENTAL, SPECIAL, OR PUNITIVE DAMAGES, INCLUDING LOST PROFIT, LOST REVENUE, LOSS OF DATA, OR OTHER DAMAGES ARISING FROM YOUR USE OF THE SERVICES, EVEN IF WE HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES."}]},{"id":"indemnification","h":"19. Indemnification","blocks":[{"k":"p","x":"You agree to defend, indemnify, and hold us harmless, including our subsidiaries, affiliates, and all of our respective officers, agents, partners, and employees, from and against any loss, damage, liability, claim, or demand, including reasonable attorneys’ fees and expenses, made by any third party due to or arising out of: (1) your Contributions; (2) use of the Services; (3) breach of these Legal Terms; (4) any breach of your representations and warranties set forth in these Legal Terms; (5) your violation of the rights of a third party, including but not limited to intellectual property rights; or (6) any overt harmful act toward any other user of the Services with whom you connected via the Services. Notwithstanding the foregoing, we reserve the right, at your expense, to assume the exclusive defense and control of any matter for which you are required to indemnify us, and you agree to cooperate, at your expense, with our defense of such claims. We will use reasonable efforts to notify you of any such claim, action, or proceeding which is subject to this indemnification upon becoming aware of it."}]},{"id":"userdata","h":"20. User data","blocks":[{"k":"p","x":"We will maintain certain data that you transmit to the Services for the purpose of managing the performance of the Services, as well as data relating to your use of the Services. Although we perform regular routine backups of data, you are solely responsible for all data that you transmit or that relates to any activity you have undertaken using the Services. You agree that we shall have no liability to you for any loss or corruption of any such data, and you hereby waive any right of action against us arising from any such loss or corruption of such data."}]},{"id":"electronic","h":"21. Electronic communications, transactions, and signatures","blocks":[{"k":"p","x":"Visiting the Services, sending us emails, and completing online forms constitute electronic communications. You consent to receive electronic communications, and you agree that all agreements, notices, disclosures, and other communications we provide to you electronically, via email and on the Services, satisfy any legal requirement that such communication be in writing. YOU HEREBY AGREE TO THE USE OF ELECTRONIC SIGNATURES, CONTRACTS, ORDERS, AND OTHER RECORDS, AND TO ELECTRONIC DELIVERY OF NOTICES, POLICIES, AND RECORDS OF TRANSACTIONS INITIATED OR COMPLETED BY US OR VIA THE SERVICES. You hereby waive any rights or requirements under any statutes, regulations, rules, ordinances, or other laws in any jurisdiction which require an original signature or delivery or retention of non-electronic records, or to payments or the granting of credits by any means other than electronic means."}]},{"id":"sms","h":"22. SMS text messaging","blocks":[{"k":"h3","x":"Program Description"},{"k":"p","x":"By opting into any Kacrylx text messaging program, you expressly consent to receive text messages (SMS) to your mobile number. Kacrylx text messages may include: appointment reminders."},{"k":"h3","x":"Opting Out"},{"k":"p","x":"If at any time you wish to stop receiving SMS messages from us, simply reply to the text with \"STOP.\" You may receive an SMS message confirming your opt out. After this, you will no longer receive SMS messages from us. If you want to join again, please sign up as you did the first time and we will start sending SMS messages to you again."},{"k":"h3","x":"Message and Data Rates"},{"k":"p","x":"Please be aware that message and data rates may apply to any SMS messages sent or received. The rates are determined by your carrier and the specifics of your mobile plan. Carriers are not liable for delayed or undelivered messages. If you have any questions about your text plan or data plan, contact your wireless provider."},{"k":"h3","x":"Support"},{"k":"p","x":"If you have any questions or need assistance regarding our SMS communications, please reply with the keyword HELP. You can also email us at Info@kacrylxbeauty.com. If you have any questions regarding privacy, please read our Privacy Policy: https://kacrylx.com/privacy."}]},{"id":"california","h":"23. California users and residents","blocks":[{"k":"p","x":"If any complaint with us is not satisfactorily resolved, you can contact the Complaint Assistance Unit of the Division of Consumer Services of the California Department of Consumer Affairs in writing at 1625 North Market Blvd., Suite N 112, Sacramento, California 95834 or by telephone at (800) 952-5210 or (916) 445-1254."}]},{"id":"misc","h":"24. Miscellaneous","blocks":[{"k":"p","x":"These Legal Terms and any policies or operating rules posted by us on the Services or in respect to the Services constitute the entire agreement and understanding between you and us. Our failure to exercise or enforce any right or provision of these Legal Terms shall not operate as a waiver of such right or provision. These Legal Terms operate to the fullest extent permissible by law. We may assign any or all of our rights and obligations to others at any time. We shall not be responsible or liable for any loss, damage, delay, or failure to act caused by any cause beyond our reasonable control. If any provision or part of a provision of these Legal Terms is determined to be unlawful, void, or unenforceable, that provision or part of the provision is deemed severable from these Legal Terms and does not affect the validity and enforceability of any remaining provisions. There is no joint venture, partnership, employment or agency relationship created between you and us as a result of these Legal Terms or use of the Services. You agree that these Legal Terms will not be construed against us by virtue of having drafted them. You hereby waive any and all defenses you may have based on the electronic form of these Legal Terms and the lack of signing by the parties hereto to execute these Legal Terms."}]},{"id":"contact","h":"25. Contact us","blocks":[{"k":"p","x":"In order to resolve a complaint regarding the Services or to receive further information regarding use of the Services, please contact us at:"},{"k":"p","x":"Kacrylx"},{"k":"p","x":"Edison, NJ 08837"},{"k":"p","x":"United States"},{"k":"p","x":"info@kacrylxbeauty.com"},{"k":"p","x":"This Terms and Conditions was created using Termly's Terms and Conditions Generator"}]}]
   }
 };
 const LABELS = { privacy:'Privacy Policy', terms:'Terms of Service', home:'Home', gallery:'Gallery', about:'About', testimonials:'Reviews', book:'Book an appointment', faq:'Policies', deposit:'Deposit', confirmed:'Booking confirmed' };
@@ -1280,12 +1270,24 @@ const LABELS = { privacy:'Privacy Policy', terms:'Terms of Service', home:'Home'
 class Component extends DCLogic {
   state = { page: this.props.page || 'home', menus:{}, holdId:null, holdNote:'', navCondensed:false, isMobile: typeof window !== 'undefined' && window.innerWidth < 760, menuOpen:false, artist:'Kymani', service:null, setType:null, day:null, monthOffset:0, time:null, rating:5, photos:[], size:null, card:{}, cardTouched:false, kGen:null, kSvc:null, kAddons:{}, f:{ first: this.props.previewFirstName || '', last:'', phone:'', email:'', notes:'', agree:false }, totalTime:'—', totalPrice:'—', totalMins:0, avail:{}, addons:{}, raddons:{} };
 
-  addPhotos = (e) => {
-    const files = Array.from((e.target && e.target.files) || []);
-    if (!files.length) return;
-    const added = files.map(f => ({ id: Math.random().toString(36).slice(2), url: URL.createObjectURL(f) }));
-    this.setState(st => ({ photos: st.photos.concat(added).slice(0, 6) }));
+  // review photos: shrunk to 1200px JPEGs in the browser, up to 3, sent with the review
+  addPhotos = async (e) => {
+    const files = Array.from((e.target && e.target.files) || []).filter(f => /^image\//.test(f.type));
     e.target.value = '';
+    const room = 3 - this.state.photos.length;
+    if (!files.length || room <= 0) return;
+    const added = [];
+    for (const f of files.slice(0, room)) {
+      try { added.push({ id: Math.random().toString(36).slice(2), url: await this.shrinkPhoto(f) }); } catch (err) {}
+    }
+    this.setState(st => ({ photos: st.photos.concat(added).slice(0, 3), revErr: '' }));
+  };
+  fetchReviews = () => {
+    if (!API_BASE || this._revReq) return;
+    this._revReq = true;
+    fetch(API_BASE + '/reviews').then(r => (r.ok ? r.json() : null)).then(d => {
+      if (d && Array.isArray(d.reviews)) this.setState({ liveReviews: d.reviews.map(x => ({ name: x.name, artist: x.artist, stars: '★★★★★'.slice(0, Math.max(1, Math.min(5, x.rating || 5))), text: x.text || '', photos: x.photos || [] })) });
+    }).catch(() => {});
   };
 
   removePhoto = (id) => () => {
@@ -2362,8 +2364,215 @@ class Component extends DCLogic {
       : { bg:'#FFFFFF', border:'#EBC6D3', fg:'#3E2430' };
   }
 
+  gx = { x: 0, y: 0, z: 0.6 };
+  galRef = (el) => { if (el) { this._gEl = el; this.galInit(); } else { this.galDestroy(); this._gEl = null; } };
+  galWrapRef = (el) => { this._gWrap = el; if (el) this.galApply(false); };
+  galCanvasRef = (el) => { this._gCanvas = el; if (el) this.galLoader(); else cancelAnimationFrame(this._gLR); };
+  galView() { const el = this._gEl; return el ? { w: el.clientWidth, h: el.clientHeight } : { w: innerWidth, h: innerHeight * 0.8 }; }
+  galDims(gap) { return { w: GAL_COLS * (GAL_TW + gap) - gap, h: GAL_ROWS * (GAL_TH + gap) - gap }; }
+  galCenter(z, gap) { const v = this.galView(), d = this.galDims(gap); return { x: (v.w - d.w * z) / 2, y: (v.h - d.h * z) / 2 }; }
+  galBounds() {
+    const v = this.galView(), d = this.galDims(this.state.galGap ?? 32), z = this.gx.z, m = 24;
+    const ax = (sz, vs) => sz <= vs ? [(vs - sz) / 2, (vs - sz) / 2] : [vs - sz - m, m];
+    const [minX, maxX] = ax(d.w * z, v.w), [minY, maxY] = ax(d.h * z, v.h);
+    return { minX, maxX, minY, maxY };
+  }
+  galApply(anim, dur = 1.2) {
+    const w = this._gWrap; if (!w) return;
+    w.style.transition = anim ? 'transform ' + dur + 's ' + GAL_EASE : 'none';
+    w.style.transform = 'translate3d(' + this.gx.x + 'px,' + this.gx.y + 'px,0) scale(' + this.gx.z + ')';
+  }
+  galTimer(fn, ms) { (this._gT = this._gT || []).push(setTimeout(fn, ms)); }
+  galInit() {
+    this.galDestroy();
+    const z = 0.6, gap = galGapFor(z), c = this.galCenter(z, gap);
+    Object.assign(this.gx, { x: c.x, y: c.y, z }); this.galApply(false);
+    this.setState({ galGap: gap, galZoom: z, galZoomKey: 'normal', galPhase: 'load', galSel: null, galUiOn: false, galFilter: 'all', galShuf: galMix(this.state.galData || GAL) });
+    this.galFetch();
+    this.galTimer(() => this.setState({ galPhase: 'intro' }), 1700);
+    this.galTimer(() => this.setState({ galPhase: 'ready', galUiOn: true }), 3500);
+    this._gKey = (e) => { if (e.key === 'Escape') this.galClose(); };
+    this._gResize = () => { clearTimeout(this._gRT); this._gRT = setTimeout(() => { this.galClose(true); this.galSetZoom(this.gx.z, this.state.galZoomKey, false); }, 150); };
+    addEventListener('keydown', this._gKey); addEventListener('resize', this._gResize);
+  }
+  galFetch() {
+    if (!API_BASE || this._gFetched) return;
+    this._gFetched = true;
+    fetch(API_BASE + '/gallery').then(r => (r.ok ? r.json() : null)).then(d => {
+      if (!d || !Array.isArray(d.photos) || !d.photos.length) return;
+      const data = d.photos.map(p => ({ a: p.artist, t: p.title, d: p.desc, src: p.url, label: p.artist }));
+      this.setState({ galData: data, galShuf: galMix(data) });
+    }).catch(() => { this._gFetched = false; });
+  }
+  galDestroy() {
+    (this._gT || []).forEach(clearTimeout); this._gT = [];
+    cancelAnimationFrame(this._gLR); cancelAnimationFrame(this._gInR); clearTimeout(this._gRT);
+    if (this._gKey) removeEventListener('keydown', this._gKey);
+    if (this._gResize) removeEventListener('resize', this._gResize);
+    if (this._gUp) this._gUp();
+  }
+  galLoader() {
+    const cv = this._gCanvas, ctx = cv.getContext('2d'), rings = [[20, 8], [35, 12], [50, 16], [65, 20], [80, 24]], P = '245,198,214', A = '224,57,123';
+    let t0 = null;
+    const draw = (ts) => {
+      if (!this._gCanvas) return;
+      if (t0 == null) t0 = ts;
+      const t = (ts - t0) / 1000;
+      ctx.clearRect(0, 0, 300, 300);
+      ctx.beginPath(); ctx.arc(150, 150, 3, 0, Math.PI * 2); ctx.fillStyle = 'rgba(' + P + ',0.9)'; ctx.fill();
+      rings.forEach(([r, n], ri) => {
+        for (let i = 0; i < n; i++) {
+          const ang = (i / n) * Math.PI * 2, rp = Math.sin(t * 2 - ri * 0.4) * 3;
+          const x = 150 + Math.cos(ang) * (r + rp), y = 150 + Math.sin(ang) * (r + rp);
+          const w = Math.sin(t * 2 - ri * 0.4 + i * 0.2), o = Math.max(0, 0.4 + w * 0.6), c = w > 0.6 ? A : P;
+          ctx.beginPath(); ctx.moveTo(150, 150); ctx.lineTo(x, y); ctx.lineWidth = 0.8; ctx.strokeStyle = 'rgba(' + c + ',' + o * (w > 0.6 ? 0.7 : 0.35) + ')'; ctx.stroke();
+          ctx.beginPath(); ctx.arc(x, y, 2.5, 0, Math.PI * 2); ctx.fillStyle = 'rgba(' + c + ',' + o + ')'; ctx.fill();
+        }
+      });
+      this._gLR = requestAnimationFrame(draw);
+    };
+    this._gLR = requestAnimationFrame(draw);
+  }
+  galDown = (e) => {
+    const s = this.state;
+    if (s.galSel != null || s.galPhase !== 'ready' || e.button > 0) return;
+    if (e.target.closest && e.target.closest('[data-gctl]')) return;
+    cancelAnimationFrame(this._gInR);
+    const now = performance.now();
+    const d = { sx: e.clientX, sy: e.clientY, ox: this.gx.x, oy: this.gx.y, moved: false, tile: e.target.closest ? e.target.closest('[data-gi]') : null, lx: e.clientX, ly: e.clientY, lt: now, vx: 0, vy: 0 };
+    this.galApply(false);
+    const rub = (p, min, max) => p < min ? min - (min - p) * 0.35 : p > max ? max + (p - max) * 0.35 : p;
+    const mv = (ev) => {
+      const dx = ev.clientX - d.sx, dy = ev.clientY - d.sy;
+      if (!d.moved && Math.hypot(dx, dy) > 6) { d.moved = true; this.setState({ galDragging: true }); }
+      if (!d.moved) return;
+      const b = this.galBounds(), t = performance.now(), dt = Math.max(1, t - d.lt);
+      d.vx = d.vx * 0.3 + ((ev.clientX - d.lx) / dt * 16) * 0.7; d.vy = d.vy * 0.3 + ((ev.clientY - d.ly) / dt * 16) * 0.7;
+      d.lx = ev.clientX; d.ly = ev.clientY; d.lt = t;
+      this.gx.x = rub(d.ox + dx, b.minX, b.maxX); this.gx.y = rub(d.oy + dy, b.minY, b.maxY);
+      this.galApply(false);
+    };
+    const up = () => {
+      removeEventListener('pointermove', mv); removeEventListener('pointerup', up); removeEventListener('pointercancel', up); this._gUp = null;
+      if (!d.moved) { if (d.tile) this.galOpen(+d.tile.getAttribute('data-gi')); return; }
+      this.setState({ galDragging: false });
+      const stale = performance.now() - d.lt > 80;
+      this.galCoast(stale ? 0 : d.vx, stale ? 0 : d.vy);
+    };
+    this._gUp = up;
+    addEventListener('pointermove', mv); addEventListener('pointerup', up); addEventListener('pointercancel', up);
+  };
+  galCoast(vx, vy) {
+    const fix = (p, v, min, max) => {
+      if (p < min) { v *= 0.5; p += (min - p) * 0.2; if (min - p < 0.5) p = min; }
+      else if (p > max) { v *= 0.5; p -= (p - max) * 0.2; if (p - max < 0.5) p = max; }
+      return [p, v];
+    };
+    const step = () => {
+      const g = this.gx, b = this.galBounds();
+      vx *= 0.94; vy *= 0.94; g.x += vx; g.y += vy;
+      [g.x, vx] = fix(g.x, vx, b.minX, b.maxX); [g.y, vy] = fix(g.y, vy, b.minY, b.maxY);
+      this.galApply(false);
+      const inside = g.x >= b.minX && g.x <= b.maxX && g.y >= b.minY && g.y <= b.maxY;
+      if (!(inside && Math.abs(vx) < 0.15 && Math.abs(vy) < 0.15)) this._gInR = requestAnimationFrame(step);
+    };
+    this._gInR = requestAnimationFrame(step);
+  }
+  galFitZoom() {
+    const v = this.galView();
+    let f = 0.6;
+    for (let k = 0; k < 3; k++) { const d = this.galDims(galGapFor(f)); f = Math.min((v.w - 48) / d.w, (v.h - 150) / d.h); }
+    return Math.max(0.08, Math.min(2, f));
+  }
+  galSetZoom(z, key, anim = true) {
+    if (this.state.galSel != null) { this.galClose(); return; }
+    if (key === 'fit') z = this.galFitZoom();
+    const gap = galGapFor(z), c = this.galCenter(z, gap);
+    cancelAnimationFrame(this._gInR);
+    Object.assign(this.gx, { x: c.x, y: c.y, z }); this.galApply(anim);
+    this.setState({ galGap: gap, galZoom: z, galZoomKey: key });
+  }
+  galSetFilter(k) {
+    const s = this.state;
+    if (k === (s.galFilter || 'all') || s.galPhase !== 'ready') return;
+    if (s.galSel != null) this.galClose(true);
+    this.setState({ galPhase: 'collapse' });
+    this.galTimer(() => {
+      this.setState({ galFilter: k, galPhase: 'load', galShuf: k === 'all' ? galMix(this.state.galData || GAL) : this.state.galShuf });
+      requestAnimationFrame(() => requestAnimationFrame(() => this.setState({ galPhase: 'intro' })));
+      this.galTimer(() => this.setState({ galPhase: 'ready' }), 1900);
+    }, 420);
+  }
+  galTarget() {
+    const v = this.galView();
+    return v.w < 720 ? { left: 12, top: 12, w: v.w - 24, h: Math.round(v.h * (v.h < 640 ? 0.42 : 0.54)) - 12, r: 10 } : { left: 16, top: 16, w: Math.round(v.w / 2) - 24, h: v.h - 32, r: 10 };
+  }
+  galOpen(k) {
+    const el = this._gEl, tile = el && el.querySelector('[data-gi="' + k + '"]');
+    if (!tile) return;
+    const r = tile.getBoundingClientRect(), R = el.getBoundingClientRect();
+    this._gFrom = { left: r.left - R.left, top: r.top - R.top, w: r.width, h: r.height, r: 6 * this.gx.z };
+    this.setState({ galSel: k, galFlyPos: this._gFrom, galFlyAnim: false, galOpenOn: false });
+    requestAnimationFrame(() => requestAnimationFrame(() => this.setState({ galFlyPos: this.galTarget(), galFlyAnim: true, galOpenOn: true })));
+  }
+  galClose = (instant) => {
+    if (this.state.galSel == null) return;
+    if (instant === true) { this._gClosing = false; this.setState({ galSel: null, galOpenOn: false }); return; }
+    if (this._gClosing) return;
+    this._gClosing = true;
+    this.setState({ galOpenOn: false, galFlyPos: this._gFrom, galFlyAnim: true });
+    this.galTimer(() => { this._gClosing = false; this.setState({ galSel: null }); }, 1150);
+  };
+  galVals() {
+    const s = this.state, phase = s.galPhase || 'load', gap = s.galGap ?? 32, filt = s.galFilter || 'all';
+    const srcAll = s.galData || GAL, has = (k) => srcAll.some(g => g.a === k);
+    const shuf = s.galShuf || galAll(srcAll);
+    let list = filt === 'all' || !has(filt) ? shuf : shuf.filter((g) => g.a === filt);
+    if (!list.length) list = galAll(GAL);
+    const n = list.length;
+    const layKey = list.map(x => x.src).join('|');
+    if (this._gLayKey !== layKey) { this._gLayKey = layKey; this._gLay = galLayout(list); }
+    const lay = this._gLay;
+    const v = this.galView(), g = this.gx, total = GAL_COLS * GAL_ROWS;
+    const cx = (v.w / 2 - g.x) / g.z - GAL_TW / 2, cy = (v.h / 2 - g.y) / g.z - GAL_TH / 2;
+    const atC = phase === 'load' || phase === 'collapse';
+    const tiles = [];
+    for (let row = 0; row < GAL_ROWS; row++) for (let col = 0; col < GAL_COLS; col++) {
+      const k = row * GAL_COLS + col, img = list[lay[k]], dl = ((k / total) * 1.5).toFixed(3) + 's';
+      tiles.push({
+        i: k, src: img.src, alt: img.t + ' nails by ' + img.label,
+        left: atC ? cx : col * (GAL_TW + gap), top: atC ? cy : row * (GAL_TH + gap), opacity: atC ? 0 : 1, scale: atC ? 0.8 : 1,
+        transition: phase === 'load' ? 'none' : phase === 'collapse' ? 'all .4s ease' : phase === 'intro'
+          ? 'left .6s ease-out ' + dl + ', top .6s ease-out ' + dl + ', opacity .6s ease ' + dl + ', transform .6s ease-out ' + dl
+          : 'left 1.2s ' + GAL_EASE + ', top 1.2s ' + GAL_EASE + ', opacity .6s ease, transform .6s ease',
+        imgOpacity: s.galSel === k ? 0 : 1
+      });
+    }
+    const selImg = s.galSel != null ? list[lay[s.galSel]] : list[0];
+    const fp = s.galFlyPos || { left: 0, top: 0, w: 0, h: 0, r: 6 };
+    const mob = v.w < 720, on = !!s.galOpenOn;
+    const tx = (k) => on ? 'opacity .7s ease ' + (0.8 + k * 0.08) + 's, transform .9s cubic-bezier(.16,.84,.24,1) ' + (0.8 + k * 0.08) + 's' : 'opacity .3s ease, transform .3s ease';
+    const book = (e) => { if (e && e.preventDefault) e.preventDefault(); this.setState({ page: 'book', artist: selImg.a }); window.scrollTo({ top: 0 }); };
+    const zk = s.galZoomKey || 'normal';
+    return {
+      galH: this.props.galleryFull && !mob ? '100svh' : '80svh', galTiles: tiles, galCursor: s.galDragging ? 'grabbing' : 'grab', galUiOpacity: s.galUiOn ? 1 : 0, galShowTitle: !s.isMobile,
+      galLoading: phase === 'load' && !s.galUiOn || (phase === 'intro' && !s.galUiOn), galLoadO: phase === 'load' ? 1 : 0,
+      galPct: Math.round((s.galZoom ?? 0.6) * 100) + '%',
+      galFilters: [['all', 'All'], ['Kymani', 'Kymani'], ['Jharis', 'Jharis']].filter(([k]) => k === 'all' || has(k)).map(([k, label]) => ({ label, on: filt === k ? 'true' : 'false', bg: filt === k ? '#FFF8FA' : 'transparent', fg: filt === k ? '#5E0E2C' : '#F3DCE5', onClick: () => this.galSetFilter(k) })),
+      galZooms: [['out', 0.3, 'Zoom out', 'Out'], ['normal', 0.6, 'Normal', 'Normal'], ['in', 1, 'Zoom in', 'In'], ['fit', 0, 'Fit', 'Fit']].map(([k, z, l, ml]) => ({ label: mob ? ml : l, on: zk === k ? 'true' : 'false', fg: zk === k ? '#FFFFFF' : '#C9A3B3', dot: zk === k ? '#E0397B' : 'rgba(255,255,255,0.25)', onClick: () => this.galSetZoom(z, k) })),
+      galHasSel: s.galSel != null, galScrim: on ? 1 : 0, galClose: this.galClose,
+      galFly: { src: selImg.src, alt: selImg.t + ' nails by ' + selImg.label, left: fp.left, top: fp.top, w: fp.w, h: fp.h, r: fp.r, tr: s.galFlyAnim ? ['left', 'top', 'width', 'height', 'border-radius'].map((p) => p + ' 1.1s ' + GAL_EASE).join(', ') : 'none' },
+      galPanel: mob ? { left: '0', top: (v.h < 640 ? 42 : 54) + '%', justify: 'flex-start', pad: '14px 18px 22px', titleSize: v.h < 640 ? '26px' : '30px', ov: 'auto', pe: 'auto' } : { left: '50%', top: '0', justify: 'flex-end', pad: 'clamp(28px,4vw,56px)', titleSize: 'clamp(36px,4vw,54px)', ov: 'visible', pe: 'none' },
+      galCur: { num: String(list.indexOf(selImg) + 1).padStart(2, '0') + ' / ' + String(n).padStart(2, '0'), label: selImg.label, t: selImg.t, d: selImg.d, book },
+      galTxtO: on ? 1 : 0, galTxtY: on ? 0 : 24, galTx1: tx(0), galTx2: tx(1), galTx3: tx(2), galTx4: tx(3),
+      galRef: this.galRef, galWrapRef: this.galWrapRef, galCanvasRef: this.galCanvasRef, galDown: this.galDown
+    };
+  }
+
   renderVals() {
+    if (this.state.page === 'testimonials' && API_BASE && !this._revReq) setTimeout(this.fetchReviews, 0);
     const v = this.baseVals();
+    if (v.isGallery) Object.assign(v, this.galVals());
     // the pre-visit questions must be answered before leaving the confirmation page
     if (v.prepShow) Object.assign(v, { navOn: false, footerOn: false, navDesktop: false, navMobile: false, menuShown: false, goHome: (e) => { if (e && e.preventDefault) e.preventDefault(); } });
     else Object.assign(v, { navOn: true, footerOn: true });
@@ -2399,15 +2608,21 @@ class Component extends DCLogic {
       heroBtnPadB: s.isMobile ? '12px 22px' : '16px 30px',
       heroBtnFont: s.isMobile ? '14px' : '15px',
       aboutImgOrder: s.isMobile ? 2 : 0,
+      showAboutEyebrow: !s.isMobile,
       aboutCols: s.isMobile ? 'minmax(0,1fr)' : 'repeat(2,minmax(0,1fr))',
       canHover: typeof window !== 'undefined' && !!window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches,
       isTestimonials: s.page === 'testimonials', isBook: s.page === 'book', isFaq: s.page === 'faq',
       isDeposit: s.page === 'deposit',
       isLegal: !!LEGAL[s.page],
       legalTitle: LEGAL[s.page] ? LEGAL[s.page].title : '',
-      legalUpdated: LEGAL_UPDATED,
-      legalIntro: LEGAL[s.page] ? LEGAL[s.page].intro : '',
-      legalSections: LEGAL[s.page] ? LEGAL[s.page].sections.map((x, i) => Object.assign({ id: 's' + (i + 1) }, x)) : [],
+      legalUpdated: (LEGAL[s.page] && LEGAL[s.page].updated) || LEGAL_UPDATED,
+      legalIntro: LEGAL[s.page] ? LEGAL[s.page].intro : '', legalHasIntro: !!(LEGAL[s.page] && LEGAL[s.page].intro),
+      legalSections: LEGAL[s.page] ? LEGAL[s.page].sections.map((x, i) => Object.assign({ id: 's' + (i + 1) }, x, {
+        hasH: !!x.h, padTop: x.h ? '24px' : '0', border: x.h ? '1px solid #F1DDE4' : 'none',
+        blocks: (x.blocks || (x.body || []).map(t => ({ k: 'p', x: t }))).map(b => ({ isP: b.k === 'p', isH3: b.k === 'h3', isUl: b.k === 'ul', isTable: b.k === 'table', x: b.x || '', lead: b.lead || '', hasLead: !!b.lead, items: b.items || [], rows: (b.rows || []).map((r, ri) => ({ cat: r[0], ex: r[1], yes: r[2], color: r[2] === 'YES' ? '#B0184E' : '#7A4258', border: ri ? '1px solid #F6E7EC' : 'none' })) }))
+      })) : [],
+      legalHasToc: !!(LEGAL[s.page] && LEGAL[s.page].toc),
+      legalToc: LEGAL[s.page] && LEGAL[s.page].toc ? LEGAL[s.page].sections.filter(x => /^\d/.test(x.h)).map(x => ({ h: x.h, href: '#kx-' + x.id, onClick: (e) => { if (e && e.preventDefault) e.preventDefault(); const el = document.getElementById('kx-' + x.id); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 100, behavior: 'smooth' }); } })) : [],
       showFooterCta: !['book', 'deposit', 'confirmed'].includes(s.page), isConfirmed: s.page === 'confirmed',
       goDeposit: () => this.requestBooking(),
       bookError: s.bookError || '',
@@ -2439,10 +2654,7 @@ class Component extends DCLogic {
       goHome: this.go('home'), goGallery: this.go('gallery'), goAbout: this.go('about'),
       goTestimonials: this.go('testimonials'), goBook: this.go('book'), goFaq: this.go('faq'),
       goPrivacy: this.go('privacy'), goTerms: this.go('terms'),
-      goSms: (e) => { this.go('terms')(e); setTimeout(() => { const el = document.getElementById('kx-sms'); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 100, behavior: 'smooth' }); }, 120); },
       goContactSection: this.goContactSection,
-      bookKymani: (e) => { if (e && e.preventDefault) e.preventDefault(); this.setState({ page:'book', artist:'Kymani' }); window.scrollTo({ top:0 }); },
-      bookJharis: (e) => { if (e && e.preventDefault) e.preventDefault(); this.setState({ page:'book', artist:'Jharis' }); window.scrollTo({ top:0 }); },
 
       navItems: [
         { label:'Home', page:'home', onClick:this.go('home') },
@@ -2472,10 +2684,7 @@ class Component extends DCLogic {
         hasIg: true,
         igName: a.name === 'Kymani' ? 'Kacrylx' : 'Crowncrylix',
         ig: a.name === 'Kymani' ? 'https://www.instagram.com/kacrylx/' : 'https://www.instagram.com/crowncrylix/',
-        bg: a.photo ? 'url("' + a.photo + '")' : 'none',
-        aboutPos: a.name === 'Jharis' ? 'center 6%' : 'center top',
-        homePos: a.name === 'Jharis' ? 'center 4%' : 'center 6%',
-        slotLabel: a.photo ? '' : a.name + ' portrait'
+        bg: a.photo ? 'url("' + a.photo + '")' : 'none'
       })),
       policies: POLICIES.map((p, i) => Object.assign({ num: '0' + (i + 1), revealDelay: Math.min(i, 5) * 0.09 }, p, { hint: p.hint.trim() })),
       extras: EXTRAS.map((x, i) => Object.assign({}, x, { revealDelay: 0.1 + Math.min(i, 4) * 0.09 })),
@@ -2490,7 +2699,7 @@ class Component extends DCLogic {
         return { label, onClick: () => this.setState({ revArtist: label }),
           bg: on ? '#E0397B' : '#fff', fg: on ? '#fff' : '#3D0A1D', border: on ? '#E0397B' : '#EBC6D3' };
       }),
-      revBlocked: !(s.revName || '').trim() || !s.revArtist,
+      revBlocked: !(s.revName || '').trim() || !s.revArtist || !!s.revSending,
       revCursor: (s.revName || '').trim() && s.revArtist ? 'pointer' : 'not-allowed',
       revOpacity: (s.revName || '').trim() && s.revArtist ? 1 : 0.45,
       revArtistMissing: !!s.revNameTouched && !!(s.revName || '').trim() && !s.revArtist,
@@ -2500,15 +2709,32 @@ class Component extends DCLogic {
       revOpen: !s.revSent,
       revSentName: (s.revSent || '').split(' ')[0],
       revWriteAnother: () => this.setState({ revSent: null }),
-      submitReview: () => {
+      submitReview: async () => {
         const st = this.state;
         if (!(st.revName || '').trim() || !st.revArtist) { this.setState({ revNameTouched: true }); return; }
+        if (st.revSending) return;
+        if (API_BASE) {
+          this.setState({ revSending: true, revErr: '' });
+          const fail = (m) => this.setState({ revSending: false, revErr: m });
+          try {
+            const r = await fetch(API_BASE + '/reviews', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ name: st.revName.trim(), artist: st.revArtist, rating: st.rating || 5, text: (st.revText || '').trim(), photos: st.photos.map(p => p.url), website: st.revHp || '' }) });
+            const d = await r.json().catch(() => ({}));
+            if (!r.ok) return fail(d.error || "Your review didn't send. Please try again.");
+          } catch (e) { return fail("Your review didn't send. Check your connection and try again."); }
+          this.setState({ revSending: false, revSent: st.revName.trim(), revName: '', revText: '', revArtist: null, revNameTouched: false, photos: [], rating: 5 });
+          return;
+        }
         const review = { name: st.revName.trim(), stars: '★★★★★'.slice(0, st.rating || 5), artist: st.revArtist,
           text: (st.revText || '').trim() || 'Loved my set!' };
         this.setState({ userReviews: [review].concat(st.userReviews || []), revSent: review.name,
           revName: '', revText: '', revArtist: null, revNameTouched: false, photos: [] });
       },
-      reviews: (s.userReviews || []).concat(REVIEWS).map((r, i) => Object.assign({}, r, { revealDelay: Math.min(i, 5) * 0.09, artistLabel: 'with ' + r.artist })),
+      reviews: (API_BASE && s.liveReviews ? s.liveReviews : (s.userReviews || []).concat(REVIEWS)).map((r, i) => Object.assign({}, r, { revealDelay: Math.min(i, 5) * 0.09, artistLabel: 'with ' + r.artist, hasPhotos: !!(r.photos && r.photos.length), photoList: (r.photos || []).map((u, k) => ({ url: u, alt: 'Nails by ' + r.artist + ', photo ' + (k + 1) + ' from ' + r.name })) })),
+      revSentMsg: API_BASE ? 'Your review was sent. It will show on this page once it has been approved. We appreciate you taking the time to share it.' : 'Your review has been added to the top of the page. We appreciate you taking the time to share it.',
+      revSendLabel: s.revSending ? 'Sending…' : 'Submit Review',
+      revHasErr: !!s.revErr, revErr: s.revErr || '',
+      revHp: s.revHp || '', onRevHp: (e) => this.setState({ revHp: e.target.value }),
+      photosFull: s.photos.length >= 3, photosRoom: s.photos.length < 3,
 
 
       starPicker: [1,2,3,4,5].map(n => ({
@@ -2536,21 +2762,6 @@ class Component extends DCLogic {
       isJharis: s.artist === 'Jharis',
       isKymani: this.kFlow(s.artist),
       // Nail Fix is refill-only
-      setTypeChoices: [
-        { name:'Full set', note:'New application on bare or removed nails.' },
-        { name:'Refill', note:'Existing set intact, coming in for a fill.' }
-      ].map(o => {
-        const on = s.setType === o.name;
-        return Object.assign({}, o, {
-          bg: on ? '#2A0A16' : '#fff', border: on ? '#2A0A16' : '#EBC6D3', fg: on ? '#FFF1F6' : '#2A0A16',
-          onClick: () => this.setState(st => ({
-            setType: o.name,
-            service: o.name === st.setType ? st.service : null,
-            addons: o.name === st.setType ? st.addons : {},
-            size: o.name === st.setType ? st.size : null
-          }))
-        });
-      }),
       ...(() => {
         const w = s.wl || {}, step = w.step || 'idle';
         const setW = (patch) => this.setState(st => ({ wl: Object.assign({}, st.wl, patch, { err: '' }) }));
@@ -2609,7 +2820,6 @@ class Component extends DCLogic {
       bookTotalPrice: s.totalPrice || '—',
       bookService: this.svcLabel(s) || 'Not selected',
       bookAddons: (() => { const l = this.selAddons(s).concat(this.x2SelAddons(s)).map(a => a.name); return l.length ? l.join(', ') : 'None'; })(),
-      bookSetType: this.kFlow(s.artist) ? '—' : (s.setType || 'Not selected'),
       bookWhen: (s.day
         ? new Date(s.day + 'T00:00:00').toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })
         : 'Select a day') + ' · ' + (s.time || 'Select a time')
