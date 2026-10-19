@@ -853,7 +853,7 @@
 <span style="font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#865469;">Secured by Stripe</span>
 </div>
 <div style="display:flex; flex-direction:column; gap:16px;">
-<div style="display:flex; gap:14px; align-items:flex-start;"><span style="flex:0 0 28px; height:28px; border-radius:999px; background:#FFEFF5; color:#B0184E; display:flex; align-items:center; justify-content:center; font-size:13px;">1</span><span style="font-size:15px; line-height:1.7; color:#3D0A1D;">You'll be taken to Stripe's secure checkout page to pay the $40 deposit.</span></div>
+<div style="display:flex; gap:14px; align-items:flex-start;"><span style="flex:0 0 28px; height:28px; border-radius:999px; background:#FFEFF5; color:#B0184E; display:flex; align-items:center; justify-content:center; font-size:13px;">1</span><span style="font-size:15px; line-height:1.7; color:#3D0A1D;">You'll be taken to Stripe's secure checkout page to pay the {{ depositLabel }} deposit.</span></div>
 <div style="display:flex; gap:14px; align-items:flex-start;"><span style="flex:0 0 28px; height:28px; border-radius:999px; background:#FFEFF5; color:#B0184E; display:flex; align-items:center; justify-content:center; font-size:13px;">2</span><span style="font-size:15px; line-height:1.7; color:#3D0A1D;">Pay by card, Apple Pay or Google Pay.</span></div>
 <div style="display:flex; gap:14px; align-items:flex-start;"><span style="flex:0 0 28px; height:28px; border-radius:999px; background:#FFEFF5; color:#B0184E; display:flex; align-items:center; justify-content:center; font-size:13px;">3</span><span style="font-size:15px; line-height:1.7; color:#3D0A1D;">Once it goes through, you'll come right back here and get your confirmation by text and email.</span></div>
 </div>
@@ -871,7 +871,7 @@
             <div style="display:flex; justify-content:space-between; gap:16px; padding-top:10px; border-top:1px solid #E7B9CB; font-size:18px;"><span style="color:#7A4258;">Deposit due now</span><span>{{ depositLabel }}</span></div>
             <div style="display:flex; justify-content:space-between; gap:16px; font-size:13px;"><span style="color:#7A4258;">Estimated balance at appointment</span><span>{{ bookRemainder }}</span></div>
           </div>
-          <button disabled="{{ payBlocked }}" onClick="{{ payDeposit }}" style="margin-top:8px; padding:16px 20px; border-radius:999px; background:{{ payBtnBg }}; color:{{ payBtnFg }}; border:none; font-family:'Poppins',sans-serif; font-size:15px; cursor:{{ payBtnCursor }};">Pay $40 Deposit</button>
+          <button disabled="{{ payBlocked }}" onClick="{{ payDeposit }}" style="margin-top:8px; padding:16px 20px; border-radius:999px; background:{{ payBtnBg }}; color:{{ payBtnFg }}; border:none; font-family:'Poppins',sans-serif; font-size:15px; cursor:{{ payBtnCursor }};">Pay {{ depositLabel }} Deposit</button>
           <sc-if value="{{ payRedirecting }}" hint-placeholder-val="{{ false }}">
             <p style="margin:0; font-size:12px; line-height:1.6; color:#7A4258; text-align:center;">Taking you to Stripe…</p>
           </sc-if>
