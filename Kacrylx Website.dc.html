@@ -805,7 +805,9 @@
             <div style="display:flex; justify-content:space-between; gap:16px;"><span style="color:#7A4258; flex:none;">Add-ons</span><span style="text-align:right; text-wrap:pretty;">{{ bookAddons }}</span></div>
             <div style="display:flex; justify-content:space-between; gap:16px;"><span style="color:#7A4258;">When</span><span>{{ bookWhen }}</span></div>
             <div style="display:flex; justify-content:space-between; gap:16px; padding-top:10px; border-top:1px solid #E7B9CB;"><span style="color:#7A4258;">Estimated time</span><span>{{ bookTotalTime }}</span></div>
-            <div style="display:flex; justify-content:space-between; gap:16px; font-size:18px;"><span style="color:#7A4258;">Estimated total</span><span>{{ bookTotalPrice }}</span></div>
+            <div style="display:flex; justify-content:space-between; gap:16px;"><span style="color:#7A4258;">Estimated service total</span><span>{{ bookTotalPrice }}</span></div>
+            <div style="display:flex; justify-content:space-between; gap:16px; padding-top:10px; border-top:1px solid #E7B9CB; font-size:18px;"><span style="color:#7A4258;">Due today (deposit only)</span><span>{{ depositLabel }}</span></div>
+            <div style="display:flex; justify-content:space-between; gap:16px; font-size:13px;"><span style="color:#7A4258;">Balance at your appointment (cash)</span><span>{{ bookRemainder }}</span></div>
           </div>
           <button disabled="{{ bookBlocked }}" onClick="{{ goDeposit }}" style="margin-top:8px; padding:16px 20px; border-radius:999px; background:{{ bookBtnBg }}; color:{{ bookBtnFg }}; border:none; font-family:'Poppins',sans-serif; font-size:15px; cursor:{{ bookBtnCursor }};">{{ bookBtnLabel }}</button>
           <sc-if value="{{ hasBookError }}" hint-placeholder-val="{{ false }}">
@@ -814,7 +816,7 @@
           <sc-if value="{{ bookBlocked }}" hint-placeholder-val="{{ false }}">
             <p style="margin:0; font-size:12px; line-height:1.6; color:#B0184E;">{{ bookBlockedNote }}</p>
           </sc-if>
-          <p style="margin:0; font-size:12px; line-height:1.6; color:#7A4258;">A deposit is required to hold your slot. Details on the <a href="#" onClick="{{ goFaq }}" style="color:#B0184E; text-decoration:underline; text-underline-offset:2px;" style-hover="color:#E0397B;">Policies page</a>.</p>
+          <p style="margin:0; font-size:12px; line-height:1.6; color:#7A4258;">You only pay the deposit today. It goes toward your service total, and the balance is paid in cash at your appointment. Details on the <a href="#" onClick="{{ goFaq }}" style="color:#B0184E; text-decoration:underline; text-underline-offset:2px;" style-hover="color:#E0397B;">Policies page</a>.</p>
         </div>
       </div>
 <sc-if value="{{ wizOn }}" hint-placeholder-val="{{ false }}">
